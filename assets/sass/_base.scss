@@ -35,17 +35,14 @@
         list-style-type: none;
         margin: 5px;
     }
-
-
-
-.person .images{
-width:50px;
-
-
-}
-.person{
-margin: 30px;
-}
+    
+    .person .images {
+        width: 50px;
+    }
+    
+    .person {
+        margin: 30px;
+    }
     /*------------------------------------*\
   #LINKS
 \*------------------------------------*/
@@ -66,18 +63,30 @@ margin: 30px;
 \*------------------------------------*/
     
     .section-size {
+        padding-top: 7vh;
+        padding-bottom: 3vh;
         width: 960px;
         max-width: 100%;
-        margin: auto;
-        @media (max-width: 320px) {
-            width: 250px;
-            max-width: 100%;
+        margin: 0 0  0 0;
+        @include breakpoint ($min: xs) {
+            width: 300px ;
+            max-width: 75%;
         }
-        @media (min-width:320px) and (max-width:768px) {
-            width: 80%;
+        @include breakpoint ($min: sm) {
+            width: 550px;
+            max-width: 75%;
         }
-        @media (min-width: 768px) {
-            width: 70%;
+        @include breakpoint ($min: md) {
+            width: 640px;
+            max-width: 75%;
+        }
+        @include breakpoint ($min: lg) {
+            width: 1100px;
+            max-width: 75%;
+        }
+        @include breakpoint ($min: xl) {
+            width: 1240px;
+            max-width: 75%;
         }
     }
     /*------------------------------------*\
@@ -98,8 +107,8 @@ margin: 30px;
     
     .img-block__small {
         position: relative;
-        width: 40%;
-        margin: 20px 0 20px;
+        width: 30px;
+        margin: 10px;
     }
     
     .img-block__text {
@@ -109,74 +118,57 @@ margin: 30px;
     }
     
     .row-wrap {
-        border:2px solid firebrick;  
+        border: 2px solid firebrick;
         border-radius: 10px;
         background-color: rgba(248, 102, 102, 0.21);
-       
-         
     }
-
- 
+    
     .row-wrap-right {
-       
         border-right-style: solid;
         border-width: 2px;
         border-color: firebrick;
     }
-
-body{
-background-color: rgba(211, 211, 211, 0.35);
-
-
-}
-
-
+    
+    body {
+        background-color: rgba(211, 211, 211, 0.35);
+    }
+    
     .row-wrap-top {
-       
         border-top-style: solid;
         border-width: 2px;
         border-color: firebrick;
     }
-
-body{
-background-color: rgba(211, 211, 211, 0.35);
-
-
-}
-
-
-.select-style {
-    position: relative;
-    padding: 0;
-    width: 170px;
-    overflow: hidden;
-    background: #fff url("http://www.scottgood.com/jsg/blog.nsf/images/arrowdown.gif") no-repeat 90% 50%;
-}
-
-.select-style select {
-     position: relative;
-    padding: 10px;
-    width: 130%;
-    border: none;
-    box-shadow: none;
-    color:white;
-     background-color: rgba(248, 102, 102, 0.71);
-    background-image: none;
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-}
-
-.select-style select:focus {
-    outline: none;
-}
-
-.uppercase {
-    text-transform: uppercase;
-}
-
-
-
-
-
-
+    
+    body {
+        background-color: rgba(211, 211, 211, 0.35);
+    }
+    
+    .select-style {
+        position: relative;
+        padding: 0;
+        width: 170px;
+        overflow: hidden;
+        background: #fff url("http://www.scottgood.com/jsg/blog.nsf/images/arrowdown.gif") no-repeat 90% 50%;
+    }
+    
+    .select-style select {
+        position: relative;
+        padding: 10px;
+        width: 130%;
+        border: none;
+        box-shadow: none;
+        color: white;
+        background-color: rgba(248, 102, 102, 0.71);
+        background-image: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    
+    .select-style select:focus {
+        outline: none;
+    }
+    
+    .uppercase {
+        text-transform: uppercase;
+    }

@@ -3,7 +3,7 @@
   .title {
       color: $black;
       font-family: 'Poppins', sans-serif;
-       
+       font-weight: 700;
       @include breakpoint($min: xs) {
           font-size: map-deep-get($typescale, 'heading1', 'xs');
       }
