@@ -10,7 +10,7 @@
     .nav-size{
 height: $nav-size;
     margin: auto 10px auto 10px;
-    @include breakpoint($min: xs) { height: $nav-size+30;
+    @include breakpoint($min: xs) { height: $nav-size+35;
     padding-top:10px; }
  }
  
@@ -23,4 +23,9 @@ margin-left: $nav-size;
 
 .margin-textNav-left{
  @include breakpoint($min: xs) { margin-left: 30px;
+}}
+
+.margin-textNav{
+ @include breakpoint($min: xs) { margin-top: -25px;
+     margin-left: 12px;
 }}
