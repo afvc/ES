@@ -18,118 +18,81 @@
 
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 
- <link href="https://fonts.googleapis.com/css?family=Poppins:500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:500,600,700" rel="stylesheet">
 
-   <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet">
+
 </head>
 
 
 <body>
 
 
-    <!------------#NAVBAR_SMALL------------>
 
-    <div class="nav-small text-bold">
-
-        <input type="checkbox" id="nav-trigger" class="nav-controller" />
-
-        <header class="header-bar">
-            <label class="" for="nav-trigger" tabindex="-1">
-                <div class="button--icon-container">
-                    <span class="icon icon--hamburger"></span>
-                </div>
-            </label>
-
-        </header>
-
-        <aside class="nav">
-            <label class="overlay" for="nav-trigger"></label>
-            <div class="nav__body">
+    <section class="bg-blue">
 
 
-                <ul class="  nav__list col-xs-12 subtitle">
-                    <label class="nav__item" for="nav-trigger">
-
-                    <li class="nav__link start-xs">    <p class="subtitle">
-                            <br>
-                            <br>Team Name</p>
-                        <img class="img-block__small" id="image1" src="assets/images/person2.png">
-                        <p class="">User
-                           
-                        </p></li>
-
-                        <li><a class="nav__link start-xs" href="i#" class="menu-selected">WORK</a></li>
-
-                        <li><a class="nav__link start-xs" href="#">ARTIFACTS </a></li>
-                        <li><a class="nav__link start-xs" href="profile-inside.html">PEOPLE</a></li>
-
-                        <li><a class="nav__link start-xs" href="#">SETTINGS</a></li>
-                    </label>
-                </ul>
+        <div class="row smalltext text-lightest nav-size">
+            <div class="col-xs-1 ">
+                <img class="img-block__small order-xs-1" id="image1" src="assets/images/person2.png">
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
-        </aside>
 
-    </div>
+            <div class="col-xs-1 margin-textNav start-xs order-xs-5">
+                <p> User </p>
+            </div>
 
-    <section class="section-size">
+            <div class="col-xs-2 margin-textNav-left order-xs-2">
+                <p>Team Name</p>
 
-        <div class="row">
-            <div class="center-xs col-lg-2  nav-big">
-                <p class="subtitle">
-                    <br>
-                    <br>Team Name</p>
-                <img class="img-block__small" id="image1" src="assets/images/person2.png">
-                <p class="">User
-                    <br>
-                    <br>
-                    <br>
-                </p>
+            </div>
 
-                <div class="row hidden">
-
-                    <div class="subtitle start-xs">
-                        <p>Project Description</p>
-                    </div>
-
-                    <p class="text text-darkest text-left">
-
-
-
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id molestie ex. Curabitur tempus semper lectus vestibulum viverra. Aliquam consequat dolor dolor, eu lobortis felis tempus quis.
-                        <br>
-                        <br>
-                        <br> </p>
-                </div>
-
-
-
-                <a href="" class="">
-                    <button class="btn-default margin-bottom-small">WORK </button>
-                </a>
-                <a href="">
-                    <button class="btn-default margin-bottom-small ">ARTIFACTS </button>
-                </a>
-                <a href="">
-                    <button class="btn-default margin-bottom-small">PROCESSES </button>
-                </a>
-                <a href="">
-                    <button class="btn-default margin-bottom-small ">PEOPLE </button>
-                </a>
-                <a href="">
-                    <button class="btn-default margin-bottom-small">SETTINGS </button>
-                </a>
+            <div class="col-xs-5 col-sm-4 end-xs order-xs-3">
+                <p class=""> week,day,month,year,hh-mm</p>
+            </div>
+            <div class="col-xs-3 col-sm-4 end-xs order-xs-4">
+                <p class=""> Logout</p>
             </div>
 
 
-            <div class="smalltext end-xs col-xs-12 col-sm-6 col-lg-8 wrap-sides margin-top-big">
-                <p class="smalltext"> week,day,month,year,hh-mm</p>
-                <p class="subtitle start-xs center-lg"> User Alerts</p>
 
-                <div class="row start-xs">
+        </div>
+    </section>
+
+
+
+    <div class="row ">
+
+        <div class="col-xs-2 no-padding bg_lightGrey center-xs text">
+            <section class="button--margin">
+  
+ 
+                    <a href="" class="">
+                        <button class="btn-default margin-bottom-small">WORK </button>
+                    </a>
+                    <a href="">
+                        <button class="btn-default margin-bottom-small ">ARTIFACTS </button>
+                    </a>
+                    <a href="">
+                        <button class="btn-default margin-bottom-small">PROCESSES </button>
+                    </a>
+                    <a href="list.html">
+                        <button class="btn-default margin-bottom-small ">PEOPLE </button>
+                    </a>
+                    <a href="">
+                        <button class="btn-default margin-bottom-small">SETTINGS </button>
+                    </a>
+                     </section>
+                </div>
+           
+           
+       
+
+
+
+        <div class="col-xs-8">
+            <div class="row">
+
+                <div class="col-xs-6 dropdown--margin__top ">
                     <div class="dropdown ">
                         <button class="dropbtn">CHOOSE PROJECT</button>
                         <div class="dropdown-content">
@@ -137,6 +100,8 @@
                             <a href="#">Project 2</a>
                         </div>
                     </div>
+                </div>
+                <div class="col-xs-6 end-xs dropdown--margin__top">
                     <div class="dropdown ">
                         <button class="dropbtn">CHOOSE BRANCH</button>
                         <div class="dropdown-content">
@@ -147,23 +112,27 @@
                 </div>
 
             </div>
+            
+            
+             <div class="row">
+                  <div class="col-xs-12 center-xs subtitle">
+                <p>User Allerts</p>
+                 </div>
+            </div></div>
+            
+     
+        <div class="col-xs-2 bg_lightGrey end-xs text">
+            <section class="section-size ">
+                <p>Activity Feed</p>
 
-            <div class="start-xs center-lg col-xs-12 col-sm-6 col-lg-2">
-                <p class="subtitle">
-                    <br>
-                    <br> Activity feed</p>
 
-
-
-            </div>
-
-
+            </section>
         </div>
+   
+    </div>
 
 
-
-
-    </section>
+ 
 
 
 
