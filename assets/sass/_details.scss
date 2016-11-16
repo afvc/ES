@@ -2,46 +2,23 @@
     display: none;
 }
 
-.bg-blue{background: $blue;}
 
-.bg-grey{background: $grey;}
-.bg_lightGrey{background: $lgrey;
+
+/*------------------------------------*\
+  #BG_COLOR
+\*------------------------------------*/
+
+.bg__blue{background: $blue;}
+
+.bg__grey{background: $grey;}
+
+.bg__lightGrey{background: $lgrey;
 height: 100vh;}
 
-.dropdown--margin__top{
-margin-top: 5vh;    
-}
-.button--margin{
- margin-top: 6vh;    
-}
+
 
  
-.nav-size{
-height: $nav-size;
-    margin: auto 10px auto 10px;
-    @include breakpoint($min: xs) { height: $nav-size+30;
-    padding-top:10px; }
- }
 
-.margin-nav-size{
-margin-left: $nav-size;
- @include breakpoint($min: xs) { margin-left: $nav-size/5;}
-}
-
-.margin-textNav-left{
-
- @include breakpoint($min: xs) { margin-left: 30px;
-}
-
-}
-
-.margin-textNav{
-@include breakpoint($min: xs) {
-    margin-left: 12px;
- margin-top: -25px;
-}
-
-}
 
 
 /*------------------------------------*\
@@ -153,92 +130,43 @@ margin-left: 20px;
 .margin-bottom-small {
     margin-bottom: 3px;
 }
-
-.col-xxs-12 {
-    @media (max-width: 640px) {
-        flex-basis: 100%;
-        max-width: 100%;
-    }
-}
-
-.order-xs-1st {
-    order: 1;
-    @media (min-width: 768px) {
-        order: 2;
-    }
-}
-
-.order-xs-2nd {
-    order: 2;
-    @media (min-width: 768px) {
-        order: 1;
-    }
-}
-
-.inline-d {
-    display: inline;
-}
-
-.flex-d {
-    display: flex;
-}
-
-.wrap-sides {
-    @media screen and (min-width: 1200px) {
-        border-left: 3px solid $black;
-         border-right: 3px solid $black;
-    }
-    @media screen and (max-width: 767px) {
-        border: none;
-    }
-    
-     
-        border-right: 3px solid $black;
-   
-    
-    
-}
-
-
-
-
-
-
+ 
+ 
 
 /*------------------------------------*\
   #ORDER
 \*------------------------------------*/
 
 
- .order-xs-1 {
+ .order-xs__1 {
      order: 1;
      @media (min-width: 768px) {
          order: 1;
      }
  }
  
- .order-xs-2 {
+ .order-xs__2 {
      order: 2;
      @media (min-width: 768px) {
          order: 3;
      }
  }
 
- .order-xs-3 {
+ .order-xs__3 {
      order: 3;
      @media (min-width: 768px) {
          order: 4;
      }
  }
  
- .order-xs-4 {
+ .order-xs__4 {
      order: 4;
      @media (min-width: 768px) {
          order: 5;
      }
  }
 
-.order-xs-5 {
+.order-xs__5 {
      order: 5;
      @media (min-width: 768px) {
          order: 2;

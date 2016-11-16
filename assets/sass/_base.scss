@@ -58,37 +58,7 @@
             color: $light;
         }
     }
-    /*------------------------------------*\
-  #SECTION_SIZES
-\*------------------------------------*/
     
-    .section-size {
-        padding-top: 7vh;
-        padding-bottom: 3vh;
-        width: 960px;
-        max-width: 100%;
-        margin: 0 0  0 0;
-        @include breakpoint ($min: xs) {
-            width: 300px ;
-            max-width: 75%;
-        }
-        @include breakpoint ($min: sm) {
-            width: 550px;
-            max-width: 75%;
-        }
-        @include breakpoint ($min: md) {
-            width: 640px;
-            max-width: 75%;
-        }
-        @include breakpoint ($min: lg) {
-            width: 1100px;
-            max-width: 75%;
-        }
-        @include breakpoint ($min: xl) {
-            width: 1240px;
-            max-width: 75%;
-        }
-    }
     /*------------------------------------*\
   #IMAGE BLOCKS
 \*------------------------------------*/
@@ -117,58 +87,4 @@
         left: 14.7%;
     }
     
-    .row-wrap {
-        border: 2px solid firebrick;
-        border-radius: 10px;
-        background-color: rgba(248, 102, 102, 0.21);
-    }
-    
-    .row-wrap-right {
-        border-right-style: solid;
-        border-width: 2px;
-        border-color: firebrick;
-    }
-    
-    body {
-        background-color: rgba(211, 211, 211, 0.35);
-    }
-    
-    .row-wrap-top {
-        border-top-style: solid;
-        border-width: 2px;
-        border-color: firebrick;
-    }
-    
-    body {
-        background-color: rgba(211, 211, 211, 0.35);
-    }
-    
-    .select-style {
-        position: relative;
-        padding: 0;
-        width: 170px;
-        overflow: hidden;
-        background: #fff url("http://www.scottgood.com/jsg/blog.nsf/images/arrowdown.gif") no-repeat 90% 50%;
-    }
-    
-    .select-style select {
-        position: relative;
-        padding: 10px;
-        width: 130%;
-        border: none;
-        box-shadow: none;
-        color: white;
-        background-color: rgba(248, 102, 102, 0.71);
-        background-image: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-    }
-    
-    .select-style select:focus {
-        outline: none;
-    }
-    
-    .uppercase {
-        text-transform: uppercase;
-    }
+      

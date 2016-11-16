@@ -82,11 +82,18 @@ border:none;
 z-index:1;
 }
 
-
+.button--margin{
+ margin-top: 6vh;    
+}
 
 /*------------------------------------*\
   #DROPDOWN
 \*------------------------------------*/
+
+
+.dropdown--margin__top{
+margin-top: 5vh;    
+}
 
 .dropbtn {
     background-color:$black ;

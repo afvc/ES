@@ -57,46 +57,6 @@
     }
 }
 
-
-/* ---------------#animations--------------*/
-
-@mixin backface-visibility($backface-visibility) {
-    -webkit-backface-visibility: $backface-visibility;
-    -moz-backface-visibility: $backface-visibility;
-    backface-visibility: $backface-visibility;
-}
-
-@mixin simple-transition($time) {
-    -webkit-transition: all $time;
-    -moz-transition: all $time;
-    transition: all $time;
-}
-
-
-@mixin scale($size) {
-   -webkit-transform: scale($size);
-    -moz-transform: scale($size);
-    -ms-transform: scale($size);
-    transform: scale($size);
-}
-
-
-@mixin translateXandY($translation) {
-    -webkit-transform: translateX($translation)translateY($translation);
-    -moz-transform: translateX($translation)translateY($translation);
-    -ms-transform: translateX($translation)translateY($translation);
-    transform: translateX($translation)translateY($translation);
-}
-
-
-@mixin rotate_and_movedown($time) {
-    -webkit-animation: move-down1 $time ease, rotate-left $time;
-    -webkit-animation-iteration-count: infinite;
-    
-            animation: move-down1 $time ease, rotate-left $time;
-            animation-iteration-count: infinite;
-}
-
  
 
 
