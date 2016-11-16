@@ -1,0 +1,182 @@
+    /* BASE STYLES*/
+    
+    html {
+        box-sizing: border-box;
+    }
+    
+    * {
+        &,
+        &:before,
+        &:after {
+            box-sizing: inherit;
+        }
+    }
+    
+    *:focus {
+        outline: 0;
+    }
+    
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        @extend .text;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    ul li {
+        list-style-type: none;
+        margin: 5px;
+    }
+
+
+
+.person .images{
+width:50px;
+
+
+}
+.person{
+margin: 30px;
+}
+    /*------------------------------------*\
+  #LINKS
+\*------------------------------------*/
+    
+    a {
+        color: $black;
+        font-weight: 800;
+        text-decoration: none;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        &:hover {
+            text-decoration: none;
+            color: $light;
+        }
+    }
+    /*------------------------------------*\
+  #SECTION_SIZES
+\*------------------------------------*/
+    
+    .section-size {
+        width: 960px;
+        max-width: 100%;
+        margin: auto;
+        @media (max-width: 320px) {
+            width: 250px;
+            max-width: 100%;
+        }
+        @media (min-width:320px) and (max-width:768px) {
+            width: 80%;
+        }
+        @media (min-width: 768px) {
+            width: 70%;
+        }
+    }
+    /*------------------------------------*\
+  #IMAGE BLOCKS
+\*------------------------------------*/
+    
+    .img-container {
+        width: 5%;
+        position: relative;
+        margin-left: 12, 5%;
+    }
+    
+    .img-block {
+        position: relative;
+        width: 100%;
+        margin-left: 15%;
+    }
+    
+    .img-block__small {
+        position: relative;
+        width: 40%;
+        margin: 20px 0 20px;
+    }
+    
+    .img-block__text {
+        position: relative;
+        bottom: -8%;
+        left: 14.7%;
+    }
+    
+    .row-wrap {
+        border:2px solid firebrick;  
+        border-radius: 10px;
+        background-color: rgba(248, 102, 102, 0.21);
+       
+         
+    }
+
+ 
+    .row-wrap-right {
+       
+        border-right-style: solid;
+        border-width: 2px;
+        border-color: firebrick;
+    }
+
+body{
+background-color: rgba(211, 211, 211, 0.35);
+
+
+}
+
+
+    .row-wrap-top {
+       
+        border-top-style: solid;
+        border-width: 2px;
+        border-color: firebrick;
+    }
+
+body{
+background-color: rgba(211, 211, 211, 0.35);
+
+
+}
+
+
+.select-style {
+    position: relative;
+    padding: 0;
+    width: 170px;
+    overflow: hidden;
+    background: #fff url("http://www.scottgood.com/jsg/blog.nsf/images/arrowdown.gif") no-repeat 90% 50%;
+}
+
+.select-style select {
+     position: relative;
+    padding: 10px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    color:white;
+     background-color: rgba(248, 102, 102, 0.71);
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+
+
+
+
+
