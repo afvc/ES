@@ -14,7 +14,9 @@
     "url": "https://github.com/afvc/latada_2016/issues"
   },
   "homepage": "https://hawkpost.co",
-  "dependencies": {},
+  "dependencies": {
+    "gulp-install": "^0.6.0"
+  },
   "devDependencies": {
     "browser-sync": "^2.11.2",
     "del": "^2.2.0",
