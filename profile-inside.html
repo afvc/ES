@@ -141,7 +141,7 @@ NAV_TOPO
 
 
 
-            <div class="row middle-xs">
+            <div class="row middle-xs center-xs">
 
 
                 <div class="person col-xs-5 start-xs" id="person1">
@@ -151,26 +151,56 @@ NAV_TOPO
 
                 <div class="subtitle end-xs col-xs-5">
                     <p>User Name</p>
-                    <a href="">
-                        <p class="smalltext">Edit Profile</p>
-                    </a>
+
                 </div>
 
+                <!-------------------EDIT_FORM------------------->
+
+                <div id="forms col-xs-12 col-sm-6 col-sm-offset-4">
+
+                    <form action="">
+                        <input id="algo" type="radio" name="choose" value="male"> Edit for application only
+                        <br>
+                        <input id="algo1" type="radio" name="choose" value="female" onclick="myFunction()"> GIT Info
+                    </form>
 
 
-                <p class="text text-darkest text-left margin-text ">
 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id molestie ex. Curabitur tempus semper lectus vestibulum viverra. Aliquam consequat dolor dolor, eu lobortis felis tempus quis.
-                </p>
+                    <!--<!--——— EDIT ———-->
+                    <!--<button name="edit" id="btn" type="button">Edit</button>-->
 
-                <ul class="text-left text">
-                    <li> E-mail</li>
-                    <li> Social Network 1 </li>
-                    <li> Social Network 2 </li>
-                    <li> Social Network 3 </li>
+                    <!--——— Reset Git Info ———-->
+                    <!--<button name="edit" id="btn" type="button">Reset Git Info</button>-->
 
+                    <br>
+                    <br>
 
-                </ul>
+                    <!--——— INFOS ———-->
+                    <form>
+                        <!--Name:
+        <input id="muda" class="edit change" type="text" name="nome" value="Diogo">-->
+                        <!--<br> E-mail:
+        <input class="edit change" type="text" name="nome" value="email@email.com">-->
+                        <br> Skype:
+                        <input class="edit change" type="text" name="nome" value="Skypename">
+                        <br> LinkedIn:
+                        <input class="edit change" type="text" name="nome" value="Linked in">
+                        <br> Twitter:
+                        <input class="edit change" type="text" name="nome" value="Twittername in">
+                        <br> Website:
+                        <input class="edit change" type="text" name="nome" value="Sitename">
+                        <br> Bio:
+                        <br>
+                        <textarea placeholder="Your Bio" maxlength="250" class="edit change" type="text" name="nome"></textarea>
+                        <br>
+
+                        <input type="submit" value="Save">
+                    </form>
+
+                    <br>
+                    <br>
+
+                </div>
 
             </div>
 
@@ -179,69 +209,29 @@ NAV_TOPO
         <!--------------------------------------
   SECÇÂO DIREITA
 -------------------------------------->
-        <div class="col-xs-2 bg__lightGrey end-xs text">
-            <section class="section-size ">
-                <p>Activity Feed</p>
 
+        <div class="col-xs-2 bg__lightGrey center-xs text">
+            <section class="section-size ">
+                <p><a id="feed" href="#">Activity Feed</a></p>
+                <div id="hiddenFeed">
+                    <p>AAAAAA</p>
+                    <p>BBBBBB</p>
+                    <p>CCCCCC</p>
+                    <p>DDDDDD</p>
+                    <p>EEEEEE</p>
+                    <p>FFFFFF</p>
+                    <p>GGGGGG</p>
+                    <p>HHHHHH</p>
+                </div>
 
             </section>
         </div>
 
     </div>
 
-
-
-    <!--<!--——— Edit Form ———-->
-
-
-    <div id="forms">
-
-        <form action="">
-            <input id="algo" type="radio" name="choose" value="male"> Edit for application only
-            <br>
-            <input id="algo1" type="radio" name="choose" value="female" onclick="myFunction()"> GIT Info
-        </form>
-
-
-
-        <!--<!--——— EDIT ———-->
-        <!--<button name="edit" id="btn" type="button">Edit</button>-->
-
-        <!--——— Reset Git Info ———-->
-        <!--<button name="edit" id="btn" type="button">Reset Git Info</button>-->
-
-        <br>
-        <br>
-
-        <!--——— INFOS ———-->
-        <form>
-            <!--Name:
-        <input id="muda" class="edit change" type="text" name="nome" value="Diogo">-->
-            <!--<br> E-mail:
-        <input class="edit change" type="text" name="nome" value="email@email.com">-->
-            <br> Skype:
-            <input class="edit change" type="text" name="nome" value="Skypename">
-            <br> LinkedIn:
-            <input class="edit change" type="text" name="nome" value="Linked in">
-            <br> Twitter:
-            <input class="edit change" type="text" name="nome" value="Twittername in">
-            <br> Website:
-            <input class="edit change" type="text" name="nome" value="Sitename">
-            <br> Bio:
-            <br>
-            <textarea placeholder="Your Bio" maxlength="250" class="edit change" type="text" name="nome"></textarea>
-            <br>
-
-            <input type="submit" value="Save">
-        </form>
-
-        <br>
-        <br>
-
-    </div>
-
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="assets/js/script.js"></script>
+
+    <script src="script.js"></script>
 
 </body>
 
