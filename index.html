@@ -142,8 +142,8 @@ NAV_TOPO
 
         <div class="col-xs-2 bg__lightGrey center-xs text">
             <section class="section-size ">
-                <p>Activity Feed</p>
-                <div id="hideFedd">
+                <p><a id="feed" href="#">Activity Feed</a></p>
+              <div id="hiddenFeed">
                     <p>AAAAAA</p>
                     <p>BBBBBB</p>
                     <p>CCCCCC</p>
@@ -158,6 +158,26 @@ NAV_TOPO
         </div>
 
     </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="script.js"></script>
+    
+    <script>
+    
+    +$("#feed").on("click", showHiddenFeed);
+ +
+ +function showHiddenFeed() {
+ +    if ($("#hiddenFeed").css("display") == "none") {
+ +        $("#hiddenFeed").css("display", "block");
+ +    } else {
+ +        $("#hiddenFeed").css("display", "none");
+ +
+ +    }
+ +}
+    
+    
+    </script>
 
 </body>
 
