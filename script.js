@@ -9,7 +9,7 @@ function showHiddenFeed() {
         $(".feedCol").css("display", "none");
         $(".centerSection").removeClass("col-xs-7");
         $(".centerSection").addClass("col-xs-10");
-
-
+        $(".section-resized").css("padding-right", "5vw");
+        
     }
 }

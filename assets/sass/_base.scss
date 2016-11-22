@@ -26,17 +26,14 @@
         -moz-osx-font-smoothing: grayscale;
         @extend .text;
     }
-
-
-.site_title {
-   color: #f35626;
- background-image: -webkit-linear-gradient(90deg,#000,#d62c4d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-animation: hue 1s infinite linear; 
-     
-}
- 
+    
+    .site_title {
+        color: #f35626;
+        background-image: -webkit-linear-gradient(90deg, #000, #d62c4d);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-animation: hue 1s infinite linear;
+    }
     
     .hidden {
         display: none;
@@ -54,9 +51,10 @@
     .person {
         margin: 30px;
     }
-
-#hiddenFeed {
-  display: block; }
+    
+    #hiddenFeed {
+        display: block;
+    }
     /*------------------------------------*\
   #LINKS
 \*------------------------------------*/
@@ -72,7 +70,6 @@
             color: $light;
         }
     }
-    
     /*------------------------------------*\
   #IMAGE BLOCKS
 \*------------------------------------*/
@@ -101,5 +98,27 @@
         left: 14.7%;
     }
     
-      
-
+    .section-resized {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        @include breakpoint ($min: xs) {
+            width: 300px;
+            max-width: 100%;
+        }
+        @include breakpoint ($min: sm) {
+            width: 550px;
+            max-width: 100%;
+        }
+        @include breakpoint ($min: md) {
+            width: 640px;
+            max-width: 100%;
+        }
+        @include breakpoint ($min: lg) {
+            width: 1100px;
+            max-width: 100%;
+        }
+        @include breakpoint ($min: xl) {
+            width: 1240px;
+            max-width: 100%;
+        }
+    }
