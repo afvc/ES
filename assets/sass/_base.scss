@@ -26,6 +26,17 @@
         -moz-osx-font-smoothing: grayscale;
         @extend .text;
     }
+
+
+.site_title {
+   color: #f35626;
+ background-image: -webkit-linear-gradient(90deg,#000,#d62c4d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 1s infinite linear; 
+     
+}
+ 
     
     .hidden {
         display: none;
