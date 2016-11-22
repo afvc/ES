@@ -62,12 +62,11 @@ NAV_TOPO
     </section>
 
 
-
-
-
     <!--------------------------------------
-  SECÇÂO ESQUERDA
+  SECÇÃO_ESQUERDA
 -------------------------------------->
+
+
     <div class="row ">
 
         <div class="col-xs-2 no-padding bg__lightGrey center-xs text">
@@ -94,16 +93,21 @@ NAV_TOPO
 
 
 
-
-
         <!--------------------------------------
  SECÇÃO_CENTRAL
 -------------------------------------->
 
         <!-------------------DROPDOWN_ESQ------------------->
-        <div class="col-xs-7 ">
-            <div class="row">
+        <div class="col-xs-8 centerSection">
 
+            <div class="row">
+                <div class="col-xs-11">
+                    <p class="showFeed"><a href="#">Activity Feed</a></p>
+                    <p class="showAlerts"><a href="#">Show Alerts</a></p>
+                </div>
+            </div>
+
+            <div class="row">
                 <div class="col-xs-3 dropdown--margin__top ">
                     <div class="dropdown ">
                         <button class="dropbtn">CHOOSE PROJECT</button>
@@ -113,8 +117,6 @@ NAV_TOPO
                         </div>
                     </div>
                 </div>
-
-
 
                 <!-------------------DROPDOWN_DIR------------------->
                 <div class="col-xs-3 dropdown--margin__top">
@@ -127,32 +129,25 @@ NAV_TOPO
                     </div>
                 </div>
 
-           
+                <!-------------------ALERTAS_TITULO------------------->
 
-            <!-------------------ALERTAS_TITULO------------------->
-          
-                <div class="col-xs-6 center-xs site_title subtitle">
-                    <p>User Allerts</p>
+                <div class="col-xs-6 center-xs">
+                    <p class="subtitle userAllerts">User Alerts</p>
+                    <p class="text text-left alerts">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
                 </div>
             </div>
 
 
-
-      
             <!-------------------PERFIL_TITULO------------------->
             <div class="row">
                 <div class="col-xs-12 center-xs ">
                     <p class="subtitle">User Profile</p>
 
-                   
+
                 </div>
             </div>
 
-
-
-
             <div class="row middle-xs center-xs">
-
 
                 <div class="person col-xs-1 start-xs" id="person1">
                     <img class="images" id="image1" src="assets/images/person1.png">
@@ -161,22 +156,22 @@ NAV_TOPO
 
                 <div class="text text-bold start-xs col-xs-10">
                     <p>User Name</p>
-                      <p class="text">UserBio</p>
-                       <p class="text ">Texto sobre como funciona a edição de perfil</p>
+                    <p class="text">UserBio</p>
+                    <p class="text ">Texto sobre como funciona a edição de perfil</p>
 
                 </div>
-                
- 
+
+
                 <div class="col-xs-12 center-xs ">
                     <p class="subtitle">Edit Profile</p>
- 
+
                 </div>
-           
+
                 <!-------------------EDIT_FORM------------------->
-                
+
 
                 <div id="forms col-xs-12">
-                    
+
 
                     <form action="">
                         <input id="algo" type="radio" name="choose" value="male"> Edit for application only
@@ -227,12 +222,11 @@ NAV_TOPO
         </div>
 
         <!--------------------------------------
-  SECÇÂO DIREITA
+  SECÇÃO_DIREITA
 -------------------------------------->
 
-        <div class="col-xs-offset-1 col-xs-2 bg__lightGrey center-xs text">
+        <div class="col-xs-2 bg__lightGrey center-xs text feedCol">
             <section class="section-size ">
-                <p><a id="feed" href="#">Activity Feed</a></p>
                 <div id="hiddenFeed">
                     <p>AAAAAA</p>
                     <p>BBBBBB</p>
@@ -242,6 +236,7 @@ NAV_TOPO
                     <p>FFFFFF</p>
                     <p>GGGGGG</p>
                     <p>HHHHHH</p>
+
                 </div>
 
             </section>
@@ -249,7 +244,7 @@ NAV_TOPO
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <script src="script.js"></script>
 
