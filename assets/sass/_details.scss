@@ -12,7 +12,8 @@
 
 .bg__grey{background: $grey;}
 
-.bg__lightGrey{background: $lgrey;}
+.bg__lightGrey{background: $lgrey;
+min-height: 100vh;}
 
 /*------------------------------------*\
   #TEXT_COLOR
