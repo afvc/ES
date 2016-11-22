@@ -1,10 +1,15 @@
 $("#feed").on("click", showHiddenFeed);
 
 function showHiddenFeed() {
-    if ($("#hiddenFeed").css("display") == "none") {
-        $("#hiddenFeed").css("display", "block");
+    if ($(".feedCol").css("display") == "none") {
+        $(".feedCol").css("display", "block");
+        $(".centerSection").removeClass("col-xs-10");
+        $(".centerSection").addClass("col-xs-7");
     } else {
-        $("#hiddenFeed").css("display", "none");
+        $(".feedCol").css("display", "none");
+        $(".centerSection").removeClass("col-xs-7");
+        $(".centerSection").addClass("col-xs-10");
+
 
     }
 }
