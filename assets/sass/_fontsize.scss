@@ -1,0 +1,103 @@
+  /*----------font_responsiveness------------*/
+  
+  .title {
+      color: $black;
+      font-family: 'Poppins', sans-serif;
+       font-weight: 700;
+      @include breakpoint($min: xs) {
+          font-size: map-deep-get($typescale, 'heading1', 'xs');
+      }
+      @include breakpoint($min:sm) {
+          font-size: map-deep-get($typescale, 'heading1', 'sm');
+      }
+      @include breakpoint($min:md) {
+          font-size: map-deep-get($typescale, 'heading1', 'md');
+      }
+      @include breakpoint($min:lg) {
+          font-size: map-deep-get($typescale, 'heading1', 'lg');
+      }
+      @include breakpoint($min:xl) {
+          font-size: map-deep-get($typescale, 'heading1', 'lg');
+      }
+      line-height: 1.2;
+  }
+  
+  .subtitle {
+      color: $black;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      @include breakpoint($min: xs) {
+          font-size: map-deep-get($typescale, 'medium1', 'xs');
+      }
+      @include breakpoint($min:sm) {
+          font-size: map-deep-get($typescale, 'medium1', 'sm');
+      }
+      @include breakpoint($min:md) {
+          font-size: map-deep-get($typescale, 'medium1', 'md');
+      }
+      @include breakpoint($min:lg) {
+          font-size: map-deep-get($typescale, 'medium1', 'lg');
+      }
+      @include breakpoint($min:xl) {
+          font-size: map-deep-get($typescale, 'medium1', 'lg');
+      }
+      line-height: 1.2;
+  }
+  
+  .subtitle-medium {
+      color: $black;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      @include breakpoint($min: xs) {
+          font-size: map-deep-get($typescale, 'medium1', 'xs');
+      }
+      @include breakpoint($min:sm) {
+          font-size: map-deep-get($typescale, 'medium1', 'sm');
+      }
+      @include breakpoint($min:md) {
+          font-size: map-deep-get($typescale, 'medium1', 'md');
+      }
+      @include breakpoint($min:lg) {
+          font-size: map-deep-get($typescale, 'medium1', 'lg');
+      }
+      @include breakpoint($min:xl) {
+          font-size: map-deep-get($typescale, 'medium1', 'lg');
+      }
+      line-height: 1.2;
+  }
+  
+  .text {
+      color: $black;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      @include breakpoint($min: xs) {
+          font-size: map-deep-get($typescale, 'text1', 'xs');
+      }
+      @include breakpoint($min:sm) {
+          font-size: map-deep-get($typescale, 'text1', 'sm');
+      }
+      @include breakpoint($min:md) {
+          font-size: map-deep-get($typescale, 'text1', 'md');
+      }
+      @include breakpoint($min:lg) {
+          font-size: map-deep-get($typescale, 'text1', 'lg');
+      }
+  }
+  
+  .smalltext {
+       color: $black;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      @include breakpoint($min: xs) {
+          font-size: map-deep-get($typescale, 'smalltext1', 'xs');
+      }
+      @include breakpoint($min:sm) {
+          font-size: map-deep-get($typescale, 'smalltext1', 'sm');
+      }
+      @include breakpoint($min:md) {
+          font-size: map-deep-get($typescale, 'smalltext1', 'md');
+      }
+      @include breakpoint($min:lg) {
+          font-size: map-deep-get($typescale, 'smalltext1', 'lg');
+      }
+  }

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- META TAGS -->
+    <meta charset="UTF-8" />
+    <title>Git Dashboard</title>
+
+
+    <!-- STYLESHEETS -->
+
+    <link rel="stylesheet" href="assets/css/flexboxgrid.min.css" type="text/css">
+
+    <link rel="stylesheet" href="assets/css/_font-awesome.min.css.scss" type="text/css">
+
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
+    <link rel="stylesheet" href="assets/css/profilein.css" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:500,600,700" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+    <!--------------------------------------
+NAV_TOPO
+-------------------------------------->
+
+    <section class="bg__blue">
+
+
+        <div class="row smalltext text-lightest nav-size margin-nav">
+            <div class="col-xs-1 ">
+                <a href="profile-inside.html"><img class="img-block__small  order-xs__1" id="image1" src="assets/images/person2.png"></a>
+            </div>
+
+            <div class="col-xs-1 margin-textNav start-xs  order-xs__5">
+                <p><a href="profile-inside.html">User</a></p>
+            </div>
+
+            <div class="col-xs-2 margin-textNav-left  order-xs__2">
+                <p>Team Name</p>
+
+            </div>
+
+            <div class="col-xs-4 col-sm-4 end-xs  order-xs__3">
+                <p class=""> week,day,month,year,hh-mm</p>
+            </div>
+            <div class="col-xs-3 col-sm-4 end-xs margin-textNav-left  order-xs__4">
+                <p class=""> Logout</p>
+            </div>
+
+
+
+        </div>
+    </section>
+
+
+
+
+
+    <!--------------------------------------
+  SECÇÂO ESQUERDA
+-------------------------------------->
+    <div class="row ">
+
+        <div class="col-xs-2 no-padding bg__lightGrey center-xs text">
+            <section class="button--margin">
+
+
+                <a href="" class="">
+                    <button class="btn-default margin-bottom-small">WORK </button>
+                </a>
+                <a href="">
+                    <button class="btn-default margin-bottom-small ">ARTIFACTS </button>
+                </a>
+                <a href="">
+                    <button class="btn-default margin-bottom-small">PROCESSES </button>
+                </a>
+                <a href="list.html">
+                    <button class="btn-default margin-bottom-small ">PEOPLE </button>
+                </a>
+                <a href="">
+                    <button class="btn-default margin-bottom-small">SETTINGS </button>
+                </a>
+            </section>
+        </div>
+
+
+
+
+
+        <!--------------------------------------
+ SECÇÃO_CENTRAL
+-------------------------------------->
+
+        <!-------------------DROPDOWN_ESQ------------------->
+        <div class="col-xs-7 ">
+            <div class="row">
+
+                <div class="col-xs-3 dropdown--margin__top ">
+                    <div class="dropdown ">
+                        <button class="dropbtn">CHOOSE PROJECT</button>
+                        <div class="dropdown-content">
+                            <a href="#">Project 1</a>
+                            <a href="#">Project 2</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-------------------DROPDOWN_DIR------------------->
+                <div class="col-xs-3 dropdown--margin__top">
+                    <div class="dropdown ">
+                        <button class="dropbtn">CHOOSE BRANCH</button>
+                        <div class="dropdown-content">
+                            <a href="#">Branch 1</a>
+                            <a href="#">Branch 2</a>
+                        </div>
+                    </div>
+                </div>
+
+           
+
+            <!-------------------ALERTAS_TITULO------------------->
+          
+                <div class="col-xs-6 center-xs site_title subtitle">
+                    <p>User Allerts</p>
+                </div>
+            </div>
+
+
+
+      
+            <!-------------------PERFIL_TITULO------------------->
+
+
+            <div class="row middle-xs center-xs">
+                             
+                <div class="col-xs-12 center-xs ">
+                    <p class="subtitle">Edit Profile</p>
+ 
+                </div>
+           
+                <!-------------------EDIT_FORM------------------->
+                
+
+                <div id="forms col-xs-12">
+                    
+
+                    <form action="">
+                        <input id="algo" type="radio" name="choose" value="male"> Edit for application only
+                        <br>
+                        <input id="algo1" type="radio" name="choose" value="female" onclick="myFunction()"> GIT Info
+                    </form>
+
+
+
+                    <!--<!--——— EDIT ———-->
+                    <!--<button name="edit" id="btn" type="button">Edit</button>-->
+
+                    <!--——— Reset Git Info ———-->
+                    <!--<button name="edit" id="btn" type="button">Reset Git Info</button>-->
+
+                    <br>
+                    <br>
+
+                    <!--——— INFOS ———-->
+                    <form>
+                        <!--Name:
+        <input id="muda" class="edit change" type="text" name="nome" value="Diogo">-->
+                        <!--<br> E-mail:
+        <input class="edit change" type="text" name="nome" value="email@email.com">-->
+                        <br> Skype:
+                        <input class="edit change" type="text" name="nome" value="Skypename">
+                        <br> LinkedIn:
+                        <input class="edit change" type="text" name="nome" value="Linked in">
+                        <br> Twitter:
+                        <input class="edit change" type="text" name="nome" value="Twittername in">
+                        <br> Website:
+                        <input class="edit change" type="text" name="nome" value="Sitename">
+                        <br> Bio:
+                        <br>
+                        <textarea placeholder="Your Bio" maxlength="250" class="edit change" type="text" name="nome"></textarea>
+                        <br>
+
+                        <input type="submit" value="Save">
+                    </form>
+
+                    <br>
+                    <br>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--------------------------------------
+  SECÇÂO DIREITA
+-------------------------------------->
+
+        <div class="col-xs-offset-1 col-xs-2 bg__lightGrey center-xs text">
+            <section class="section-size ">
+                <p><a id="feed" href="#">Activity Feed</a></p>
+                <div id="hiddenFeed">
+                    <p>AAAAAA</p>
+                    <p>BBBBBB</p>
+                    <p>CCCCCC</p>
+                    <p>DDDDDD</p>
+                    <p>EEEEEE</p>
+                    <p>FFFFFF</p>
+                    <p>GGGGGG</p>
+                    <p>HHHHHH</p>
+                </div>
+
+            </section>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <script src="/assets/js/barras.js"></script>
+
+</body>
+
+</html>
