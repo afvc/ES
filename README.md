@@ -47,3 +47,9 @@ D-Abrir a pasta no brackets<br>
 4.Update X from Master<br>
 5.Push X<br>
 <br>
+
+Na primeira vez para instalar as dependencias necessarias para correr o servidor
+'pip intall -r requirements.txt'
+
+Para por o servidor a correr
+python run.py
