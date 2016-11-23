@@ -48,8 +48,8 @@ D-Abrir a pasta no brackets<br>
 5.Push X<br>
 <br>
 
-Na primeira vez para instalar as dependencias necessarias para correr o servidor
-'pip intall -r requirements.txt'
-
-Para por o servidor a correr
-python run.py
+Na primeira vez para instalar as dependencias necessarias para correr o servidor<br>
+pip intall -r requirements.txt<br>
+<br>
+Para por o servidor a correr<br>
+python run.py<br>
