@@ -114,6 +114,8 @@ def profileEdit():
     info['twitter'] = res[4]
     info['website'] = res[5]
     info['bio'] = res[6]
+    info['noSync'] = res[8]
+    print info['noSync']
 
     projects = functions.getProjects(privateToken)
     branches = functions.getBranchInformation(privateToken, projectID)
