@@ -27,7 +27,7 @@
 </head>
 
 
-<body>
+<body onload="startContent();">
 
 
     <!--------------------------------------
@@ -43,7 +43,7 @@ NAV_TOPO
             </div>
 
             <div class="col-xs-1 margin-textNav start-xs  order-xs__5">
-                <p><a href="{{ url_for('views.profile', username = currentUser.username) }}">{{ currentUser["name"] }}</a></p>
+                <p>{{ currentUser["name"] }}</p>
             </div>
 
             <div class="col-xs-2 margin-textNav-left  order-xs__2">
@@ -99,7 +99,7 @@ NAV_TOPO
  SECÇÃO_CENTRAL
 -------------------------------------->
 
-        <!-------------------DROPDOWN_ESQ------------------->
+        <!-------------------DROPDOWN_ESQ----------------- -->
         <div class="col-xs-8 centerSection">
 
             <div class="row">
@@ -119,17 +119,13 @@ NAV_TOPO
                         {% endif %}
                         <div class="dropdown-content">
                             {% for project in projectsList %}
-                                <a href={{url_for('views.changeProjectOrBranch', page='index', type='project', text=project["id"]) }}> {{ project["path"] }} </a>
+                                <a href="{{url_for('views.changeProjectOrBranch', page='profile-'+currentUser.username, type='project', text=project["id"]) }}"> {{ project["path"] }} </a>
                             {% endfor %}
-<!--
-                            <a href="#">Project 1</a>
-                            <a href="#">Project 2</a>
--->
                         </div>
                     </div>
                 </div>
 
-                <!-------------------DROPDOWN_DIR------------------->
+                <!-------------------DROPDOWN_DIR----------------- -->
                 <div class="col-xs-3 dropdown--margin__top">
                     <div class="dropdown ">
                         {% if currentBranch is none %}
@@ -140,18 +136,14 @@ NAV_TOPO
                         <div class="dropdown-content">
                             {% if branchesList is not none %}
                                 {% for branch in branchesList %}
-                                    <a href="{{url_for('views.changeProjectOrBranch', page='index', type='branch', text=branch["name"]) }}"> {{ branch["name"] }} </a>
+                                    <a href="{{url_for('views.changeProjectOrBranch', page='profile-'+currentUser.username, type='branch', text=branch["name"]) }}"> {{ branch["name"] }} </a>
                                 {% endfor %}
                             {% endif %}
-<!--
-                            <a href="#">Branch 1</a>
-                            <a href="#">Branch 2</a>
--->
                         </div>
                     </div>
                 </div>
 
-                <!-------------------ALERTAS_TITULO------------------->
+                <!-------------------ALERTAS_TITULO----------------- -->
 
                 <div class="col-xs-6 center-xs">
                     <p class="subtitle userAllerts">User Alerts</p>
@@ -160,7 +152,7 @@ NAV_TOPO
             </div>
 
 
-            <!-------------------PERFIL_TITULO------------------->
+            <!-------------------PERFIL_TITULO----------------- -->
             <div class="row">
                 <div class="col-xs-12 center-xs ">
                     <p class="subtitle">User Profile</p>
@@ -172,12 +164,12 @@ NAV_TOPO
             <div class="row middle-xs center-xs">
 
                 <div class="person col-xs-1 start-xs" id="person1">
-                    <img class="images" id="image1" src="{{ userInfo.avatar_url }}">
+                    <img class="images" id="image1" src="{{ currentUser.avatar_url }}">
 
                 </div>
 
                 <div class="text text-bold start-xs col-xs-10">
-                    <p>{{ userInfo.name }}</p>
+                    <p>{{ currentUser.name }}</p>
                     <p class="text ">Bio: {{ userInfoDB['bio'] }}</p>
                     <p class="text ">E-mail: {{ userInfoDB['email'] }} </p>
                     <p class="text ">Skype: {{ userInfoDB['skype'] }} </p>
