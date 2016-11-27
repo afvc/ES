@@ -1,6 +1,9 @@
 from pprint import pprint
-from flask import Blueprint, render_template, url_for, request, redirect
+from flask import Blueprint, render_template, url_for, request, redirect, Response
 import functions
+import json
+
+host = 'http://localhost:5000'
 
 views = Blueprint('views', __name__)
 
@@ -24,7 +27,7 @@ def index():
         branches = functions.getBranchInformation(privateToken, projectID)
         projName = functions.getProjectInformation(privateToken, projectID)["path"]
 
-    return render_template("index.html", projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB)
+    return render_template("index.html", host = host, projectID = projectID, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB)
 
 
 @views.route("/<page>.html/<type>/<text>", methods=['GET'])
@@ -138,4 +141,35 @@ def editPOST(username):
     else:
         functions.query_db('UPDATE profile SET noSync = ? WHERE username = ?;', [0, username], one=True)
 
+    message = userInfo['name'] + ' has changed his/her profile information'
+    members = functions.getMembersInformation(privateToken, projectID)
+    member = dict()
+    for member in members:
+        #if (member['id'] != userInfo['id']):
+        functions.query_db('INSERT INTO notification (message, project, targetUsername, isAlert) VALUES (?, ?, ?, ?);', [message, projectID, member['username'], 0], one=True)
+
     return redirect('/profile-inside.html/' + username)
+
+
+@views.route("/js/getNotification/<username>/<project>")
+def jsRequest(username, project):
+    lista = list()
+    i = 0;
+    for notification in functions.query_db('SELECT id_notif, message, isAlert FROM notification WHERE project = ? AND targetUsername = ? ORDER BY id_notif DESC', [project, username]):
+        d = dict()
+        d['id_notif'] = notification[0]
+        d['message'] = notification[1]
+        d['isAlert'] = notification[2]
+        lista.append(d)
+
+        i += 1
+        if (i == 15):
+            break
+    
+    return Response(json.dumps(lista),  mimetype='application/json')
+
+@views.route("/js/insertNotification/<username>/<project>/message>")
+def jsRequest(username, project):
+    # insert bd
+
+    return Response("200 OK",  mimetype='application/text')
