@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, url_for, request, redirect, Respon
 import functions
 import json
 
+MAX_NOTIFICATION = 30
 host = 'http://localhost:5000'
 
 views = Blueprint('views', __name__)
@@ -70,7 +71,7 @@ def members():
 
     members = functions.getMembersInformation(privateToken, projectID)
 
-    return render_template("members.html", projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, membersList = members)
+    return render_template("members.html", host = host, projectID = projectID, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, membersList = members)
 
 
 @views.route("/profile-inside.html/<username>", methods=['GET'])
@@ -101,7 +102,7 @@ def profile(username):
     branches = functions.getBranchInformation(privateToken, projectID)
     projName = functions.getProjectInformation(privateToken, projectID)["path"]
 
-    return render_template("profile-inside.html", projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, userInfoDB = check, userInfo = member)
+    return render_template("profile-inside.html", host = host, projectID = projectID, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, userInfoDB = check, userInfo = member)
 
 
 @views.route("/profile-edit.html")
@@ -124,7 +125,7 @@ def profileEdit():
     branches = functions.getBranchInformation(privateToken, projectID)
     projName = functions.getProjectInformation(privateToken, projectID)["path"]
 
-    return render_template("profile-edit.html", projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, userInfoDB = info)
+    return render_template("profile-edit.html", host = host, projectID = projectID, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, userInfoDB = info)
 
 
 @views.route("/profile-inside.html/<username>", methods=['POST'])
@@ -145,31 +146,44 @@ def editPOST(username):
     members = functions.getMembersInformation(privateToken, projectID)
     member = dict()
     for member in members:
-        #if (member['id'] != userInfo['id']):
-        functions.query_db('INSERT INTO notification (message, project, targetUsername, isAlert) VALUES (?, ?, ?, ?);', [message, projectID, member['username'], 0], one=True)
+        if (member['username'] != userInfo['username']):
+            functions.query_db('INSERT INTO notification (message, project, targetUsername, isAlert) VALUES (?, ?, ?, ?);', [message, projectID, member['username'], 0], one=True)
 
     return redirect('/profile-inside.html/' + username)
 
 
-@views.route("/js/getNotification/<username>/<project>")
-def jsRequest(username, project):
+@views.route("/request/getNotification/<username>/<project>")
+def httpGetNotification(username, project):
     lista = list()
     i = 0;
-    for notification in functions.query_db('SELECT id_notif, message, isAlert FROM notification WHERE project = ? AND targetUsername = ? ORDER BY id_notif DESC', [project, username]):
+    for notification in functions.query_db('SELECT id_notif, message, isAlert, alertTitle FROM notification WHERE project = ? AND targetUsername = ? ORDER BY id_notif DESC', [project, username]):
         d = dict()
         d['id_notif'] = notification[0]
         d['message'] = notification[1]
         d['isAlert'] = notification[2]
+        d['alertTitle'] = notification[3]
         lista.append(d)
 
         i += 1
-        if (i == 15):
+        if (i == MAX_NOTIFICATION):
             break
     
     return Response(json.dumps(lista),  mimetype='application/json')
 
-@views.route("/js/insertNotification/<username>/<project>/message>")
-def jsRequest(username, project):
-    # insert bd
+@views.route("/request/postNotification", methods=['POST'])
+def httpPostNotification():
+    username = request.form['username']
+    project = request.form['projectID']
+    message = request.form['message']
+    isAlert = request.form['isAlert']
+    alertTitle = request.form['alertTitle']
 
-    return Response("200 OK",  mimetype='application/text')
+    alertTitle = alertTitle[:25]
+
+    members = functions.getMembersInformation(privateToken, project)
+    member = dict()
+    for member in members:
+        if (member['username'] != username):
+            functions.query_db('INSERT INTO notification (message, project, targetUsername, isAlert, alertTitle) VALUES (?, ?, ?, ?, ?);', [message, project, member['username'], isAlert, alertTitle], one=True)
+
+    return Response("",  mimetype='application/text')

@@ -22,6 +22,8 @@
 
     <script src="{{url_for('static', filename='assets/js/date.js') }}"></script>
 
+    <script src="{{url_for('static', filename='assets/js/sendNotification.js') }}"></script>
+
 </head>
 
 
@@ -41,13 +43,14 @@ NAV_TOPO
             </div>
 
             <div class="col-xs-1 margin-textNav start-xs  order-xs__5">
-<!--                <p id="username" hidden>{{ currentUser['username'] }}</p>
-                <p id="projectID" hidden></p> -->
+                <p id="username" hidden>{{ currentUser['username'] }}</p>
+                <p id="projectID" hidden>{{ projectID }}</p>
+                <p id="host" hidden>{{ host }}</p>
                 <p>{{ currentUser["name"] }}</p>
             </div>
 
             <div class="col-xs-2 margin-textNav-left  order-xs__2">
-                <p>Team Name</p>
+                <a onclick="sendNotification('clicked', 0, '');"><p>Team Name</p></a>
 
             </div>
 
@@ -179,56 +182,7 @@ NAV_TOPO
     </div>
 
     {% if projectID is not none %}
-        <script type="text/javascript">
-            var xml;
-            var JsonObject;
-
-            function startNotification() {
-                console.log("entrou!");
-                getNotification();
-                var t = setTimeout(startNotification, 3000);
-            }
-
-            function xmlStart() {
-                if (window.XMLHttpRequest) {
-                    xml = new XMLHttpRequest();
-                }
-                else {
-                    xml = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-            }
-
-            function getNotification() {
-                xmlStart();
-                xml.onreadystatechange = function () {
-                    if (xml.readyState == 4 && xml.status == 200) {
-                        JsonObject = JSON.parse(xml.responseText);
-                        console.log(JsonObject);
-                        fillNotifications();
-                    }
-                    else if (xml.readyState == 4) {
-                        JsonObject = JSON.parse(xml.responseText);
-                        window.alert("getNotification: " + JsonObject.message);
-                    }
-                }
-                xml.open("GET", "{{ host }}/js/getNotification/{{ currentUser.username }}/{{ projectID }}", true);
-                //xml.setRequestHeader('PRIVATE-TOKEN', private_token);
-                xml.send();
-            }
-
-            function fillNotifications() {
-                var text = "";
-                for (var i = 0; i < JsonObject.length; i++) {
-                    text = text + '<p id="id_notif_' + JsonObject[i].id_notif + '">' + JsonObject[i].message + '</p>'
-                    if (JsonObject[i].isAlert) {
-                        document.getElementById("userAlerts").innerHTML = JsonObject[i].message
-                    }
-                }
-                document.getElementById("hiddenFeed").innerHTML = text;
-            }
-
-            startNotification();
-        </script>
+        <script src="{{url_for('static', filename='assets/js/notification.js') }}"></script>
     {% endif %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

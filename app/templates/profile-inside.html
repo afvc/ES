@@ -43,6 +43,9 @@ NAV_TOPO
             </div>
 
             <div class="col-xs-1 margin-textNav start-xs  order-xs__5">
+                <p id="username" hidden>{{ currentUser['username'] }}</p>
+                <p id="projectID" hidden>{{ projectID }}</p>
+                <p id="host" hidden>{{ host }}</p>
                 <p>{{ currentUser["name"] }}</p>
             </div>
 
@@ -146,7 +149,7 @@ NAV_TOPO
                 <!-------------------ALERTAS_TITULO----------------- -->
 
                 <div class="col-xs-6 center-xs">
-                    <p class="subtitle userAllerts">User Alerts</p>
+                    <p id="userAlerts" class="subtitle userAllerts">User Alerts</p>
                     <p class="text text-left alerts">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
                 </div>
             </div>
@@ -199,14 +202,9 @@ NAV_TOPO
         <div class="col-xs-2 bg__lightGrey center-xs text feedCol">
             <section class="section-size ">
                 <div id="hiddenFeed">
-                    <p>AAAAAA</p>
-                    <p>BBBBBB</p>
-                    <p>CCCCCC</p>
-                    <p>DDDDDD</p>
-                    <p>EEEEEE</p>
-                    <p>FFFFFF</p>
-                    <p>GGGGGG</p>
-                    <p>HHHHHH</p>
+                    {% if projectID is none %}
+                        <p>Choose a project</p>
+                    {% endif %}
 
                 </div>
 
@@ -214,6 +212,10 @@ NAV_TOPO
         </div>
 
     </div>
+
+    {% if projectID is not none %}
+        <script src="{{url_for('static', filename='assets/js/notification.js') }}"></script>
+    {% endif %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 

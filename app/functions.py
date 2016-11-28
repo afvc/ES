@@ -83,7 +83,7 @@ def get_db():
     if db is None:
         db = g._database = sqlite3.connect(DATABASE)
         db.execute("CREATE TABLE IF NOT EXISTS profile (username varchar(50) primary key, name varchar(100), skype varchar(75), linkedin varchar(150), twitter varchar(75), website varchar(150), bio varchar(251), email varchar(75), noSync integer);")
-        db.execute("CREATE TABLE IF NOT EXISTS notification (id_notif integer primary key autoincrement, message varchar(250), project integer, targetUsername varchar(50), isAlert integer);")
+        db.execute("CREATE TABLE IF NOT EXISTS notification (id_notif integer primary key autoincrement, message varchar(250), project integer, targetUsername varchar(50), isAlert integer, alertTitle varchar(50));")
         db.execute("CREATE TABLE IF NOT EXISTS team (id_team integer primary key autoincrement, name varchar(50), project integer);")
         db.commit()
         
