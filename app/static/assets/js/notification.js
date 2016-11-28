@@ -1,12 +1,7 @@
 var notificationXML;
 var notificationJsonObject;
 
-function startNotification() {
-    getNotification();
-    var t = setTimeout(startNotification, 3000);
-}
-
-function getXMLStart() {
+function notificationXMLStart() {
     if (window.XMLHttpRequest) {
         notificationXML = new XMLHttpRequest();
     } else {
@@ -14,8 +9,12 @@ function getXMLStart() {
     }
 }
 
+function startNotification() {
+    getNotification();
+    var t = setTimeout(startNotification, 3000);
+}
+
 function getNotification() {
-    getXMLStart();
     notificationXML.onreadystatechange = function () {
         if (notificationXML.readyState == 4 && notificationXML.status == 200) {
             notificationJsonObject = JSON.parse(notificationXML.responseText);
@@ -23,7 +22,7 @@ function getNotification() {
             fillNotifications();
         } else if (notificationXML.readyState == 4) {
             notificationJsonObject = JSON.parse(notificationXML.responseText);
-            window.alert("getNotification: " + notificationJsonObject.message);
+            window.alert(notificationXML.status + " - getNotification: " + notificationJsonObject.message);
         }
     }
     var host = document.getElementById("host").innerHTML;
@@ -54,4 +53,5 @@ function fillNotifications() {
     document.getElementById("hiddenFeed").innerHTML = text;
 }
 
+notificationXMLStart();
 startNotification();

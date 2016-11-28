@@ -9,6 +9,8 @@ host = 'http://localhost:5000'
 views = Blueprint('views', __name__)
 
 privateToken = 'qxzH6TqLBS1kZstjiCMN'
+# zg5dppdxZKH2BkE24ujw
+# qxzH6TqLBS1kZstjiCMN lc
 
 projectID = None
 curP = None
@@ -22,13 +24,25 @@ def index():
     projName = 'nnnn'
     branches = None
 
+    teamname = dict()
+    teamname["name"] = None
+    teamname["owner"] = 0
     userInfo = functions.getUserInformation(privateToken)
     projects = functions.getProjects(privateToken)
     if (projectID is not None):
         branches = functions.getBranchInformation(privateToken, projectID)
-        projName = functions.getProjectInformation(privateToken, projectID)["path"]
+        projInfo = functions.getProjectInformation(privateToken, projectID)
+        projName = projInfo["path"]
+        res = functions.query_db('SELECT name FROM team WHERE project = ?', [projectID], one=True)
+        if (res is not None):
+            teamname["name"] = res[0]
+        if (projInfo["owner"]["username"] == userInfo["username"]):
+            teamname["owner"] = 1
+        else:
+            teamname["owner"] = 0
 
-    return render_template("index.html", host = host, projectID = projectID, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB)
+
+    return render_template("index.html", host = host, projectID = projectID, teamname = teamname, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB)
 
 
 @views.route("/<page>.html/<type>/<text>", methods=['GET'])
@@ -185,5 +199,17 @@ def httpPostNotification():
     for member in members:
         if (member['username'] != username):
             functions.query_db('INSERT INTO notification (message, project, targetUsername, isAlert, alertTitle) VALUES (?, ?, ?, ?, ?);', [message, project, member['username'], isAlert, alertTitle], one=True)
+
+    return Response("",  mimetype='application/text')
+
+@views.route("/request/postTeamName", methods=['POST'])
+def httpPostTeamName():
+    username = request.form['username']
+    project = request.form['projectID']
+    teamname = request.form['teamName']
+
+    teamname = teamname[:30]
+
+    functions.query_db('INSERT INTO team (project, name) VALUES (?, ?);', [project, teamname], one=True)
 
     return Response("",  mimetype='application/text')
