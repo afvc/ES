@@ -81,11 +81,21 @@ def members():
 
     projects = functions.getProjects(privateToken)
     branches = functions.getBranchInformation(privateToken, projectID)
-    projName = functions.getProjectInformation(privateToken, projectID)["path"]
+    projInfo = functions.getProjectInformation(privateToken, projectID)
+    projName = projInfo["path"]
+    teamname = dict()
+    teamname["name"] = None
+    res = functions.query_db('SELECT name FROM team WHERE project = ?', [projectID], one=True)
+    if (res is not None):
+        teamname["name"] = res[0]
+    if (projInfo["owner"]["username"] == userInfo["username"]):
+        teamname["owner"] = 1
+    else:
+        teamname["owner"] = 0
 
     members = functions.getMembersInformation(privateToken, projectID)
 
-    return render_template("members.html", host = host, projectID = projectID, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, membersList = members)
+    return render_template("members.html", host = host, projectID = projectID, teamname = teamname, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, membersList = members)
 
 
 @views.route("/profile-inside.html/<username>", methods=['GET'])
@@ -114,9 +124,19 @@ def profile(username):
 
     projects = functions.getProjects(privateToken)
     branches = functions.getBranchInformation(privateToken, projectID)
-    projName = functions.getProjectInformation(privateToken, projectID)["path"]
+    projInfo = functions.getProjectInformation(privateToken, projectID)
+    projName = projInfo["path"]
+    teamname = dict()
+    teamname["name"] = None
+    res = functions.query_db('SELECT name FROM team WHERE project = ?', [projectID], one=True)
+    if (res is not None):
+        teamname["name"] = res[0]
+    if (projInfo["owner"]["username"] == userInfo["username"]):
+        teamname["owner"] = 1
+    else:
+        teamname["owner"] = 0
 
-    return render_template("profile-inside.html", host = host, projectID = projectID, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, userInfoDB = check, userInfo = member)
+    return render_template("profile-inside.html", host = host, projectID = projectID, teamname = teamname, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, userInfoDB = check, userInfo = member)
 
 
 @views.route("/profile-edit.html")
@@ -137,9 +157,19 @@ def profileEdit():
 
     projects = functions.getProjects(privateToken)
     branches = functions.getBranchInformation(privateToken, projectID)
-    projName = functions.getProjectInformation(privateToken, projectID)["path"]
+    projInfo = functions.getProjectInformation(privateToken, projectID)
+    projName = projInfo["path"]
+    teamname = dict()
+    teamname["name"] = None
+    res = functions.query_db('SELECT name FROM team WHERE project = ?', [projectID], one=True)
+    if (res is not None):
+        teamname["name"] = res[0]
+    if (projInfo["owner"]["username"] == userInfo["username"]):
+        teamname["owner"] = 1
+    else:
+        teamname["owner"] = 0
 
-    return render_template("profile-edit.html", host = host, projectID = projectID, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, userInfoDB = info)
+    return render_template("profile-edit.html", host = host, projectID = projectID, teamname = teamname, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, userInfoDB = info)
 
 
 @views.route("/profile-inside.html/<username>", methods=['POST'])

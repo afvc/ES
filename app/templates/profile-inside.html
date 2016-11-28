@@ -50,7 +50,14 @@ NAV_TOPO
             </div>
 
             <div class="col-xs-2 margin-textNav-left  order-xs__2">
-                <p>Team Name</p>
+                {% if teamname["name"] is not none %}
+                    <p id="teamname">{{ teamname.name }}</p>
+                {% else %}
+                    <p id="teamname">[Team Name]</p>
+                    {% if (teamname["owner"]) %}
+                        <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
+                    {% endif %}
+                {% endif %}
 
             </div>
 

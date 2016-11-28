@@ -50,14 +50,14 @@ NAV_TOPO
             </div>
 
             <div class="col-xs-2 margin-textNav-left  order-xs__2">
-            {% if teamname["name"] is not none %}
-                <a onclick="sendNotification('clicked', 0, '');"><p id="teamname">{{ teamname.name }}</p></a>
-            {% else %}
-                <a onclick="sendNotification('clicked', 0, '');"><p id="teamname">[Team Name]</p></a>
-                {% if (teamname["owner"]) %}
-                    <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
+                {% if teamname["name"] is not none %}
+                    <a onclick="sendNotification('clicked', 0, '');"><p id="teamname">{{ teamname.name }}</p></a>
+                {% else %}
+                    <a onclick="sendNotification('clicked', 0, '');"><p id="teamname">[Team Name]</p></a>
+                    {% if (teamname["owner"]) %}
+                        <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
 
             </div>
 
