@@ -1,40 +1,51 @@
-# import getpass
-# import os
 from pprint import pprint
-from flask import Blueprint, render_template, url_for, g, request
-# import copy
+from flask import Blueprint, render_template, url_for, request, redirect, Response
 import functions
-import sqlite3
+import json
+
+MAX_NOTIFICATION = 30
+host = 'http://localhost:5000'
 
 views = Blueprint('views', __name__)
 
-DATABASE = 'app/es.db'
-
 privateToken = 'qxzH6TqLBS1kZstjiCMN'
+# zg5dppdxZKH2BkE24ujw
+# qxzH6TqLBS1kZstjiCMN lc
 
 projectID = None
 curP = None
 curB = None
-user = functions.getUserInformation(privateToken)['username']
 
 @views.route("/")
 @views.route("/index.html")
 def index():
-    userInfo = updateInfo()
+    userInfo = functions.updateInfo(privateToken)
 
     projName = 'nnnn'
     branches = None
 
+    teamname = dict()
+    teamname["name"] = None
+    teamname["owner"] = 0
     userInfo = functions.getUserInformation(privateToken)
     projects = functions.getProjects(privateToken)
     if (projectID is not None):
         branches = functions.getBranchInformation(privateToken, projectID)
-        projName = functions.getProjectInformation(privateToken, projectID)["path"]
+        projInfo = functions.getProjectInformation(privateToken, projectID)
+        projName = projInfo["path"]
+        res = functions.query_db('SELECT name FROM team WHERE project = ?', [projectID], one=True)
+        if (res is not None):
+            teamname["name"] = res[0]
+        if (projInfo["owner"]["username"] == userInfo["username"]):
+            teamname["owner"] = 1
+        else:
+            teamname["owner"] = 0
 
-    return render_template("index.html", projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB)
+
+    return render_template("index.html", host = host, projectID = projectID, teamname = teamname, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB)
 
 
-@views.route("/index.html/<page>/<type>/<text>", methods=['GET'])
+@views.route("/<page>.html/<type>/<text>", methods=['GET'])
 def changeProjectOrBranch(page, type, text):
 
     if (type == 'project'):
@@ -57,29 +68,39 @@ def changeProjectOrBranch(page, type, text):
     res = page.split('-')
 
     if (res[0] == 'index'):
-        return index()
+        return redirect('/')
     elif (res[0] == 'members'):
-        return members()
+        return redirect('/members.html')
     elif (res[0] == 'profile'):
-        return profile(res[1])
+        return redirect('/profile-inside.html/' + res[1])
 
 
 @views.route("/members.html")
 def members():
-    userInfo = updateInfo()
+    userInfo = functions.updateInfo(privateToken)
 
     projects = functions.getProjects(privateToken)
     branches = functions.getBranchInformation(privateToken, projectID)
-    projName = functions.getProjectInformation(privateToken, projectID)["path"]
+    projInfo = functions.getProjectInformation(privateToken, projectID)
+    projName = projInfo["path"]
+    teamname = dict()
+    teamname["name"] = None
+    res = functions.query_db('SELECT name FROM team WHERE project = ?', [projectID], one=True)
+    if (res is not None):
+        teamname["name"] = res[0]
+    if (projInfo["owner"]["username"] == userInfo["username"]):
+        teamname["owner"] = 1
+    else:
+        teamname["owner"] = 0
 
     members = functions.getMembersInformation(privateToken, projectID)
 
-    return render_template("members.html", projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, membersList = members)
+    return render_template("members.html", host = host, projectID = projectID, teamname = teamname, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, membersList = members)
 
 
-@views.route("/profile-inside.html/<username>")
+@views.route("/profile-inside.html/<username>", methods=['GET'])
 def profile(username):
-    userInfo = updateInfo()
+    userInfo = functions.updateInfo(privateToken)
 
     members = functions.getMembersInformation(privateToken, projectID)
     member = dict()
@@ -87,7 +108,7 @@ def profile(username):
         if (member["username"] == username):
             break
 
-    res = query_db('SELECT * FROM perfil WHERE username = ?', [username], one=True)
+    res = functions.query_db('SELECT * FROM profile WHERE username = ?', [username], one=True)
 
     if (res is None):
         check = None
@@ -103,16 +124,27 @@ def profile(username):
 
     projects = functions.getProjects(privateToken)
     branches = functions.getBranchInformation(privateToken, projectID)
-    projName = functions.getProjectInformation(privateToken, projectID)["path"]
+    projInfo = functions.getProjectInformation(privateToken, projectID)
+    projName = projInfo["path"]
+    teamname = dict()
+    teamname["name"] = None
+    res = functions.query_db('SELECT name FROM team WHERE project = ?', [projectID], one=True)
+    if (res is not None):
+        teamname["name"] = res[0]
+    if (projInfo["owner"]["username"] == userInfo["username"]):
+        teamname["owner"] = 1
+    else:
+        teamname["owner"] = 0
 
-    return render_template("profile-inside.html", projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, userInfoDB = check, userInfo = member)
+    return render_template("profile-inside.html", host = host, projectID = projectID, teamname = teamname, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, userInfoDB = check, userInfo = member)
 
 
 @views.route("/profile-edit.html")
 def profileEdit():
-    userInfo = updateInfo()
+    userInfo = functions.updateInfo(privateToken)
 
-    res = query_db('SELECT * FROM perfil WHERE username = ?', [user], one=True)
+    user = functions.getUserInformation(privateToken)['username']
+    res = functions.query_db('SELECT * FROM profile WHERE username = ?', [user], one=True)
 
     info = dict()
     info['skype'] = res[2]
@@ -120,17 +152,29 @@ def profileEdit():
     info['twitter'] = res[4]
     info['website'] = res[5]
     info['bio'] = res[6]
+    info['noSync'] = res[8]
+    print info['noSync']
 
     projects = functions.getProjects(privateToken)
     branches = functions.getBranchInformation(privateToken, projectID)
-    projName = functions.getProjectInformation(privateToken, projectID)["path"]
+    projInfo = functions.getProjectInformation(privateToken, projectID)
+    projName = projInfo["path"]
+    teamname = dict()
+    teamname["name"] = None
+    res = functions.query_db('SELECT name FROM team WHERE project = ?', [projectID], one=True)
+    if (res is not None):
+        teamname["name"] = res[0]
+    if (projInfo["owner"]["username"] == userInfo["username"]):
+        teamname["owner"] = 1
+    else:
+        teamname["owner"] = 0
 
-    return render_template("profile-edit.html", projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, userInfoDB = info)
+    return render_template("profile-edit.html", host = host, projectID = projectID, teamname = teamname, projectName = projName, projectsList = projects, branchesList = branches, currentUser = userInfo, currentProject = curP, currentBranch = curB, userInfoDB = info)
 
 
-@views.route("/profile-inside.html/" + user, methods=['POST'])
-def editPOST():
-    userInfo = updateInfo()
+@views.route("/profile-inside.html/<username>", methods=['POST'])
+def editPOST(username):
+    userInfo = functions.updateInfo(privateToken)
 
     if (int(request.form['choice'])):
         skype = request.form['skype']
@@ -138,65 +182,64 @@ def editPOST():
         twitter = request.form['twitter']
         website = request.form['website']
         bio = request.form['bio']
-        query_db('UPDATE perfil SET skype = ?, linkedin = ?, twitter = ?, website = ?, bio = ?, noSync = ? WHERE username = ?;', [skype, linkedin, twitter, website, bio, 1, user], one=True)
+        functions.query_db('UPDATE profile SET skype = ?, linkedin = ?, twitter = ?, website = ?, bio = ?, noSync = ? WHERE username = ?;', [skype, linkedin, twitter, website, bio, 1, username], one=True)
     else:
-        query_db('UPDATE perfil SET noSync = ? WHERE username = ?;', [0, user], one=True)
+        functions.query_db('UPDATE profile SET noSync = ? WHERE username = ?;', [0, username], one=True)
 
-    return profile(user)
+    message = userInfo['name'] + ' has changed his/her profile information'
+    members = functions.getMembersInformation(privateToken, projectID)
+    member = dict()
+    for member in members:
+        if (member['username'] != userInfo['username']):
+            functions.query_db('INSERT INTO notification (message, project, targetUsername, isAlert) VALUES (?, ?, ?, ?);', [message, projectID, member['username'], 0], one=True)
 
-
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect(DATABASE)
-    return db
-
-# @views.do_teardown_appcontext
-# def close_connection(exception):
-#    db = getattr(g, '_database', None)
-#    if db is not None:
-#        db.close()
+    return redirect('/profile-inside.html/' + username)
 
 
-def query_db(query, args=(), one=False):
-    cur = get_db().execute(query, args)
-    get_db().commit()
-    rv = cur.fetchall()
-    cur.close()
-    return (rv[0] if rv else None) if one else rv
+@views.route("/request/getNotification/<username>/<project>")
+def httpGetNotification(username, project):
+    lista = list()
+    i = 0;
+    for notification in functions.query_db('SELECT id_notif, message, isAlert, alertTitle FROM notification WHERE project = ? AND targetUsername = ? ORDER BY id_notif DESC', [project, username]):
+        d = dict()
+        d['id_notif'] = notification[0]
+        d['message'] = notification[1]
+        d['isAlert'] = notification[2]
+        d['alertTitle'] = notification[3]
+        lista.append(d)
 
+        i += 1
+        if (i == MAX_NOTIFICATION):
+            break
+    
+    return Response(json.dumps(lista),  mimetype='application/json')
 
-def updateInfo():
-    res = query_db('SELECT * FROM perfil WHERE username = ?', [user], one=True)
+@views.route("/request/postNotification", methods=['POST'])
+def httpPostNotification():
+    username = request.form['username']
+    project = request.form['projectID']
+    message = request.form['message']
+    isAlert = request.form['isAlert']
+    alertTitle = request.form['alertTitle']
 
-    if (res is None):
-        # print('TRUE: ' + str(res2))
-        userInfo = functions.getUserInformation(privateToken)
-        query_db('INSERT INTO perfil (username, name, skype, linkedin, twitter, website, bio, email, noSync) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);', [userInfo['username'], userInfo['name'], userInfo['skype'], userInfo['linkedin'], userInfo['twitter'], userInfo['website_url'], userInfo['bio'], userInfo['email'], 0], one=True)
-    else:
-        # print('FALSE: ' + str(res2))
-        if (res[8]): # res['noSync']
-            userInfo = dict()
-            userInfo['username'] = res[0]
-            userInfo['nome'] = res[1]
-        else:
-            userInfo = functions.getUserInformation(privateToken)
-            query_db('UPDATE perfil SET name = ?, skype = ?, linkedin = ?, twitter = ?, website = ?, bio = ?, email = ? WHERE username = ?;', [userInfo['name'], userInfo['skype'], userInfo['linkedin'], userInfo['twitter'], userInfo['website_url'], userInfo['bio'], userInfo['email'], userInfo['username']], one=True)
+    alertTitle = alertTitle[:25]
 
-    return userInfo
+    members = functions.getMembersInformation(privateToken, project)
+    member = dict()
+    for member in members:
+        if (member['username'] != username):
+            functions.query_db('INSERT INTO notification (message, project, targetUsername, isAlert, alertTitle) VALUES (?, ?, ?, ?, ?);', [message, project, member['username'], isAlert, alertTitle], one=True)
 
+    return Response("",  mimetype='application/text')
 
+@views.route("/request/postTeamName", methods=['POST'])
+def httpPostTeamName():
+    username = request.form['username']
+    project = request.form['projectID']
+    teamname = request.form['teamName']
 
-#########
-# for user in query_db('select * from users'):
-#    print user['username'], 'has the id', user['user_id']
+    teamname = teamname[:30]
 
-# user = query_db('select * from users where username = ?',
-#                [the_username], one=True)
-# if user is None:
-#    print 'No such user'
-# else:
-#    print the_username, 'has the id', user['user_id']
-###################
+    functions.query_db('INSERT INTO team (project, name) VALUES (?, ?);', [project, teamname], one=True)
 
-# CREATE TABLE perfil (user varchar(75) primary key, skype varchar(150), linkedin varchar(150), twitter varchar(150), website varchar(150), bio varchar(251), email varchar(150));
+    return Response("",  mimetype='application/text')
