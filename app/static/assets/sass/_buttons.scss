@@ -134,3 +134,58 @@ margin-top: 5vh;
 .dropdown:hover .dropbtn {
     background-color: $blue;
 }
+
+
+
+
+/*------------------------------------*\
+  #NAV-DROPDOWN
+\*------------------------------------*/
+
+
+.dropdown-click--margin__top{
+margin-top: 5vh;    
+}
+
+.dropbtn-click {
+    background-color:$black ;
+    color: white;
+    padding: 16px;
+    margin: 4px 4px 4px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-click {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-click-content {
+    display: none;
+    position: absolute;
+    background-color: $light;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px $shadow;
+    z-index: 1;
+}
+
+.dropdown-click-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-click-content a:hover {background-color:$grey;}
+
+.dropdown-click:hover .dropdown-click-content {
+    display: block;
+}
+
+.dropdown-click:hover .dropbtn-click {
+    background-color: $blue;
+}
+
+
+
