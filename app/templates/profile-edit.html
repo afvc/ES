@@ -24,10 +24,14 @@
 
     <script src="{{url_for('static', filename='assets/js/date.js') }}"></script>
 
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <script src="{{ url_for('static', filename='assets/js/editForm.js') }}"></script>
+
 </head>
 
 
-<body>
+<body onload="startContent();">
 
 
     <!--------------------------------------
@@ -43,11 +47,21 @@ NAV_TOPO
             </div>
 
             <div class="col-xs-1 margin-textNav start-xs  order-xs__5">
-                <p><a href="{{ url_for('views.profile', username = currentUser.username) }}">{{ currentUser["name"] }}</a></p>
+                <p id="username" hidden>{{ currentUser['username'] }}</p>
+                <p id="projectID" hidden>{{ projectID }}</p>
+                <p id="host" hidden>{{ host }}</p>
+                <p>{{ currentUser["name"] }}</p>
             </div>
 
             <div class="col-xs-2 margin-textNav-left  order-xs__2">
-                <p>Team Name</p>
+                {% if teamname["name"] is not none %}
+                    <p id="teamname">{{ teamname.name }}</p>
+                {% else %}
+                    <p id="teamname">[Team Name]</p>
+                    {% if (teamname["owner"]) %}
+                        <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
+                    {% endif %}
+                {% endif %}
 
             </div>
 
@@ -102,7 +116,7 @@ NAV_TOPO
  SECÇÃO_CENTRAL
 -------------------------------------->
 
-        <!-------------------DROPDOWN_ESQ------------------->
+        <!-- -----------------DROPDOWN_ESQ----------------- -->
         <div class="col-xs-7 ">
             <div class="row">
 
@@ -115,19 +129,15 @@ NAV_TOPO
                         {% endif %}
                         <div class="dropdown-content">
                             {% for project in projectsList %}
-                                <a href={{url_for('views.changeProjectOrBranch', page='index', type='project', text=project["id"]) }}> {{ project["path"] }} </a>
+                                <a href="{{url_for('views.changeProjectOrBranch', page='profile-'+currentUser.username, type='project', text=project["id"]) }}"> {{ project["path"] }} </a>
                             {% endfor %}
-<!--
-                            <a href="#">Project 1</a>
-                            <a href="#">Project 2</a>
--->
                         </div>
                     </div>
                 </div>
 
 
 
-                <!-------------------DROPDOWN_DIR------------------->
+                <!-- -----------------DROPDOWN_DIR----------------- -->
                 <div class="col-xs-3 dropdown--margin__top">
                     <div class="dropdown ">
                         {% if currentBranch is none %}
@@ -138,20 +148,16 @@ NAV_TOPO
                         <div class="dropdown-content">
                             {% if branchesList is not none %}
                                 {% for branch in branchesList %}
-                                    <a href="{{url_for('views.changeProjectOrBranch', page='index', type='branch', text=branch["name"]) }}"> {{ branch["name"] }} </a>
+                                    <a href="{{url_for('views.changeProjectOrBranch', page='profile-'+currentUser.username, type='branch', text=branch["name"]) }}"> {{ branch["name"] }} </a>
                                 {% endfor %}
                             {% endif %}
-<!--
-                            <a href="#">Branch 1</a>
-                            <a href="#">Branch 2</a>
--->
                         </div>
                     </div>
                 </div>
 
            
 
-            <!-------------------ALERTAS_TITULO------------------->
+            <!-- -----------------ALERTAS_TITULO----------------- -->
           
                 <div class="col-xs-6 center-xs site_title subtitle">
                     <p>User Allerts</p>
@@ -161,7 +167,7 @@ NAV_TOPO
 
 
       
-            <!-------------------PERFIL_TITULO------------------->
+            <!-- -----------------PERFIL_TITULO----------------- -->
 
 
             <div class="row middle-xs center-xs">
@@ -171,17 +177,25 @@ NAV_TOPO
  
                 </div>
            
-                <!-------------------EDIT_FORM------------------->
+                <!-- -----------------EDIT_FORM----------------- -->
                 
 
                 <div id="forms col-xs-12">
                     
 
-                    <form method="POST" action="{{ url_for('views.editPOST') }}">
-                        <input id="algo1" type="radio" name="choice" value="0" onclick="myFunction()"> GIT Info
-                        <br>
-                        <input id="algo" type="radio" name="choice" value="1"> Edit for application only
-                    <br>
+                    <form id="#formEdit" method="POST" action="{{ url_for('views.editPOST', username = currentUser.username) }}">
+                        {% if userInfoDB.noSync %}
+                            <input id="#radioSync" type="radio" name="choice" value="0"> Synced with GIT information
+                            <br>
+                            <input id="#radioNoSync" type="radio" name="choice" value="1" checked> Disable GIT sync and edit information for this application only
+                            <br>
+                        {% else %}
+                            <input id="#radioSync" type="radio" name="choice" value="0" checked> Synced with GIT information
+                            <br>
+                            <input id="#radioNoSync" type="radio" name="choice" value="1"> Disable GIT sync and edit information for this application only
+                            <br>
+                        {% endif %}
+
                     <br>
 
                         <br> Skype:
@@ -212,18 +226,13 @@ NAV_TOPO
   SECÇÂO DIREITA
 -------------------------------------->
 
-        <div class="col-xs-offset-1 col-xs-2 bg__lightGrey center-xs text">
+        <div class="col-xs-2 bg__lightGrey center-xs text feedCol">
             <section class="section-size ">
-                <p><a id="feed" href="#">Activity Feed</a></p>
                 <div id="hiddenFeed">
-                    <p>AAAAAA</p>
-                    <p>BBBBBB</p>
-                    <p>CCCCCC</p>
-                    <p>DDDDDD</p>
-                    <p>EEEEEE</p>
-                    <p>FFFFFF</p>
-                    <p>GGGGGG</p>
-                    <p>HHHHHH</p>
+                    {% if projectID is none %}
+                        <p>Choose a project</p>
+                    {% endif %}
+
                 </div>
 
             </section>
@@ -231,9 +240,13 @@ NAV_TOPO
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    {% if projectID is not none %}
+        <script src="{{url_for('static', filename='assets/js/notification.js') }}"></script>
+    {% endif %}
 
     <script src="{{ url_for('static', filename='assets/js/barras.js') }}"></script>
+
+    
 
 </body>
 
