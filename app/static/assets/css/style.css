@@ -25,6 +25,11 @@ input[type="radio"] {
   -webkit-appearance: none;
   border: 2px solid gray; }
 
+.scroll{
+overflow-y: scroll;
+    height: 100vh;
+
+}
 /* line 18, /Users/inesferraz/Documents/D&M/3º Ano/1º Semestre/ES/projeto/ES/assets/sass/_forms.scss */
 input[type="radio"]:after {
   border-radius: 20px;
