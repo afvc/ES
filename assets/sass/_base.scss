@@ -28,8 +28,10 @@ body {
     @extend .text;
 }
 
+
 .scroll{
 overflow-y: scroll;
+    height: 100vh;
 
 }
 /*
