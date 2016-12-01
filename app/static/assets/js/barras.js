@@ -41,13 +41,11 @@ function prbtn() {
 $(".viewpro").css("display", "none");
 
 $(".viewpro").css("background-color", "transparent");
-$(".viewpro").css('color', 'black');
+$(".viewpro").css('color', 'red');
 $(".viewpro").css("font-size", "10pt");
 $(".viewpro").css("font-weight", "semibold");
 
-
 console.log("testa la isso % 12");
-
 
 //var pro = 2;
 
@@ -58,7 +56,7 @@ $(".openpro").click(function () {
 
 
     $(".viewpro").toggle();
-    
+
 });
 
 
@@ -77,11 +75,8 @@ $(".openwork").click(function () {
     $(".viewpro").css("display", "none");
     $(".viewproj").css("display", "none");
     $(".viewart").css("display", "none");
-   
-    
-    $(".viewwork").toggle();
-    
 
+    $(".viewwork").toggle();
 });
 
 
@@ -101,8 +96,7 @@ $(".openproj").click(function () {
     $(".viewwork").css("display", "none");
     $(".viewart").css("display", "none")
 
-$(".viewproj").toggle();
-    
+    $(".viewproj").toggle();
 });
 
 
@@ -121,8 +115,6 @@ $(".openart").click(function () {
     $(".viewpro").css("display", "none");
     $(".viewwork").css("display", "none");
     $(".viewproj").css("display", "none");
-    
-    
+
     $(".viewart").toggle();
-    
 });
