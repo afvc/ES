@@ -12,16 +12,20 @@ function showHiddenFeed() {
         $(".section-resized").css("padding-right", "5vw");
     }
 }
+ 
 
-$(".showAlerts").on("click", showAllerts);
+ $(".pr-btn").on("click", prbtn);
 
-function showAllerts() {
-    if ($(".alerts").css("display") == "none") {
-        $(".alerts").css("display", "block");
-        $(".userAllerts").css("color", "red");
+function prbtn() {
+    if ($(".pr-content").css("display") == "none") {
+       $(".pr-content").css("display", "block");
+        $(".pr-btn").css("background-color", "#4ca7af");
 
     } else {
-        $(".alerts").css("display", "none");
-        $(".userAllerts").css("color", "#171719");
+        $(".pr-content").css("display", "none");
+        $(".pr-btn").css("background-color", "#000000");
+        
     }
+      
+    
 }
