@@ -41,7 +41,7 @@ function prbtn() {
 $(".viewpro").css("display", "none");
 
 $(".viewpro").css("background-color", "transparent");
-$(".viewpro").css('color', 'black');
+$('.viewpro').css('color', 'black');
 $(".viewpro").css("font-size", "10pt");
 $(".viewpro").css("font-weight", "semibold");
 
@@ -53,8 +53,7 @@ $(".openpro").click(function () {
     $(".viewwork").css("display", "none");
     $(".viewproj").css("display", "none");
     $(".viewart").css("display", "none");
-
-
+    
     $(".viewpro").toggle();
 
 });
