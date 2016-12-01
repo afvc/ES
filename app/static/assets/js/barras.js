@@ -29,3 +29,17 @@ function prbtn() {
       
     
 }
+
+$(".view").css("display", "none");
+
+$(".view").css("background-color","blue");
+
+
+
+console.log("testa la isso open view1");
+
+$( ".open" ).click(function() {
+  $(".view").css("display", "block");
+});
+
+
