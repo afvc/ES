@@ -32,10 +32,10 @@ function prbtn() {
 
 
 
-//———————————————————— BOTOES
+//———————————————————— BOTOES ————————————
 
 
-//———————————————————— Processes
+//———————————————————— Processes ————————————
 
 
 $(".viewpro").css("display", "none");
@@ -53,13 +53,13 @@ $(".openpro").click(function () {
     $(".viewwork").css("display", "none");
     $(".viewproj").css("display", "none");
     $(".viewart").css("display", "none");
-    
+
     $(".viewpro").toggle();
 
 });
 
 
-//———————————————————— works
+//———————————————————— works ————————————
 
 
 $(".viewwork").css("display", "none");
@@ -79,7 +79,7 @@ $(".openwork").click(function () {
 });
 
 
-//———————————————————— Project
+//———————————————————— Project ————————————
 
 
 $(".viewproj").css("display", "none");
@@ -99,7 +99,7 @@ $(".openproj").click(function () {
 });
 
 
-//———————————————————— Artifacts
+//———————————————————— Artifacts ————————————
 
 
 $(".viewart").css("display", "none");
