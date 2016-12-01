@@ -129,6 +129,10 @@ ul li {
 .alerts {
   display: none; }
 
+.scroll {
+overflow-y: scroll;
+height: 90vh;}
+
 /* line 66, /Users/inesferraz/Documents/D&M/3º Ano/1º Semestre/ES/projeto/ES/assets/sass/_base.scss */
 .showFeed {
   text-align: right; }
