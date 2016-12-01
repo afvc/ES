@@ -395,6 +395,47 @@ a {
 .dropdown:hover .dropbtn {
   background-color: #4ca7af; }
 
+
+
+
+/*------------------------------------*  #DROPDOWN-CLICK
+\*------------------------------------*/
+ 
+ 
+ 
+.drop-click-btn {
+   border: none;
+  padding: 0.9375rem;
+  background: black;
+  color: white;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  cursor: pointer; }
+
+ 
+.dropdown-click {
+  position: relative;
+  display: inline-block; }
+
+ 
+.dropdown-click-content  {
+  display: none;
+}
+
+ 
+.dropdown-click-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block; }
+
+ 
+.dropdown-click-content a:hover {
+  background-color: #696969; }
+
+ 
+ 
+
  
 .hidden {
   display: none; }

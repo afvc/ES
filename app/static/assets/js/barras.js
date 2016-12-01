@@ -23,5 +23,24 @@ function showAllerts() {
     } else {
         $(".alerts").css("display", "none");
         $(".userAllerts").css("color", "#171719");
+        
     }
+      
+    
+}
+
+ $(".drop-click-btn").on("click", showbtn);
+
+function showbtn() {
+    if ($(".dropdown-click-content").css("display") == "none") {
+       $(".dropdown-click-content").css("display", "block");
+        $(".drop-click-btn").css("background-color", "#4ca7af");
+
+    } else {
+        $(".dropdown-click-content").css("display", "none");
+        $(".drop-click-btn").css("background-color", "#000000");
+        
+    }
+      
+    
 }
