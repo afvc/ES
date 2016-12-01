@@ -41,7 +41,7 @@ function prbtn() {
 $(".viewpro").css("display", "none");
 
 $(".viewpro").css("background-color", "transparent");
-$(".viewpro").css('color', 'red');
+$(".viewpro").css('color', 'black');
 $(".viewpro").css("font-size", "10pt");
 $(".viewpro").css("font-weight", "semibold");
 
