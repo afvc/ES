@@ -3,6 +3,7 @@ import urllib
 import urllib2
 from flask import g
 import sqlite3
+import sys
 
 DATABASE = 'app/hashtagRandom.db'
 
@@ -13,6 +14,8 @@ def communicate(url):
 
     return data
 
+
+# integrate with login
 """
 def getPrivateToken(username, password):
     values = {'login': username, 'password': password}
@@ -35,7 +38,7 @@ def getProjectInformation(token, projectID):
     return communicate(url)
 
 
-def getBranchInformation(token, projectID):
+def getBranches(token, projectID):
     url = "https://git.dei.uc.pt/api/v3/projects/" + str(projectID) + "/repository/branches?private_token=" + token
     return communicate(url)
 
@@ -57,8 +60,8 @@ def getProfileInformation(token, userID):
 
 
 def updateInfo(token):
-    user = getUserInformation(token)['username']
-    res = query_db('SELECT * FROM profile WHERE username = ?', [user], one=True)
+    currentUser = getUserInformation(token)
+    res = query_db('SELECT * FROM profile WHERE username = ?', [currentUser['username']], one=True)
 
     if (res is None):
         userInfo = getUserInformation(token)
@@ -68,11 +71,38 @@ def updateInfo(token):
             userInfo = dict()
             userInfo['username'] = res[0]
             userInfo['name'] = res[1]
+            userInfo['avatar_url'] = currentUser['avatar_url']
         else:
             userInfo = getUserInformation(token)
             query_db('UPDATE profile SET name = ?, skype = ?, linkedin = ?, twitter = ?, website = ?, bio = ?, email = ? WHERE username = ?;', [userInfo['name'], userInfo['skype'], userInfo['linkedin'], userInfo['twitter'], userInfo['website_url'], userInfo['bio'], userInfo['email'], userInfo['username']], one=True)
 
     return userInfo
+
+
+def getRecurrentInfo(session, userInfo):
+    # project chosen
+    currentProject = getProjectInformation(session['token'], session['project'])
+
+    # branches
+    branchesList = getBranches(session['token'], session['project'])
+    try:
+        currentBranch = session['branch']
+    except KeyError:
+        currentBranch = None
+
+    # team name
+    teamname = dict()
+    if (currentProject["owner"]["username"] == userInfo["username"]):
+        teamname["owner"] = 1
+    else:
+        teamname["owner"] = 0
+    res = query_db('SELECT name FROM team WHERE project = ?', [session['project']], one=True)
+    if (res is not None):
+        teamname["name"] = res[0]
+    else:
+        teamname["name"] = None
+
+    return currentProject, branchesList, currentBranch, teamname
 
 
 
