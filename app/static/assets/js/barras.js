@@ -32,11 +32,12 @@ function prbtn() {
 
 $(".view").css("display", "none");
 
-$(".view").css("background-color","blue");
+$(".view").css("background-color","transparent");
+$(".view").css('color', 'black');
 
 
 
-console.log("testa la isso open view1");
+console.log("testa la isso open black");
 
 $( ".open" ).click(function() {
   $(".view").css("display", "block");
