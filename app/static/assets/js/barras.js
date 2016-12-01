@@ -34,10 +34,12 @@ $(".view").css("display", "none");
 
 $(".view").css("background-color","transparent");
 $(".view").css('color', 'black');
+$(".view").css("font-size", "10pt");
+$(".view").css("font-weight", "semibold");
 
 
 
-console.log("testa la isso open black");
+console.log("testa la isso open 12");
 
 $( ".open" ).click(function() {
   $(".view").css("display", "block");
