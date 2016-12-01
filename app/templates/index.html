@@ -39,7 +39,7 @@ NAV_TOPO
 
         <div class="row smalltext text-lightest nav-size margin-nav">
             <div class="col-xs-1 ">
-                <a href="{{ url_for('views.profile', username = currentUser.username) }}"><img class="img-block__small  order-xs__1" id="image1" src="{{ currentUser["avatar_url"] }}"></a>
+                <a href="{{ url_for('views.profile', username = currentUser.username) }}"><img class="img-block__small  order-xs__1" id="image1" src="{{ currentUser[" avatar_url "] }}"></a>
             </div>
 
             <div class="col-xs-1 margin-textNav start-xs  order-xs__5">
@@ -51,13 +51,16 @@ NAV_TOPO
 
             <div class="col-xs-2 margin-textNav-left  order-xs__2">
                 {% if teamname["name"] is not none %}
-                    <a onclick="sendNotification('clicked', 0, '');"><p id="teamname">{{ teamname.name }}</p></a>
+                <a onclick="sendNotification('clicked', 0, '');">
+                    <p id="teamname">{{ teamname.name }}</p>
+                </a>
                 {% else %}
-                    <a onclick="sendNotification('clicked', 0, '');"><p id="teamname">[Team Name]</p></a>
-                    {% if (teamname["owner"]) %}
-                        <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
-                    {% endif %}
-                {% endif %}
+                <a onclick="sendNotification('clicked', 0, '');">
+                    <p id="teamname">[Team Name]</p>
+                </a>
+                {% if (teamname["owner"]) %}
+                <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
+                {% endif %} {% endif %}
 
             </div>
 
@@ -82,20 +85,62 @@ NAV_TOPO
         <div class="col-xs-2 no-padding bg__lightGrey center-xs text">
             <section class="button--margin">
 
+     <button class="drop-click-btn margin-bottom-small btn-default">Processes</button>
+                    <div class="dropdown-click-content">
+                        <a href="#">Risks</a>
+                        <a href="#">Roles</a>
+                        <a href="#">Tasks</a>
+                        <a href="#">Scorecard</a>
+                        <a href="#">Process</a>
 
-                <a href="" class="">
-                    <button class="btn-default margin-bottom-small">WORK </button>
-                </a>
-                <a href="">
-                    <button class="btn-default margin-bottom-small ">ARTIFACTS </button>
-                </a>
-                <a href="">
-                    <button class="btn-default margin-bottom-small">PROCESSES </button>
-                </a>
+                    </div>
+               
+
+
+   
+                    <button class="drop-click-btn btn-default margin-bottom-small">Work</button>
+                    <div class="dropdown-click-content">
+                        <a href="#">Manage Tasks</a>
+                        <a href="#">Sprint Work</a>
+                        <a href="#">Burn-down Charts</a>
+                        <a href="#">Manage Sprints</a>
+
+
+                    </div>
+                 
+
+
+           
+                    <button class="drop-click-btn btn-default margin-bottom-small">Project</button>
+                    <div class="dropdown-click-content">
+                        <a href="#">Commits</a>
+                        <a href="#">Contributions</a>
+                        <a href="#">Features</a>
+
+
+                    </div>
+                
+
+
+          <button class="drop-click-btn btn-default margin-bottom-small ">Artifacts</button>
+                    <div class="dropdown-click-content">
+                        <a href="#">Navigate File Tree</a>
+                        <a href="#">Search Repository</a>
+                        <a href="#">Artifact Lifecycle</a>
+
+
+                    </div>
+              
+
+
+        
+                    <button class="drop-click-btn btn-default margin-bottom-small">People</button>
+                    <div class="dropdown-click-content">
+                        
                 <a id="people" href="{{ url_for('views.members') }}">
-                    <button class="btn-default margin-bottom-small ">PEOPLE </button>
+                     
                     <script type="text/javascript">
-                        var reply_click = function() {
+                        var reply_click = function () {
                             if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
                                 alert("ERROR - Please choose a project first! {{ currentUser.name}} ");
                                 return false
@@ -103,10 +148,15 @@ NAV_TOPO
                         }
                         document.getElementById('people').onclick = reply_click;
                     </script>
+                    Members
                 </a>
-                <a href="">
-                    <button class="btn-default margin-bottom-small">SETTINGS </button>
+                    </div>
+                
+                
+                 <a href="">
+                    <button class="btn-default margin-bottom-small">Settings </button>
                 </a>
+
             </section>
         </div>
 
@@ -116,28 +166,28 @@ NAV_TOPO
  SECÇÃO_CENTRAL
 -------------------------------------->
 
-        <!-- -----------------DROPDOWN_ESQ----------------- -->
+
         <div class="col-xs-8 centerSection">
 
             <div class="row">
-        <div class="col-xs-11">
+                <div class="col-xs-11">
                     <p class="showFeed"><a href="#">Activity Feed</a></p>
-                    <p class="showAlerts"><a href="#">Show Alerts</a></p>
-            </div>
+                    
+                </div>
             </div>
 
+            <!-- -----------------DROPDOWN_ESQ----------------- -->
             <div class="row">
                 <div class="col-xs-3 dropdown--margin__top ">
                     <div class="dropdown ">
                         {% if currentProject is none %}
-                            <button id="project" class="dropbtn">CHOOSE PROJECT</button>
+                        <button id="project" class="dropbtn">CHOOSE PROJECT</button>
                         {% else %}
-                            <button id="project" class="dropbtn">{{ currentProject.name }}</button>
+                        <button id="project" class="dropbtn">{{ currentProject.name }}</button>
                         {% endif %}
                         <div class="dropdown-content">
                             {% for project in projectsList %}
-                                <a href="{{url_for('views.changeProjectOrBranch', page='index', type='project', text=project["id"]) }}"> {{ project["path"] }} </a>
-                            {% endfor %}
+                            <a href="{{url_for('views.changeProjectOrBranch', page='index', type='project', text=project[" id "]) }}"> {{ project["path"] }} </a> {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -146,16 +196,13 @@ NAV_TOPO
                 <div class="col-xs-3 dropdown--margin__top">
                     <div class="dropdown ">
                         {% if currentBranch is none %}
-                            <button class="dropbtn">CHOOSE BRANCH</button>
+                        <button class="dropbtn">CHOOSE BRANCH</button>
                         {% else %}
-                            <button class="dropbtn">{{ currentBranch }}</button>
+                        <button class="dropbtn">{{ currentBranch }}</button>
                         {% endif %}
                         <div class="dropdown-content">
-                            {% if branchesList is not none %}
-                                {% for branch in branchesList %}
-                                    <a href="{{url_for('views.changeProjectOrBranch', page='index', type='branch', text=branch["name"]) }}"> {{ branch["name"] }} </a>
-                                {% endfor %}
-                            {% endif %}
+                            {% if branchesList is not none %} {% for branch in branchesList %}
+                            <a href="{{url_for('views.changeProjectOrBranch', page='index', type='branch', text=branch[" name "]) }}"> {{ branch["name"] }} </a> {% endfor %} {% endif %}
                         </div>
                     </div>
                 </div>
@@ -164,8 +211,8 @@ NAV_TOPO
                 <!-- -----------------ALERTAS_TITULO----------------- -->
 
                 <div class="col-xs-6 center-xs">
-                    <p id="userAlerts" class="subtitle userAllerts">User Alerts</p>
-                        <p class="text text-left alerts">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
+                     
+                    <p class=" text-left text-red">User alerts<br>Alert 1 <br>Alert 2<br>Alert 3<br>Alert 4<br>Alert 5</p>
                 </div>
             </div>
         </div>
@@ -175,12 +222,14 @@ NAV_TOPO
 -------------------------------------->
 
         <div class="col-xs-2 bg__lightGrey center-xs text feedCol">
-            <section class="section-size ">
+            <section class="section-size  scroll">
                 <div id="hiddenFeed">
                     {% if projectID is none %}
-                        <p>Choose a project</p>
+                    <p>Choose a project</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
                     {% endif %}
-
                 </div>
 
             </section>
@@ -189,7 +238,7 @@ NAV_TOPO
     </div>
 
     {% if projectID is not none %}
-        <script src="{{url_for('static', filename='assets/js/notification.js') }}"></script>
+    <script src="{{url_for('static', filename='assets/js/notification.js') }}"></script>
     {% endif %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
