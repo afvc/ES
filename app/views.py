@@ -135,7 +135,7 @@ def profile(username):
             break
 
     if (not found):
-        abort(404)
+        return abort(404)
 
     res = functions.query_db('SELECT * FROM profile WHERE username = ?', [username], one=True)
 
@@ -192,7 +192,7 @@ def editPOST(username):
         return redirect('/login.html')
 
     if (userInfo['username'] != username):
-        abort(401)  # unauthorized
+        return abort(401)  # unauthorized
 
     try:
         members = functions.getMembersInformation(session['token'], session['project'])
@@ -244,7 +244,7 @@ def httpPostNotification():
     try:
         members = functions.getMembersInformation(session['token'], session['project'])
     except KeyError:
-        abort(401)
+        return abort(401)
 
     message = request.form['message']
     isAlert = request.form['isAlert']
@@ -263,7 +263,7 @@ def httpPostTeamName():
     try:
         projectID = session['project']
     except KeyError:
-        abort(401)
+        return abort(401)
 
     teamname = request.form['teamName'][:30]
 
