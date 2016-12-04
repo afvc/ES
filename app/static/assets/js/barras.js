@@ -9,7 +9,7 @@ function showHiddenFeed() {
         $(".feedCol").css("display", "none");
         $(".centerSection").removeClass("col-xs-8");
         $(".centerSection").addClass("col-xs-10");
-//        $(".section-resized").css("padding-right", "5vw");
+        //        $(".section-resized").css("padding-right", "5vw");
     }
 }
 
@@ -53,6 +53,7 @@ $(".openpro").click(function () {
     $(".viewwork").css("display", "none");
     $(".viewproj").css("display", "none");
     $(".viewart").css("display", "none");
+    $(".viewppl").css("display", "none");
 
     $(".viewpro").toggle();
 
@@ -74,6 +75,7 @@ $(".openwork").click(function () {
     $(".viewpro").css("display", "none");
     $(".viewproj").css("display", "none");
     $(".viewart").css("display", "none");
+    $(".viewppl").css("display", "none");
 
     $(".viewwork").toggle();
 });
@@ -93,7 +95,9 @@ $(".viewproj").css("font-weight", "semibold");
 $(".openproj").click(function () {
     $(".viewpro").css("display", "none");
     $(".viewwork").css("display", "none");
-    $(".viewart").css("display", "none")
+    $(".viewart").css("display", "none");
+    $(".viewppl").css("display", "none");
+    
 
     $(".viewproj").toggle();
 });
@@ -105,7 +109,7 @@ $(".openproj").click(function () {
 $(".viewart").css("display", "none");
 
 $(".viewart").css("background-color", "transparent");
-$(".viewart").css('color', 'black');
+$(".viewart ").css('color', 'black');
 $(".viewart").css("font-size", "10pt");
 $(".viewart").css("font-weight", "semibold");
 
@@ -114,6 +118,28 @@ $(".openart").click(function () {
     $(".viewpro").css("display", "none");
     $(".viewwork").css("display", "none");
     $(".viewproj").css("display", "none");
+    $(".viewppl").css("display", "none");
 
     $(".viewart").toggle();
+});
+
+
+//———————————————————— Members ————————————
+
+$(".viewppl").css("display", "none");
+
+$(".viewppl").css("background-color", "transparent");
+$(".viewppl").css('color', 'black');
+$(".viewppl").css("font-size", "10pt");
+$(".viewppl").css("font-weight", "semibold");
+
+
+$(".openppl").click(function () {
+    $(".viewpro").css("display", "none");
+    $(".viewwork").css("display", "none");
+    $(".viewproj").css("display", "none");
+    $(".viewart").css("display", "none");
+    
+    console.log("anda cao");
+    $(".viewppl").toggle();
 });
