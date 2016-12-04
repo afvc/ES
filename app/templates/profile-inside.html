@@ -153,7 +153,25 @@ NAV_TOPO
 
                 <!--———————————————————————————————————-—————————————————————————-->
 
+<<<<<<< HEAD
                 <button class="drop-click-btn margin-bottom-small btn-default openppl">People</button>
+=======
+                <button class="drop-click-btn btn-default margin-bottom-small">People</button>
+                
+                    <a id="members" href="{{ url_for('views.members') }}">
+                        <button class="drop-click-btn margin-bottom-small btn-default viewppl">  Members </button>
+                    </a>
+
+                    <script type="text/javascript">
+                        var reply_click = function () {
+                            if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
+                                alert("ERROR - Please choose a project first!");
+                                return false
+                            }
+                        }
+                        document.getElementById('members').onclick = reply_click;
+                    </script>
+>>>>>>> origin/diogo_f
 
 
                 <button class="drop-click-btn margin-bottom-small btn-default viewppl"> <a id="members" href="{{ url_for('views.members') }}"> Members </a> </button>
@@ -253,6 +271,7 @@ NAV_TOPO
 
             </div>
 
+<<<<<<< HEAD
             <div class="text text-bold start-xs col-xs-10">
                 <p>{{ currentUser.name }}</p>
                 <p class="text ">Bio: {{ userInfoDB['bio'] }}</p>
@@ -261,6 +280,18 @@ NAV_TOPO
                 <p class="text ">LinkedIn: {{ userInfoDB['linkedin'] }} </p>
                 <p class="text ">Twitter: {{ userInfoDB['twitter'] }} </p>
                 <p class="text ">Website: {{ userInfoDB['website'] }} </p>
+=======
+                <div class="text text-bold start-xs col-xs-10">
+                    <p>{{ userInfo.name }}</p>
+                    <p class="text ">Bio: {{ userInfoDB['bio'] }}</p>
+                    <p class="text ">E-mail: {{ userInfoDB['email'] }} </p>
+                    <p class="text ">Skype: {{ userInfoDB['skype'] }} </p>
+                    <p class="text ">LinkedIn: {{ userInfoDB['linkedin'] }} </p>
+                    <p class="text ">Twitter: {{ userInfoDB['twitter'] }} </p>
+                    <p class="text ">Website: {{ userInfoDB['website'] }} </p>
+
+                </div>
+>>>>>>> origin/diogo_f
 
             </div>
 
