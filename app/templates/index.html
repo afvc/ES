@@ -36,13 +36,14 @@ NAV_TOPO
 
     <section class="bg__blue">
 
-
         <div class="row smalltext text-lightest nav-size margin-nav">
+ 
             <div class="col-xs-1 ">
-                <a href="{{ url_for('views.profile', username = currentUser.username) }}"><img class="img-block__small  order-xs__1" id="image1" src="{{ currentUser[" avatar_url "] }}"></a>
+                <a href="{{ url_for('views.profile', username = currentUser.username) }}"><img class="img-block__small  order-xs__1" id="image1" src="{{ currentUser['avatar_url'] }}"></a>
+ 
             </div>
 
-            <div class="col-xs-1 margin-textNav start-xs  order-xs__5">
+            <div class="col-xs-2 margin-textNav start-xs  order-xs__5">
                 <p id="username" hidden>{{ currentUser['username'] }}</p>
                 <p id="projectID" hidden>{{ projectID }}</p>
                 <p id="host" hidden>{{ host }}</p>
@@ -64,10 +65,10 @@ NAV_TOPO
 
             </div>
 
-            <div class="col-xs-4 col-sm-4 end-xs  order-xs__3">
+            <div class="col-xs-3 col-sm-4 end-xs  order-xs__3">
                 <p id="date" class=""> day,month,year,hh-mm</p>
             </div>
-            <div class="col-xs-3 col-sm-4 end-xs margin-textNav-left  order-xs__4">
+            <div class="col-xs-1 col-sm-3 end-xs margin-textNav-left  order-xs__4">
                 <p class=""> Logout</p>
             </div>
         </div>
@@ -80,13 +81,13 @@ NAV_TOPO
 -------------------------------------->
 
 
-    <div class="row ">
+    <div class="row">
 
         <div class="col-xs-2 no-padding bg__lightGrey center-xs text">
             <section class="button--margin">
 
 
-                <button class="drop-click-btn margin-bottom-small btn-default openpro">Processes</button>
+                <button class="drop-click-btn margin-bottom-small btn-default openpro"><img src="../static/assets/images/processes.png" class="icon">Processes</button>
 
                 <!-- ————————— Botoes secundários —————————-->
 
@@ -106,7 +107,7 @@ NAV_TOPO
 
 
 
-                <button class="drop-click-btn btn-default margin-bottom-small openwork">Work</button>
+                <button class="drop-click-btn btn-default margin-bottom-small openwork"><img src="../static/assets/images/work.png" class="icon">Work</button>
 
                 <!-- ————————— Botoes secundários —————————-->
 
@@ -124,7 +125,7 @@ NAV_TOPO
 
 
 
-                <button class="drop-click-btn btn-default margin-bottom-small openproj">Project</button>
+                <button class="drop-click-btn btn-default margin-bottom-small openproj"><img src="../static/assets/images/project.png" class="icon">Project</button>
 
 
                 <!-- ————————— Botoes secundários —————————-->
@@ -140,7 +141,7 @@ NAV_TOPO
 
 
 
-                <button class="drop-click-btn btn-default margin-bottom-small openart">Artifacts</button>
+                <button class="drop-click-btn btn-default margin-bottom-small openart"><img src="../static/assets/images/" class="icon">Artifacts</button>
 
 
                 <!-- ————————— Botoes secundários —————————-->
@@ -155,28 +156,26 @@ NAV_TOPO
 
 
                 <!--———————————————————————————————————-—————————————————————————-->
-
+ 
                 <button class="drop-click-btn btn-default margin-bottom-small">People</button>
-                <div class="dropdown-click-content">
-
-                    <a id="people" href="{{ url_for('views.members') }}">
-
+                
+                <a  id="members" href="{{ url_for('views.members') }}">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewart">Members</button>
+ 
                         <script type="text/javascript">
                             var reply_click = function () {
                                 if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
-                                    alert("ERROR - Please choose a project first! {{ currentUser.name}} ");
+                                    alert("ERROR - Please choose a project first!");
                                     return false
                                 }
                             }
-                            document.getElementById('people').onclick = reply_click;
+                            document.getElementById('members').onclick = reply_click;
                         </script>
-                        Members
                     </a>
-                </div>
 
 
                 <a href="">
-                    <button class="btn-default margin-bottom-small">Settings </button>
+                    <button class="btn-default margin-bottom-small"><img src="../static/assets/images/settings.png" class="icon">Settings </button>
                 </a>
 
             </section>
@@ -189,7 +188,7 @@ NAV_TOPO
 -------------------------------------->
 
 
-        <div class="col-xs-8 centerSection">
+        <div class="col-xs-10 centerSection">
 
             <div class="row">
                 <div class="col-xs-11">
@@ -209,7 +208,7 @@ NAV_TOPO
                         {% endif %}
                         <div class="dropdown-content">
                             {% for project in projectsList %}
-                            <a href="{{url_for('views.changeProjectOrBranch', page='index', type='project', text=project[" id "]) }}"> {{ project["path"] }} </a> {% endfor %}
+                            <a href="{{url_for('views.changeProjectOrBranch', page='index', type='project', text=project['id']) }}"> {{ project['path'] }} </a> {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -224,7 +223,7 @@ NAV_TOPO
                         {% endif %}
                         <div class="dropdown-content">
                             {% if branchesList is not none %} {% for branch in branchesList %}
-                            <a href="{{url_for('views.changeProjectOrBranch', page='index', type='branch', text=branch[" name "]) }}"> {{ branch["name"] }} </a> {% endfor %} {% endif %}
+                            <a href="{{url_for('views.changeProjectOrBranch', page='index', type='branch', text=branch['name']) }}"> {{ branch['name'] }} </a> {% endfor %} {% endif %}
                         </div>
                     </div>
                 </div>
@@ -232,10 +231,9 @@ NAV_TOPO
 
                 <!-- -----------------ALERTAS_TITULO----------------- -->
 
-                <div class="col-xs-6 center-xs">
+                <div class="col-xs-5 center-xs">
 
-                    <p class=" text-left text-red">User alerts
-                    </p>
+                    <h2 class=" text-right text-red">User alerts</h2>
                 </div>
             </div>
         </div>
