@@ -154,22 +154,20 @@ NAV_TOPO
                 <!--———————————————————————————————————-—————————————————————————-->
 
                 <button class="drop-click-btn btn-default margin-bottom-small">People</button>
-                <div class="dropdown-click-content">
-
-                    <a id="people" href="{{ url_for('views.members') }}">
-
-                        <script type="text/javascript">
-                            var reply_click = function () {
-                                if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
-                                    alert("ERROR - Please choose a project first! {{ currentUser.name}} ");
-                                    return false
-                                }
-                            }
-                            document.getElementById('people').onclick = reply_click;
-                        </script>
-                        Members
+                
+                    <a id="members" href="{{ url_for('views.members') }}">
+                        <button class="drop-click-btn margin-bottom-small btn-default viewppl">  Members </button>
                     </a>
-                </div>
+
+                    <script type="text/javascript">
+                        var reply_click = function () {
+                            if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
+                                alert("ERROR - Please choose a project first!");
+                                return false
+                            }
+                        }
+                        document.getElementById('members').onclick = reply_click;
+                    </script>
 
 
                 <a href="">
@@ -252,7 +250,7 @@ NAV_TOPO
                 </div>
 
                 <div class="text text-bold start-xs col-xs-10">
-                    <p>{{ currentUser.name }}</p>
+                    <p>{{ userInfo.name }}</p>
                     <p class="text ">Bio: {{ userInfoDB['bio'] }}</p>
                     <p class="text ">E-mail: {{ userInfoDB['email'] }} </p>
                     <p class="text ">Skype: {{ userInfoDB['skype'] }} </p>
