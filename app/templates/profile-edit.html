@@ -26,8 +26,6 @@
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
-    <script src="{{ url_for('static', filename='assets/js/editForm.js') }}"></script>
-
 </head>
 
 
@@ -192,30 +190,30 @@ NAV_TOPO
 
                     <form id="#formEdit" method="POST" action="{{ url_for('views.editPOST', username = currentUser.username) }}">
                         {% if userInfoDB.noSync %}
-                            <input id="#radioSync" type="radio" name="choice" value="0"> Synced with GIT information
+                            <input id="radioSync" type="radio" name="choice" value="0"> Synced with GIT information
                             <br>
-                            <input id="#radioNoSync" type="radio" name="choice" value="1" checked> Disable GIT sync and edit information for this application only
+                            <input id="radioNoSync" type="radio" name="choice" value="1" checked> Disable GIT sync and edit information for this application only
                             <br>
                         {% else %}
-                            <input id="#radioSync" type="radio" name="choice" value="0" checked> Synced with GIT information
+                            <input id="radioSync" type="radio" name="choice" value="0" checked> Synced with GIT information
                             <br>
-                            <input id="#radioNoSync" type="radio" name="choice" value="1"> Disable GIT sync and edit information for this application only
+                            <input id="radioNoSync" type="radio" name="choice" value="1"> Disable GIT sync and edit information for this application only
                             <br>
                         {% endif %}
 
                     <br>
 
                         <br> Skype:
-                        <input class="edit change" type="text" name="skype" value="{{ userInfoDB['skype'] }}">
+                        <input id="editSkype" class="edit change" type="text" name="skype" value="{{ userInfoDB['skype'] }}">
                         <br> LinkedIn:
-                        <input class="edit change" type="text" name="linkedin" value="{{ userInfoDB['linkedin'] }}">
+                        <input id="editLinkedIn" class="edit change" type="text" name="linkedin" value="{{ userInfoDB['linkedin'] }}">
                         <br> Twitter:
-                        <input class="edit change" type="text" name="twitter" value="{{ userInfoDB['twitter'] }}">
+                        <input id="editTwitter" class="edit change" type="text" name="twitter" value="{{ userInfoDB['twitter'] }}">
                         <br> Website:
-                        <input class="edit change" type="text" name="website" value="{{ userInfoDB['website'] }}">
+                        <input id="editWebsite" class="edit change" type="text" name="website" value="{{ userInfoDB['website'] }}">
                         <br> Bio:
                         <br>
-                        <textarea maxlength="250" class="edit change" type="text" name="bio"> {{ userInfoDB['bio'] }} </textarea>
+                        <textarea id="editBio" maxlength="250" class="edit change" type="text" name="bio"> {{ userInfoDB['bio'] }} </textarea>
                         <br>
 
                         <input type="submit" value="Save">
@@ -254,6 +252,8 @@ NAV_TOPO
     {% endif %}
 
     <script src="{{ url_for('static', filename='assets/js/barras.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='assets/js/editForm.js') }}"></script>
 
     
 
