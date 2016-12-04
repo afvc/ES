@@ -116,11 +116,17 @@ NAV_TOPO
  SECÇÃO_CENTRAL
 -------------------------------------->
 
-        <!-- -----------------DROPDOWN_ESQ----------------- -->
-        <div class="col-xs-7 ">
-            <div class="row">
-
-                <div class="col-xs-3 dropdown--margin__top ">
+     
+        <div class="col-xs-8 centerSection ">
+               <div class="row">
+        <div class="col-xs-11">
+                    <p class="showFeed"><a href="#">Activity Feed</a></p>
+                    <p class="showAlerts"><a href="#">Show Alerts</a></p>
+            </div>
+            </div>
+   <!-- -----------------DROPDOWN_ESQ----------------- -->
+               <div class="row">
+                    <div class="col-xs-3 dropdown--margin__top ">
                     <div class="dropdown ">
                         {% if currentProject is none %}
                             <button id="project" class="dropbtn">CHOOSE PROJECT</button>
@@ -159,8 +165,9 @@ NAV_TOPO
 
             <!-- -----------------ALERTAS_TITULO----------------- -->
           
-                <div class="col-xs-6 center-xs site_title subtitle">
-                    <p>User Allerts</p>
+              <div class="col-xs-6 center-xs">
+                    <p id="userAlerts" class="subtitle userAllerts">User Alerts</p>
+                        <p class="text text-left alerts">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
                 </div>
             </div>
 
@@ -231,6 +238,8 @@ NAV_TOPO
                 <div id="hiddenFeed">
                     {% if projectID is none %}
                         <p>Choose a project</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
+                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
                     {% endif %}
 
                 </div>
