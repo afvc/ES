@@ -700,7 +700,7 @@ body {
 
 .order-xs__5 {
     -ms-flex-order: 5;
-    order: 5;
+    order: 2;
 }
 
 @media (min-width: 768px) {
