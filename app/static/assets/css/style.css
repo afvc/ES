@@ -102,16 +102,13 @@ ul li {
     margin: 30px;
 }
 
-#hiddenFeed {
-    display: block;
-}
-
 .hidden {
     visibility: none;
 }
 
- 
-
+.feedCol {
+    display:none;
+}
 .scroll {
     overflow-y: scroll;
     height: 90vh;
@@ -125,6 +122,9 @@ ul li {
     text-align: right;
 }
 
+img.icon {
+    width: 30px;
+}
 
 /*------------------------------------*  #LINKS
 \*------------------------------------*/
@@ -700,7 +700,7 @@ body {
 
 .order-xs__5 {
     -ms-flex-order: 5;
-    order: 5;
+    order: 2;
 }
 
 @media (min-width: 768px) {
@@ -749,7 +749,6 @@ body {
 
 @media (max-width: 640px) {
     .margin-textNav {
-        margin-top: -25px;
         margin-left: 12px;
     }
 }
