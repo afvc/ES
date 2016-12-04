@@ -39,7 +39,7 @@ NAV_TOPO
 
         <div class="row smalltext text-lightest nav-size margin-nav">
             <div class="col-xs-1 ">
-                <a href="{{ url_for('views.profile', username = currentUser.username) }}"><img class="img-block__small  order-xs__1" id="image1" src="{{ currentUser[" avatar_url "] }}"></a>
+                <a href="{{ url_for('views.profile', username = currentUser.username) }}"><img class="img-block__small  order-xs__1" id="image1" src="{{ currentUser['avatar_url'] }}"></a>
             </div>
 
             <div class="col-xs-1 margin-textNav start-xs  order-xs__5">
@@ -206,7 +206,7 @@ NAV_TOPO
                         {% endif %}
                         <div class="dropdown-content">
                             {% for project in projectsList %}
-                            <a href="{{url_for('views.changeProjectOrBranch', page='profile-'+currentUser.username, type='project', text=project[" id "]) }}"> {{ project["path"] }} </a> {% endfor %}
+                            <a href="{{url_for('views.changeProjectOrBranch', page='profile-'+currentUser.username, type='project', text=project['id']) }}"> {{ project['path'] }} </a> {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -221,7 +221,7 @@ NAV_TOPO
                         {% endif %}
                         <div class="dropdown-content">
                             {% if branchesList is not none %} {% for branch in branchesList %}
-                            <a href="{{url_for('views.changeProjectOrBranch', page='profile-'+currentUser.username, type='branch', text=branch[" name "]) }}"> {{ branch["name"] }} </a> {% endfor %} {% endif %}
+                            <a href="{{url_for('views.changeProjectOrBranch', page='profile-'+currentUser.username, type='branch', text=branch['name']) }}"> {{ branch['name'] }} </a> {% endfor %} {% endif %}
                         </div>
                     </div>
                 </div>
