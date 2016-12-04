@@ -53,7 +53,7 @@ $(".openpro").click(function () {
     $(".viewwork").css("display", "none");
     $(".viewproj").css("display", "none");
     $(".viewart").css("display", "none");
-    $(".viewarti").css("display", "none");
+    $(".viewppl").css("display", "none");
 
     $(".viewpro").toggle();
 
@@ -75,7 +75,7 @@ $(".openwork").click(function () {
     $(".viewpro").css("display", "none");
     $(".viewproj").css("display", "none");
     $(".viewart").css("display", "none");
-    $(".viewarti").css("display", "none");
+    $(".viewppl").css("display", "none");
 
     $(".viewwork").toggle();
 });
@@ -96,7 +96,7 @@ $(".openproj").click(function () {
     $(".viewpro").css("display", "none");
     $(".viewwork").css("display", "none");
     $(".viewart").css("display", "none");
-    $(".viewarti").css("display", "none");
+    $(".viewppl").css("display", "none");
     
 
     $(".viewproj").toggle();
@@ -118,7 +118,7 @@ $(".openart").click(function () {
     $(".viewpro").css("display", "none");
     $(".viewwork").css("display", "none");
     $(".viewproj").css("display", "none");
-    $(".viewarti").css("display", "none");
+    $(".viewppl").css("display", "none");
 
     $(".viewart").toggle();
 });
@@ -126,20 +126,20 @@ $(".openart").click(function () {
 
 //———————————————————— Members ————————————
 
-$(".viewarti").css("display", "none");
+$(".viewppl").css("display", "none");
 
-$(".viewarti").css("background-color", "transparent");
-$(".viewarti").css('color', 'black');
-$(".viewarti").css("font-size", "10pt");
-$(".viewarti").css("font-weight", "semibold");
+$(".viewppl").css("background-color", "transparent");
+$(".viewppl").css('color', 'black');
+$(".viewppl").css("font-size", "10pt");
+$(".viewppl").css("font-weight", "semibold");
 
 
-$(".openarti").click(function () {
+$(".openppl").click(function () {
     $(".viewpro").css("display", "none");
     $(".viewwork").css("display", "none");
     $(".viewproj").css("display", "none");
     $(".viewart").css("display", "none");
     
     console.log("anda cao");
-    $(".viewarti").toggle();
+    $(".viewppl").toggle();
 });
