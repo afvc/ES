@@ -159,17 +159,18 @@ NAV_TOPO
 
                 <!--———————————————————————————————————-—————————————————————————-->
  
-   
-                <button class="drop-click-btn btn-default margin-bottom-small"><img src="../static/assets/images/people.png" class="icon">People</button>
-                
-                <a  id="members" href="{{ url_for('views.members') }}">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewart">Members</button>
+                <button class="drop-click-btn margin-bottom-small btn-default openppl">&nbsp;&nbsp;People</button>
+
+
+                <button class="drop-click-btn margin-bottom-small btn-default viewppl"> <a id="members" href="{{ url_for('views.members') }}"> Members </a> </button>
+
+
+                <script type="text/javascript">
+                    var reply_click = function () {
+                        if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
+                            alert("ERROR - Please choose a project first!");
+                            return false
  
-                        <script type="text/javascript">
-                            var reply_click = function () {
-                                if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
-                                    alert("ERROR - Please choose a project first!");
-                                    return false
                                 }
                             }
                             document.getElementById('members').onclick = reply_click;
