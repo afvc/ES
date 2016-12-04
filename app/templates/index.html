@@ -37,10 +37,10 @@ NAV_TOPO
     <section class="bg__blue">
 
         <div class="row smalltext text-lightest nav-size margin-nav">
- 
+
             <div class="col-xs-1 ">
                 <a href="{{ url_for('views.profile', username = currentUser.username) }}"><img class="img-block__small  order-xs__1" id="image1" src="{{ currentUser['avatar_url'] }}"></a>
- 
+
             </div>
 
             <div class="col-xs-2 margin-textNav start-xs  order-xs__5">
@@ -156,22 +156,23 @@ NAV_TOPO
 
 
                 <!--———————————————————————————————————-—————————————————————————-->
- 
-                <button class="drop-click-btn btn-default margin-bottom-small">People</button>
-                
-                <a  id="members" href="{{ url_for('views.members') }}">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewart">Members</button>
- 
-                        <script type="text/javascript">
-                            var reply_click = function () {
-                                if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
-                                    alert("ERROR - Please choose a project first!");
-                                    return false
-                                }
-                            }
-                            document.getElementById('members').onclick = reply_click;
-                        </script>
-                    </a>
+
+                <button class="drop-click-btn margin-bottom-small btn-default openarti">People</button>
+
+
+                    <button class="drop-click-btn margin-bottom-small btn-default viewarti"> <a id="members" href="{{ url_for('views.members') }}"> Members </a> </button>
+
+
+                <script type="text/javascript">
+                    var reply_click = function () {
+                        if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
+                            alert("ERROR - Please choose a project first!");
+                            return false
+                        }
+                    }
+                    document.getElementById('members').onclick = reply_click;
+                </script>
+
 
 
                 <a href="">
