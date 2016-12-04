@@ -141,7 +141,7 @@ NAV_TOPO
 
 
 
-                <button class="drop-click-btn btn-default margin-bottom-small openart"><img src="../static/assets/images/" class="icon">Artifacts</button>
+                <button class="drop-click-btn btn-default margin-bottom-small openart"><img src="../static/assets/images/artifacts.png" class="icon">Artifacts</button>
 
 
                 <!-- ————————— Botoes secundários —————————-->
@@ -156,22 +156,33 @@ NAV_TOPO
 
 
                 <!--———————————————————————————————————-—————————————————————————-->
+   
+                <button class="drop-click-btn btn-default margin-bottom-small"><img src="../static/assets/images/people.png" class="icon">People</button>
+                
+                <a  id="members" href="{{ url_for('views.members') }}">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewart">Members</button>
+ 
+                        <script type="text/javascript">
+                            var reply_click = function () {
+                                if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
+                                    alert("ERROR - Please choose a project first!");
+                                    return false
+                                }
+                            }
+                            document.getElementById('members').onclick = reply_click;
+                        </script>
+ 
+                    </a>
 
-                <button class="drop-click-btn margin-bottom-small btn-default openppl">People</button>
-
-
-                    <button class="drop-click-btn margin-bottom-small btn-default viewppl"> <a id="members" href="{{ url_for('views.members') }}"> Members </a> </button>
-
-
-                <script type="text/javascript">
-                    var reply_click = function () {
-                        if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
-                            alert("ERROR - Please choose a project first!");
-                            return false
+                    <script type="text/javascript">
+                        var reply_click = function () {
+                            if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
+                                alert("ERROR - Please choose a project first!");
+                                return false
+                            }
                         }
-                    }
-                    document.getElementById('members').onclick = reply_click;
-                </script>
+                        document.getElementById('members').onclick = reply_click;
+                    </script>
 
 
 
@@ -247,10 +258,7 @@ NAV_TOPO
             <section class="section-size  scroll">
                 <div id="hiddenFeed">
                     {% if projectID is none %}
-                    <p>Choose a project</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
+                        <p>Choose a project</p>
                     {% endif %}
                 </div>
 
