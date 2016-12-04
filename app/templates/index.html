@@ -2,45 +2,27 @@
 <html>
 
 <head>
-
     <!-- META TAGS -->
     <meta charset="UTF-8" />
     <title>Git Dashboard</title>
 
-
     <!-- STYLESHEETS -->
-
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/flexboxgrid.min.css') }}" type="text/css">
-
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/_font-awesome.min.css.scss') }}" type="text/css">
-
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}" type="text/css">
-
     <link href="https://fonts.googleapis.com/css?family=Poppins:500,600,700" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet">
 
     <script src="{{url_for('static', filename='assets/js/date.js') }}"></script>
-
     <script src="{{url_for('static', filename='assets/js/sendNotification.js') }}"></script>
-
 </head>
 
-
 <body onload="startContent();">
-
-
-    <!--------------------------------------
-NAV_TOPO
--------------------------------------->
-
+    <!-- NAV_TOPO -->
     <section class="bg__blue">
-
         <div class="row smalltext text-lightest nav-size margin-nav">
-
             <div class="col-xs-1 ">
                 <a href="{{ url_for('views.profile', username = currentUser.username) }}"><img class="img-block__small  order-xs__1" id="image1" src="{{ currentUser['avatar_url'] }}"></a>
-
             </div>
 
             <div class="col-xs-2 margin-textNav start-xs  order-xs__5">
@@ -62,143 +44,80 @@ NAV_TOPO
                 {% if (teamname["owner"]) %}
                 <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
                 {% endif %} {% endif %}
-
             </div>
 
             <div class="col-xs-3 col-sm-4 end-xs  order-xs__3">
                 <p id="date" class=""> day,month,year,hh-mm</p>
             </div>
+            
             <div class="col-xs-1 col-sm-3 end-xs margin-textNav-left  order-xs__4">
                 <p class=""> Logout</p>
             </div>
         </div>
     </section>
 
-
-
-    <!--------------------------------------
-  SECÇÃO_ESQUERDA
--------------------------------------->
-
-
+    <!-- SECÇÃO_ESQUERDA -->
     <div class="row">
-
         <div class="col-xs-2 no-padding bg__lightGrey center-xs text">
             <section class="button--margin">
-
-
                 <button class="drop-click-btn margin-bottom-small btn-default openpro"><img src="../static/assets/images/processes.png" class="icon">Processes</button>
-
-                <!-- ————————— Botoes secundários —————————-->
-
+                <!-- SECONDARY BUTTONS -->
                 <button class="drop-click-btn margin-bottom-small btn-default viewpro">Risks</button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewpro">Roles</button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewpro">Tasks</button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewpro">ScoreCard</button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewpro">Process</button>
 
-
-
-                <!--———————————————————————————————————————————————————————————-->
-
-
-
                 <button class="drop-click-btn btn-default margin-bottom-small openwork"><img src="../static/assets/images/work.png" class="icon">Work</button>
-
-                <!-- ————————— Botoes secundários —————————-->
-
+                <!-- SECONDARY BUTTONS -->
                 <button class="drop-click-btn margin-bottom-small btn-default viewwork">Manage Tasks</button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewwork">Sprint Work</button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewwork">Burn-Down Chart</button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewwork">Manage Sprints</button>
 
-
-
-                <!--—————————————————————————————————————————————————————————————-->
-
-
-
                 <button class="drop-click-btn btn-default margin-bottom-small openproj"><img src="../static/assets/images/project.png" class="icon">Project</button>
-
-
-                <!-- ————————— Botoes secundários —————————-->
-
+                <!-- SECONDARY BUTTONS -->
                 <button class="drop-click-btn margin-bottom-small btn-default viewproj">Commits</button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewproj">Contributors</button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewproj">Features</button>
 
-
-                <!--———————————————————————————————————-—————————————————————————-->
-
-
-
-                <button class="drop-click-btn btn-default margin-bottom-small openart"><img src="../static/assets/images/" class="icon">Artifacts</button>
-
-
-                <!-- ————————— Botoes secundários —————————-->
-
+                <button class="drop-click-btn btn-default margin-bottom-small openart"><img src="../static/assets/images/artifacts.png" class="icon">Artifacts</button>
+                <!-- SECONDARY BUTTONS -->
                 <button class="drop-click-btn margin-bottom-small btn-default viewart">Navigate File Tree</button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewart">Search Repository</button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewart">Artifact Lifecycle</button>
 
+                <button class="drop-click-btn btn-default margin-bottom-small"><img src="../static/assets/images/people.png" class="icon">People</button>
+                <!-- SECONDARY BUTTONS -->
+                <a  id="members" href="{{ url_for('views.members') }}">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewart">Members</button>
+                </a>
 
-
-
-                <!--———————————————————————————————————-—————————————————————————-->
-
-                <button class="drop-click-btn margin-bottom-small btn-default openppl">People</button>
-
-                    <a id="members" href="{{ url_for('views.members') }}">
-                        <button class="drop-click-btn margin-bottom-small btn-default viewppl">  Members </button>
-                    </a>
-
-                    <script type="text/javascript">
-                        var reply_click = function () {
-                            if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
-                                alert("ERROR - Please choose a project first!");
-                                return false
-                            }
+                <script type="text/javascript">
+                    var reply_click = function () {
+                        if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
+                            alert("ERROR - Please choose a project first!");
+                            return false
                         }
-                        document.getElementById('members').onclick = reply_click;
-                    </script>
-
-
+                    }
+                    document.getElementById('members').onclick = reply_click;
+                </script>
 
                 <a href="">
                     <button class="btn-default margin-bottom-small"><img src="../static/assets/images/settings.png" class="icon">Settings </button>
                 </a>
-
             </section>
         </div>
 
-
-
-        <!--------------------------------------
- SECÇÃO_CENTRAL
--------------------------------------->
-
-
+        <!-- SECÇÃO_CENTRAL -->
         <div class="col-xs-10 centerSection">
-
             <div class="row">
                 <div class="col-xs-11">
                     <p class="showFeed"><a href="#">Activity Feed</a></p>
-
                 </div>
             </div>
 
-            <!-- -----------------DROPDOWN_ESQ----------------- -->
+            <!-- DROPDOWN_ESQ -->
             <div class="row">
                 <div class="col-xs-3 dropdown--margin__top ">
                     <div class="dropdown ">
@@ -214,7 +133,7 @@ NAV_TOPO
                     </div>
                 </div>
 
-                <!-- -----------------DROPDOWN_DIR----------------- -->
+                <!-- DROPDOWN_DIR -->
                 <div class="col-xs-3 dropdown--margin__top">
                     <div class="dropdown ">
                         {% if currentBranch is none %}
@@ -229,20 +148,15 @@ NAV_TOPO
                     </div>
                 </div>
 
-
-                <!-- -----------------ALERTAS_TITULO----------------- -->
-
+                <!-- ALERTAS_TITULO -->
                 <div class="col-xs-5 center-xs">
-
                     <h2 class=" text-right text-red">User alerts</h2>
                 </div>
             </div>
         </div>
 
-        <!--------------------------------------
-  SECÇÃO_DIREITA
--------------------------------------->
 
+        <!-- SECÇÃO_DIREITA -->
         <div class="col-xs-2 bg__lightGrey center-xs text feedCol">
             <section class="section-size  scroll">
                 <div id="hiddenFeed">
@@ -250,7 +164,6 @@ NAV_TOPO
                         <p>Choose a project</p>
                     {% endif %}
                 </div>
-
             </section>
         </div>
 
@@ -261,7 +174,6 @@ NAV_TOPO
     {% endif %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
     <script src="{{ url_for('static', filename='assets/js/barras.js') }}"></script>
 
 </body>
