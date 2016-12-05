@@ -51,16 +51,13 @@ NAV_TOPO
 
             <div class="col-xs-2 margin-textNav-left  order-xs__2">
                 {% if teamname["name"] is not none %}
-                <a onclick="sendNotification('clicked', 0, '');">
                     <p id="teamname">{{ teamname.name }}</p>
-                </a>
                 {% else %}
-                <a onclick="sendNotification('clicked', 0, '');">
                     <p id="teamname">[Team Name]</p>
-                </a>
-                {% if (teamname["owner"]) %}
-                <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
-                {% endif %} {% endif %}
+                    {% if (teamname["owner"]) %}
+                    <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
+                    {% endif %}
+                {% endif %}
 
             </div>
 
@@ -158,29 +155,19 @@ NAV_TOPO
    
                 <button class="drop-click-btn btn-default margin-bottom-small btn-default openppl"><img src="{{ url_for('static', filename='assets/images/people.png') }}" class="icon">People</button>
                 
-                <button class="drop-click-btn margin-bottom-small btn-default viewppl"> <a id="members" href="{{ url_for('views.members') }}"> Members </a> </button>
- 
-                        <script type="text/javascript">
-                            var reply_click = function () {
-                                if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
-                                    alert("ERROR - Please choose a project first!");
-                                    return false
-                                }
-                            }
-                            document.getElementById('members').onclick = reply_click;
-                        </script>
- 
-                    </a>
+                <a id="members" href="{{ url_for('views.members') }}">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewppl">Members</button>
+                </a>
 
-                    <script type="text/javascript">
-                        var reply_click = function () {
-                            if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
-                                alert("ERROR - Please choose a project first!");
-                                return false
-                            }
+                <script type="text/javascript">
+                    var reply_click = function () {
+                        if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
+                            alert("ERROR - Please choose a project first!");
+                            return false
                         }
-                        document.getElementById('members').onclick = reply_click;
-                    </script>
+                    }
+                    document.getElementById('members').onclick = reply_click;
+                </script>
 
 
 
@@ -218,7 +205,7 @@ NAV_TOPO
                         {% endif %}
                         <div class="dropdown-content">
                             {% for project in projectsList %}
-                            <a href="{{url_for('views.changeProjectOrBranch', page='index', type='project', text=project['id']) }}"> {{ project['path'] }} </a> {% endfor %}
+                            <a href="{{url_for('views.changeProjectOrBranch', page=page, type='project', text=project['id']) }}"> {{ project['path'] }} </a> {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -233,7 +220,7 @@ NAV_TOPO
                         {% endif %}
                         <div class="dropdown-content">
                             {% if branchesList is not none %} {% for branch in branchesList %}
-                            <a href="{{url_for('views.changeProjectOrBranch', page='index', type='branch', text=branch['name']) }}"> {{ branch['name'] }} </a> {% endfor %} {% endif %}
+                            <a href="{{url_for('views.changeProjectOrBranch', page=page, type='branch', text=branch['name']) }}"> {{ branch['name'] }} </a> {% endfor %} {% endif %}
                         </div>
                     </div>
                 </div>
@@ -243,7 +230,7 @@ NAV_TOPO
 
                 <div class="col-xs-5 center-xs">
 
-                    <h2 class=" text-right text-red">User alerts</h2>
+                    <h2 id="userAlerts" class=" text-right text-red">User alerts</h2>
                 </div>
             </div>
 
@@ -260,24 +247,24 @@ NAV_TOPO
             <div class="row middle-xs center-xs">
 
                 <div class="person col-xs-1 start-xs" id="person1">
-                    <img class="images" id="image1" src="{{ currentUser.avatar_url }}">
+                    <img class="images" id="image1" src="{{ member.avatar_url }}">
 
                 </div>
 
                 <div class="text text-bold start-xs col-xs-10">
-                    <p>{{ userInfo.name }}</p>
-                    <p class="text ">Bio: {{ userInfoDB['bio'] }}</p>
-                    <p class="text ">E-mail: {{ userInfoDB['email'] }} </p>
-                    <p class="text ">Skype: {{ userInfoDB['skype'] }} </p>
-                    <p class="text ">LinkedIn: {{ userInfoDB['linkedin'] }} </p>
-                    <p class="text ">Twitter: {{ userInfoDB['twitter'] }} </p>
-                    <p class="text ">Website: {{ userInfoDB['website'] }} </p>
+                    <p>{{ member.name }}</p>
+                    <p class="text ">Bio: {{ memberInfo['bio'] }}</p>
+                    <p class="text ">E-mail: {{ memberInfo['email'] }} </p>
+                    <p class="text ">Skype: {{ memberInfo['skype'] }} </p>
+                    <p class="text ">LinkedIn: {{ memberInfo['linkedin'] }} </p>
+                    <p class="text ">Twitter: {{ memberInfo['twitter'] }} </p>
+                    <p class="text ">Website: {{ memberInfo['website'] }} </p>
 
                 </div>
 
 
                 <div class="col-xs-12 center-xs ">
-                    {% if currentUser['username'] == userInfoDB['username'] %}
+                    {% if currentUser['username'] == memberInfo['username'] %}
                     <a href="{{ url_for('views.profileEdit') }}">
                         <p class="subtitle">Edit Profile</p>
                     </a>
@@ -297,13 +284,8 @@ NAV_TOPO
             <section class="section-size  scroll">
                 <div id="hiddenFeed">
                     {% if projectID is none %}
-                    <p>Choose a project</p>
+                        <p>Choose a project</p>
                     {% endif %}
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum ex quis lorem ornare rutrum. Quisque eget diam id nisl laoreet euismod. In quis tellus non eros sollicitudin ornare. Nulla pharetra congue libero, et convallis augue maximus quis. Vivamus consectetur imperdiet elit, in efficitur ligula ullamcorper in. Sed luctus diam dictum, porttitor dolor vel, ultricies ex. Quisque accumsan varius nunc, eget pharetra ligula cursus non. Morbi volutpat ut metus nec volutpat. Praesent neque ipsum, porttitor eget suscipit ut, fermentum eu ipsum.</p>
-
                 </div>
 
             </section>
