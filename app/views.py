@@ -8,9 +8,9 @@ views = Blueprint('views', __name__)
 MAX_NOTIFICATION = 30
 HOST = 'http://localhost:5000'
 
-privateToken = 'qxzH6TqLBS1kZstjiCMN'
+privateToken = 'MKy9d2Ed1g63maQXcpY_'
 # TAyfsEzcXYZNH-sdkyNC lr
-# qxzH6TqLBS1kZstjiCMN lc
+# MKy9d2Ed1g63maQXcpY_ lc
 
 
 
