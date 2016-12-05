@@ -104,7 +104,7 @@ def members():
         projectID = session['project']
     except KeyError:
         return redirect('/index.html')
-
+    
     currentProject, branchesList, currentBranch, teamname = functions.getRecurrentInfo(session, userInfo)
 
     # members
