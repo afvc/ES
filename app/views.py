@@ -85,12 +85,10 @@ def changeProjectOrBranch(page, type, text):
 
     res = page.split('-')
 
-    if (res[0] == 'index'):
-        return redirect('/index.html')
-    elif (res[0] == 'members'):
-        return redirect('/members.html')
-    elif (res[0] == 'profile'):
+    if (res[0] == 'profile'):
         return redirect('/profile-inside.html/' + res[1])
+    else:
+        return redirect('/' + res[0] + '.html')
 
 
 @views.route("/members.html")
@@ -279,8 +277,41 @@ def httpPostTeamName():
     return Response("",  mimetype='application/text')
 
 
+# if needed for login
 @views.route("/request/postSession", methods=['POST'])
 def httpPostSession():
     session['token'] = request.form['token']
 
     return Response("",  mimetype='application/text')
+
+
+@views.route("/example.html")
+def example():
+    #session contents & protection
+    try:
+        token = session['token']
+        projectID = session['project']
+        branchName = session['branch']
+    except KeyError:
+        print("Session doesn't have all info")
+        return abort(418)
+
+
+
+    # protections & required vars for when implementing UC1
+    try:
+        userInfo = functions.updateInfo(session['token'])
+        projectsList = functions.getProjects(session['token'])
+    except KeyError:
+        return redirect('/login.html')
+
+    try:
+        projectID = session['project']
+    except KeyError:
+        return redirect('/index.html')
+
+    currentProject, branchesList, currentBranch, teamname = functions.getRecurrentInfo(session, userInfo)
+
+    # return page with required vars for when implementing UC1
+    # 'page' var is required for when changing project or branch - have a look at changeProjectOrBranch() function
+    return render_template("example.html", host = HOST, projectID = projectID, page = 'example', teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)
