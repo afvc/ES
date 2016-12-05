@@ -146,21 +146,23 @@
                 </div>
             </div>
 
-            <!-- MEMBROS_TITULO -->
             <div class="row">
-                <div class="col-xs-12 center-xs subtitle">
-                    <p>Members</p>
+                <div class="col-xs-12 center-xs ">
+
+
+
+
+
+                    <!--   #############################################        YOUR CODE HERE        #############################################   -->
+
+
+
+
+
+
                 </div>
             </div>
 
-            <div class="row center-xs">
-                {% for member in membersList %}
-                <div class="person">
-                    <a href="{{ url_for('views.profile', username = member.username) }}"> <img class="images" id="image1" src="{{ member.avatar_url }}"> </a>
-                    <p class="name"> {{ member["name"] }} </p>
-                </div>
-                {% endfor %}
-            </div>
         </div>
 
         <!-- SECÇÃO_DIREITA -->
