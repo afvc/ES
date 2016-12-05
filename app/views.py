@@ -16,7 +16,6 @@ privateToken = 'qxzH6TqLBS1kZstjiCMN'
 
 #@views.route("/")
 @views.route("/login.html")
-@views.route("/login.html/")
 def login():
     try:
         token = session['token']
@@ -29,7 +28,6 @@ def login():
 
 @views.route("/")
 @views.route("/index.html")
-@views.route("/index.html/")
 def index():
     # temp while without login
     session['token'] = privateToken
@@ -60,7 +58,6 @@ def index():
 
 
 @views.route("/<page>.html/<type>/<text>", methods=['GET'])
-@views.route("/<page>.html/<type>/<text>/", methods=['GET'])
 def changeProjectOrBranch(page, type, text):
     if (type == 'project'):
         try:
@@ -94,7 +91,6 @@ def changeProjectOrBranch(page, type, text):
 
 
 @views.route("/members.html")
-@views.route("/members.html/")
 def members():
     try:
         userInfo = functions.updateInfo(session['token'])
@@ -116,7 +112,6 @@ def members():
 
 
 @views.route("/profile-inside.html/<username>", methods=['GET'])
-@views.route("/profile-inside.html/<username>/", methods=['GET'])
 def profile(username):
     try:
         userInfo = functions.updateInfo(session['token'])
@@ -145,22 +140,21 @@ def profile(username):
     res = functions.query_db('SELECT * FROM profile WHERE username = ?', [username], one=True)
 
     if (res is None):
-        memberInfo = None
+        check = None
     else:
-        memberInfo = dict()
-        memberInfo['skype'] = res[2]
-        memberInfo['linkedin'] = res[3]
-        memberInfo['twitter'] = res[4]
-        memberInfo['website'] = res[5]
-        memberInfo['bio'] = res[6]
-        memberInfo['email'] = res[7]
-        memberInfo['username'] = res[0]
+        check = dict()
+        check['skype'] = res[2]
+        check['linkedin'] = res[3]
+        check['twitter'] = res[4]
+        check['website'] = res[5]
+        check['bio'] = res[6]
+        check['email'] = res[7]
+        check['username'] = res[0]
 
-    return render_template("profile-inside.html", host = HOST, projectID = projectID, teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch, memberInfo = memberInfo, member = member)
+    return render_template("profile-inside.html", host = HOST, projectID = projectID, teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch, userInfoDB = check, userInfo = member)
 
 
 @views.route("/profile-edit.html")
-@views.route("/profile-edit.html/")
 def profileEdit():
     try:
         userInfo = functions.updateInfo(session['token'])
@@ -191,7 +185,6 @@ def profileEdit():
 
 
 @views.route("/profile-inside.html/<username>", methods=['POST'])
-@views.route("/profile-inside.html/<username>/", methods=['POST'])
 def editPOST(username):
     try:
         userInfo = functions.updateInfo(session['token'])
@@ -227,7 +220,6 @@ def editPOST(username):
 
 
 @views.route("/request/getNotification/<username>/<project>")
-@views.route("/request/getNotification/<username>/<project>/")
 def httpGetNotification(username, project):
     lista = list()
     i = 0;
@@ -247,7 +239,6 @@ def httpGetNotification(username, project):
 
 
 @views.route("/request/postNotification", methods=['POST'])
-@views.route("/request/postNotification/", methods=['POST'])
 def httpPostNotification():
     print 'entrei post notif'
     try:
@@ -267,7 +258,6 @@ def httpPostNotification():
 
 
 @views.route("/request/postTeamName", methods=['POST'])
-@views.route("/request/postTeamName/", methods=['POST'])
 def httpPostTeamName():
     print 'entrei team'
     try:
