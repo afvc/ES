@@ -9,7 +9,7 @@ MAX_NOTIFICATION = 30
 HOST = 'http://localhost:5000'
 
 privateToken = 'qxzH6TqLBS1kZstjiCMN'
-# zg5dppdxZKH2BkE24ujw
+# TAyfsEzcXYZNH-sdkyNC lr
 # qxzH6TqLBS1kZstjiCMN lc
 
 
@@ -43,7 +43,7 @@ def index():
     teamname = dict()
     teamname["name"] = None
     teamname["owner"] = 0
-    
+
     try:
         projectID = session['project']
 
@@ -240,12 +240,12 @@ def httpGetNotification(username, project):
         i += 1
         if (i == MAX_NOTIFICATION):
             break
-    
+
     return Response(json.dumps(lista),  mimetype='application/json')
 
 
 @views.route("/request/postNotification", methods=['POST'])
-def httpPostNotification():    
+def httpPostNotification():
     try:
         members = functions.getMembersInformation(session['token'], session['project'])
     except KeyError:
