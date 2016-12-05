@@ -21,6 +21,7 @@ function sendNotification(message, isAlert, alertTitle) {
     }
 
     var host = document.getElementById("host").innerHTML;
+    var projectID = document.getElementById("projectID").innerHTML;
 
     sendNotificationXML.open("POST", host + "/request/postNotification", true); // A project must be select | A user must be logged in | Sends notification to all users of selected project
     var params = "projectID=" + projectID + "&message=" + message + "&isAlert=" + isAlert + "&alertTitle=" + alertTitle;
