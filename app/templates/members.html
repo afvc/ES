@@ -73,7 +73,6 @@ NAV_TOPO
 
 
 
-
     <!--------------------------------------
   SECÇÃO_ESQUERDA
 -------------------------------------->
@@ -89,15 +88,15 @@ NAV_TOPO
 
                 <!-- ————————— Botoes secundários —————————-->
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewpro">Risks</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">Risks</a></button>
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewpro">Roles</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">Roles</a></button>
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewpro">Tasks</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">Tasks</a></button>
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewpro">ScoreCard</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">ScoreCard</a></button>
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewpro">Process</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">Process</a></button>
 
 
 
@@ -109,13 +108,13 @@ NAV_TOPO
 
                 <!-- ————————— Botoes secundários —————————-->
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewwork">Manage Tasks</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Manage Tasks</a></button>
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewwork">Sprint Work</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Sprint Works</a></button>
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewwork">Burn-Down Chart</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Burn-Down Chart</a></button>
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewwork">Manage Sprints</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Manage Sprints</a></button>
 
 
 
@@ -128,11 +127,11 @@ NAV_TOPO
 
                 <!-- ————————— Botoes secundários —————————-->
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewproj">Commits</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewproj"><a id="#" href="#">Commits</a></button>
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewproj">Contributors</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewproj"><a id="#" href="#">Contributors</a></button>
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewproj">Features</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewproj"> <a id="#" href="#">Features</a></button>
 
 
                 <!--———————————————————————————————————-—————————————————————————-->
@@ -144,21 +143,32 @@ NAV_TOPO
 
                 <!-- ————————— Botoes secundários —————————-->
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewart">Navigate File Tree</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="#">Navigate File Tree</a> </button>
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewart">Search Repository</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="#">Search Repository</a> </button>
 
-                <button class="drop-click-btn margin-bottom-small btn-default viewart">Artifact Lifecycle</button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="#">Artifact Lifecycle</a> </button>
 
 
 
 
                 <!--———————————————————————————————————-—————————————————————————-->
-
-                <button class="drop-click-btn btn-default margin-bottom-small"><img src="{{ url_for('static', filename='assets/images/people.png') }}" class="icon">People</button>
-
-                <a id="members" href="{{ url_for('views.members') }}">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewart">Members</button>
+   
+                <button class="drop-click-btn btn-default margin-bottom-small btn-default openppl"><img src="{{ url_for('static', filename='assets/images/people.png') }}" class="icon">People</button>
+                
+                <button class="drop-click-btn margin-bottom-small btn-default viewppl"> <a id="members" href="{{ url_for('views.members') }}"> Members </a> </button>
+ 
+                        <script type="text/javascript">
+                            var reply_click = function () {
+                                if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
+                                    alert("ERROR - Please choose a project first!");
+                                    return false
+                                }
+                            }
+                            document.getElementById('members').onclick = reply_click;
+                        </script>
+ 
+                    </a>
 
                     <script type="text/javascript">
                         var reply_click = function () {
@@ -170,18 +180,6 @@ NAV_TOPO
                         document.getElementById('members').onclick = reply_click;
                     </script>
 
-                </a>
-
-                <script type="text/javascript">
-                    var reply_click = function () {
-                        if (document.getElementById("project").firstChild.data == 'CHOOSE PROJECT') {
-                            alert("ERROR - Please choose a project first!");
-                            return false
-                        }
-                    }
-                    document.getElementById('members').onclick = reply_click;
-                </script>
-
 
 
                 <a href="">
@@ -190,6 +188,8 @@ NAV_TOPO
 
             </section>
         </div>
+
+
 
 
 
