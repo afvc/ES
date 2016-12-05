@@ -1,48 +1,28 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
     <!-- META TAGS -->
     <meta charset="UTF-8" />
     <title>Git Dashboard</title>
 
-
     <!-- STYLESHEETS -->
-
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/flexboxgrid.min.css') }}" type="text/css">
-
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/_font-awesome.min.css.scss') }}" type="text/css">
-
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}" type="text/css">
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/profilein.css') }}" type="text/css">
-
     <link href="https://fonts.googleapis.com/css?family=Poppins:500,600,700" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet">
 
     <script src="{{url_for('static', filename='assets/js/date.js') }}"></script>
-
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
+    <script src="{{url_for('static', filename='assets/js/sendNotification.js') }}"></script>
 </head>
-
 
 <body onload="startContent();">
 
-
-    <!--------------------------------------
-NAV_TOPO
--------------------------------------->
-
+    <!-- NAV_TOPO -->
     <section class="bg__blue">
-
         <div class="row smalltext text-lightest nav-size margin-nav">
-
             <div class="col-xs-1 ">
                 <a href="{{ url_for('views.profile', username = currentUser.username) }}"><img class="img-block__small  order-xs__1" id="image1" src="{{ currentUser['avatar_url'] }}"></a>
-
             </div>
 
             <div class="col-xs-2 margin-textNav start-xs  order-xs__5">
@@ -54,14 +34,16 @@ NAV_TOPO
 
             <div class="col-xs-2 margin-textNav-left  order-xs__2">
                 {% if teamname["name"] is not none %}
+                <a onclick="sendNotification('alerttttt', 1, 'ALERTA aa');">
                     <p id="teamname">{{ teamname.name }}</p>
+                </a>
                 {% else %}
+                <a onclick="sendNotification('alerttttt', 1, 'ALERTA aa');">
                     <p id="teamname">[Team Name]</p>
-                    {% if (teamname["owner"]) %}
+                </a>
+                {% if (teamname["owner"]) %}
                     <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
-                    {% endif %}
-                {% endif %}
-
+                {% endif %} {% endif %}
             </div>
 
             <div class="col-xs-3 col-sm-4 end-xs  order-xs__3">
@@ -73,89 +55,40 @@ NAV_TOPO
         </div>
     </section>
 
-    <!--------------------------------------
-  SECÇÃO_ESQUERDA
--------------------------------------->
-
-
+    <!-- SECÇÃO_ESQUERDA -->
     <div class="row">
-
         <div class="col-xs-2 no-padding bg__lightGrey center-xs text">
             <section class="button--margin">
 
-
                 <button class="drop-click-btn margin-bottom-small btn-default openpro"><img src="{{ url_for('static', filename='assets/images/processes.png') }}" class="icon">Processes</button>
-
-                <!-- ————————— Botoes secundários —————————-->
-
+                <!-- SECONDARY BUTTONS -->
                 <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">Risks</a></button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">Roles</a></button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">Tasks</a></button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">ScoreCard</a></button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">Process</a></button>
 
-
-
-                <!--———————————————————————————————————————————————————————————-->
-
-
-
                 <button class="drop-click-btn btn-default margin-bottom-small openwork"><img src="{{ url_for('static', filename='assets/images/work.png') }}" class="icon">Work</button>
-
-                <!-- ————————— Botoes secundários —————————-->
-
+                <!-- SECONDARY BUTTONS -->
                 <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Manage Tasks</a></button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Sprint Works</a></button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Burn-Down Chart</a></button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Manage Sprints</a></button>
 
-
-
-                <!--—————————————————————————————————————————————————————————————-->
-
-
-
                 <button class="drop-click-btn btn-default margin-bottom-small openproj"><img src="{{ url_for('static', filename='assets/images/project.png') }}" class="icon">Project</button>
-
-
-                <!-- ————————— Botoes secundários —————————-->
-
+                <!-- SECONDARY BUTTONS -->
                 <button class="drop-click-btn margin-bottom-small btn-default viewproj"><a id="#" href="#">Commits</a></button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewproj"><a id="#" href="#">Contributors</a></button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewproj"> <a id="#" href="#">Features</a></button>
 
-
-                <!--———————————————————————————————————-—————————————————————————-->
-
-
-
                 <button class="drop-click-btn btn-default margin-bottom-small openart"><img src="{{ url_for('static', filename='assets/images/artifacts.png') }}" class="icon">Artifacts</button>
-
-
-                <!-- ————————— Botoes secundários —————————-->
-
+                <!-- SECONDARY BUTTONS -->
                 <button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="#">Navigate File Tree</a> </button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="#">Search Repository</a> </button>
-
                 <button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="#">Artifact Lifecycle</a> </button>
 
-
-
-
-                <!--———————————————————————————————————-—————————————————————————-->
-   
                 <button class="drop-click-btn btn-default margin-bottom-small btn-default openppl"><img src="{{ url_for('static', filename='assets/images/people.png') }}" class="icon">People</button>
-                
+                <!-- SECONDARY BUTTONS -->
                 <a id="members" href="{{ url_for('views.members') }}">
                     <button class="drop-click-btn margin-bottom-small btn-default viewppl">Members</button>
                 </a>
@@ -170,31 +103,19 @@ NAV_TOPO
                     document.getElementById('members').onclick = reply_click;
                 </script>
 
-
-
-                <a href="">
-                    <button class="btn-default margin-bottom-small"><img src="{{ url_for('static', filename='assets/images/settings.png') }}" class="icon">Settings </button>
-                </a>
-
+                <button class="drop-click-btn btn-default margin-bottom-small"><img src="{{ url_for('static', filename='assets/images/settings.png') }}" class="icon">Settings</button>
             </section>
         </div>
 
-
-        <!--------------------------------------
- SECÇÃO_CENTRAL
--------------------------------------->
-
-
+        <!-- SECÇÃO_CENTRAL -->
         <div class="col-xs-10 centerSection">
-
             <div class="row">
                 <div class="col-xs-11">
                     <p class="showFeed"><a href="#">Activity Feed</a></p>
-
                 </div>
             </div>
 
-            <!-- -----------------DROPDOWN_ESQ----------------- -->
+            <!-- DROPDOWN_ESQ -->
             <div class="row">
                 <div class="col-xs-3 dropdown--margin__top ">
                     <div class="dropdown ">
@@ -205,12 +126,12 @@ NAV_TOPO
                         {% endif %}
                         <div class="dropdown-content">
                             {% for project in projectsList %}
-                            <a href="{{url_for('views.changeProjectOrBranch', page='profile-'+currentUser.username, type='project', text=project['id']) }}"> {{ project['path'] }} </a> {% endfor %}
+                            <a href="{{url_for('views.changeProjectOrBranch', page=page, type='project', text=project['id']) }}"> {{ project['path'] }} </a> {% endfor %}
                         </div>
                     </div>
                 </div>
 
-                <!-- -----------------DROPDOWN_DIR----------------- -->
+                <!-- DROPDOWN_DIR -->
                 <div class="col-xs-3 dropdown--margin__top">
                     <div class="dropdown ">
                         {% if currentBranch is none %}
@@ -225,32 +146,20 @@ NAV_TOPO
                     </div>
                 </div>
 
-
-                <!-- -----------------ALERTAS_TITULO----------------- -->
-
+                <!-- ALERTAS_TITULO -->
                 <div class="col-xs-5 center-xs">
-
                     <h2 id="userAlerts" class=" text-right text-red">User alerts</h2>
                 </div>
             </div>
 
-
-            <!-- -----------------PERFIL_TITULO----------------- -->
-
-
+            <!-- PERFIL_TITULO -->
             <div class="row middle-xs center-xs">
-                             
                 <div class="col-xs-12 center-xs ">
                     <p class="subtitle">Edit Profile</p>
- 
                 </div>
-           
-                <!-- -----------------EDIT_FORM----------------- -->
-                
 
+                <!-- EDIT_FORM -->
                 <div id="forms col-xs-12">
-                    
-
                     <form id="#formEdit" method="POST" action="{{ url_for('views.editPOST', username = currentUser.username) }}">
                         {% if userInfoDB.noSync %}
                             <input id="radioSync" type="radio" name="choice" value="0"> Synced with GIT information
@@ -263,9 +172,7 @@ NAV_TOPO
                             <input id="radioNoSync" type="radio" name="choice" value="1"> Disable GIT sync and edit information for this application only
                             <br>
                         {% endif %}
-
                     <br>
-
                         <br> Skype:
                         <input id="editSkype" class="edit change" type="text" name="skype" value="{{ userInfoDB['skype'] }}">
                         <br> LinkedIn:
@@ -278,23 +185,15 @@ NAV_TOPO
                         <br>
                         <textarea id="editBio" maxlength="250" class="edit change" type="text" name="bio"> {{ userInfoDB['bio'] }} </textarea>
                         <br>
-
                         <input type="submit" value="Save">
                     </form>
                     <br>
                     <br>
-
                 </div>
-
             </div>
-
         </div>
 
-
-        <!--------------------------------------
-  SECÇÃO_DIREITA
--------------------------------------->
-
+        <!-- SECÇÃO_DIREITA -->
         <div class="col-xs-2 bg__lightGrey center-xs text feedCol">
             <section class="section-size  scroll">
                 <div id="hiddenFeed">
@@ -302,22 +201,14 @@ NAV_TOPO
                         <p>Choose a project</p>
                     {% endif %}
                 </div>
-
             </section>
         </div>
-
     </div>
 
     {% if projectID is not none %}
-        <script src="{{url_for('static', filename='assets/js/notification.js') }}"></script>
+    <script src="{{url_for('static', filename='assets/js/notification.js') }}"></script>
     {% endif %}
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='assets/js/barras.js') }}"></script>
-
-    <script src="{{ url_for('static', filename='assets/js/editForm.js') }}"></script>
-
-    
-
 </body>
-
 </html>
