@@ -27,23 +27,17 @@
 
             <div class="col-xs-2 margin-textNav start-xs  order-xs__5">
                 <p id="username" hidden>{{ currentUser['username'] }}</p>
-                <p id="projectID" hidden>{{ projectID }}</p>
+                <p id="projectID" hidden>{{ currentProject['id'] }}</p>
                 <p id="host" hidden>{{ host }}</p>
                 <p>{{ currentUser["name"] }}</p>
             </div>
 
             <div class="col-xs-2 margin-textNav-left  order-xs__2">
                 {% if teamname["name"] is not none %}
-                <a onclick="sendNotification('alerttttt', 1, 'ALERTA aa');">
                     <p id="teamname">{{ teamname.name }}</p>
-                </a>
                 {% else %}
-                <a onclick="sendNotification('alerttttt', 1, 'ALERTA aa');">
                     <p id="teamname">[Team Name]</p>
-                </a>
-                {% if (teamname["owner"]) %}
-                    <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
-                {% endif %} {% endif %}
+                {% endif %}
             </div>
 
             <div class="col-xs-3 col-sm-4 end-xs  order-xs__3">
@@ -170,5 +164,8 @@
     {% endif %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='assets/js/barras.js') }}"></script>
+    {% if (teamname["owner"]) %}
+        <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
+    {% endif %}
 </body>
 </html>
