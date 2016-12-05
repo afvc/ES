@@ -206,3 +206,6 @@ GitHub.sublime-settings
 
 #VirtualEnv Folder
 env
+
+# ignore the database
+hashtagRandom.db
