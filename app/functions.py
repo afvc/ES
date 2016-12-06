@@ -15,8 +15,6 @@ def communicate(url):
     return data
 
 
-# integrate with login
-"""
 def getPrivateToken(username, password):
     values = {'login': username, 'password': password}
 
@@ -25,8 +23,8 @@ def getPrivateToken(username, password):
     data = urllib.urlencode(values)
     req = urllib2.Request(url, data)
 
-    return communicate(req)['private_token']
-"""
+    return communicate(req)
+
 
 def getProjects(token):
     url = "https://git.dei.uc.pt/api/v3/projects?private_token=" + token
