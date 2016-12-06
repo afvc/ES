@@ -244,8 +244,7 @@ def editPOST(username):
     message = userInfo['name'] + ' has changed his/her profile information'
     member = dict()
     for member in members:
-        if (member['username'] != userInfo['username']):
-            functions.query_db('INSERT INTO notification (message, project, targetUsername, isAlert) VALUES (?, ?, ?, ?);', [message, session['project'], member['username'], 0], one=True)
+        functions.query_db('INSERT INTO notification (message, project, targetUsername, isAlert) VALUES (?, ?, ?, ?);', [message, session['project'], member['username'], 0], one=True)
 
     return redirect('/profile-inside.html/' + username)
 
