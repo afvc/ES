@@ -1,0 +1,134 @@
+.validation{
+    text-align:center;
+    margin-top: 25vh;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
+
+.validation h1{
+    font-size: 40px;
+    text-align:left;
+    margin-left: 60px;
+    margin-bottom: 20px;
+}
+
+.validation input{
+    font-family: 'Playfair Display', serif;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    width: 400px;
+    height: 40px;    
+}
+
+#password{
+    margin-top: 3%;
+}
+
+
+.validation button{
+    margin-top: 3%;
+    border-radius: 2px;
+    border: none;
+    background-color: #1B6276;
+    width: 400px;
+    height: 40px;
+    font-size: 18px;
+    margin-top: 4%;
+    color: white;
+}
+
+.validation a{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+/*perfis*/
+.info{
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+}
+
+#perfis h1{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    margin-bottom: 5%;
+}
+.info a{
+    font-size: 30px;
+    font-weight: 550;
+    color: #1B6276 !important;    
+    text-decoration: none;
+    opacity: 1;
+}
+.info a:hover{
+   opacity: 0.5;
+    text-decoration: none;
+}
+
+.info h2{
+    font-size: 20px;
+    margin-top: 2%;
+    margin-bottom: 0%;
+}
+
+.info h3{
+ font-size: 16px;
+}
+
+.info p{
+   font-size: 13px;
+    
+}
+
+#perfis{
+    margin-top: 3%;
+}
+
+#perfis img{
+    height: 25vh;
+    width: auto;
+    float:right;
+}
+.info{
+    background-color: #f6f6f6;
+    margin-bottom: 2%;
+}
+
+
+/*perfil individual*/
+#perfil{
+    background-color: #f6f6f6;
+    margin-top: 6%;
+    height: 80vh;
+    
+}
+
+#perfil h1{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    color: #1B6276 !important;    
+
+}
+#perfil h2, #perfil h3{
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;    
+}
+#perfil h3{
+    font-size: 16px;
+    width: 50%;
+}
+#perfil h2{
+   font-size: 22px;    
+}
+#perfil img{
+   height: 30vh;
+   width: auto;
+    float: right;
+}
+#social li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 6px;
+}
