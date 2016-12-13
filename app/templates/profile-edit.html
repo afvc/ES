@@ -42,6 +42,7 @@
 
             <div class="col-xs-3 col-sm-4 end-xs  order-xs__3">
                 <p id="date" class=""> day,month,year,hh-mm</p>
+                
             </div>
             <div class="col-xs-1 col-sm-3 end-xs margin-textNav-left  order-xs__4">
                 <a href="{{ url_for('views.logout') }}">
@@ -138,10 +139,11 @@
 
         <!-- SECÇÃO_CENTRAL -->
         <div class="col-xs-10 centerSection">
-            <div class="row">
+            <div class="row end-xs">
                 <div class="col-xs-11">
-                    <p class="showFeed"><a href="#">Activity Feed</a></p>
-                </div>
+                    <div class="col-xs-2 col-xs-offset-9   end-xs">
+                    <button class="showFeed btn-default dropdown--margin__top"><a class="text-lightest" href="#">Activity Feed</a></button>
+                    </div></div>
             </div>
 
             <!-- DROPDOWN_ESQ -->
