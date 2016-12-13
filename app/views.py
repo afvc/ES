@@ -367,3 +367,231 @@ def artifactsNavigation():
     pprint(currentProject)
 
     return render_template("artifacts.html", token = session['token'], host = HOST, page = 'example', teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)
+
+
+
+# ------------ UC9&10 RISKS ------------
+
+@views.route("/indexRisks.html")
+@views.route("/indexRisks.html/")
+def indexRisks():
+    #session contents & protection
+    try:
+        token = session['token']
+        project = session['project']
+        branch = session['branch']
+    except KeyError:
+        print("Session doesn't have all info")
+        return redirect('/index.html')
+
+    # protections & required vars for when implementing UC1
+    try:
+        userInfo = functions.updateInfo(session['token'])
+        projectsList = functions.getProjects(session['token'])
+    except KeyError:
+        return redirect('/login.html')
+
+    try:
+        project = session['project']
+    except KeyError:
+        return redirect('/index.html')
+
+    currentProject, branchesList, currentBranch, teamname = functions.getRecurrentInfo(session, userInfo)
+
+
+    # return page with required vars for when implementing UC1
+    # 'page' var is required for when changing project or branch - have a look at changeProjectOrBranch() function
+    return render_template("indexRisks.html", host = HOST, page = 'indexRisks', token = session['token'], teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)
+
+@views.route("/insertRisks.html")
+@views.route("/insertRisks.html/")
+def insertRisks():
+    #session contents & protection
+    try:
+        token = session['token']
+        project = session['project']
+        branch = session['branch']
+    except KeyError:
+        print("Session doesn't have all info")
+        return redirect('/index.html')
+
+    # protections & required vars for when implementing UC1
+    try:
+        userInfo = functions.updateInfo(session['token'])
+        projectsList = functions.getProjects(session['token'])
+    except KeyError:
+        return redirect('/login.html')
+
+    try:
+        project = session['project']
+    except KeyError:
+        return redirect('/index.html')
+
+    currentProject, branchesList, currentBranch, teamname = functions.getRecurrentInfo(session, userInfo)  
+
+    # return page with required vars for when implementing UC1
+    # 'page' var is required for when changing project or branch - have a look at changeProjectOrBranch() function
+    return render_template("insertRisks.html", host = HOST, page = 'insertRisks', token = session['token'], teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)   
+
+@views.route("/insertRisks.html",methods=['POST'])
+@views.route("/insertRisks.html/",methods=['POST'])
+def insertRisksPost():
+    functions.query_db('INSERT INTO risks (description, project, deadline, impact, probability,status) VALUES (?, ?, ?, ?, ?,?);', [request.form['description'], session['project'], request.form['deadline'], request.form['ImpactRadio'], request.form['ProbabilityRadio'],1], one=True)
+    return redirect('/indexRisks.html')
+
+
+@views.route("/editRisks.html")
+@views.route("/editRisks.html/")
+def editRisks():
+    #session contents & protection
+    try:
+        token = session['token']
+        project = session['project']
+        branch = session['branch']
+    except KeyError:
+        print("Session doesn't have all info")
+        return redirect('/index.html')
+
+    # protections & required vars for when implementing UC1
+    try:
+        userInfo = functions.updateInfo(session['token'])
+        projectsList = functions.getProjects(session['token'])
+    except KeyError:
+        return redirect('/login.html')
+
+    try:
+        project = session['project']
+    except KeyError:
+        return redirect('/index.html')
+
+    currentProject, branchesList, currentBranch, teamname = functions.getRecurrentInfo(session, userInfo)
+
+    # return page with required vars for when implementing UC1
+    # 'page' var is required for when changing project or branch - have a look at changeProjectOrBranch() function
+    return render_template("editRisks.html", host = HOST, page = 'editRisks', token = session['token'], teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)
+
+
+@views.route("/editRisks.html", methods=['POST'])
+@views.route("/editRisks.html/", methods=['POST'])
+def editRisksPOST():
+    id_risk = request.form['idRisk']
+    if(request.form['option'] == "Save"):
+        description = request.form['description']
+        deadline = request.form['deadline']
+        impact = request.form['ImpactRadio']
+        probability = request.form['ProbabilityRadio']
+        functions.query_db('UPDATE risks SET description = ?, deadline = ?, impact = ?, probability = ? WHERE id_risk = ? AND project = ?;', [description, deadline, impact, probability, id_risk,session['project']], one=True)
+    else:
+        functions.query_db('UPDATE risks SET status = 0 WHERE id_risk = ? AND project = ?;', [id_risk,session['project']], one=True)
+    return redirect('/indexRisks.html')
+
+
+@views.route("/request/getRisk/<username>/<project>")
+@views.route("/request/getRisk/<username>/<project>/")
+def httpGetRisk(username,project):
+    lista = list()
+    for notification in functions.query_db('SELECT id_risk,description, project, deadline, impact, probability, status FROM risks WHERE project = ? AND status = 1', [project]):
+        d = dict()
+        d['id_risk'] = notification[0]
+        d['description'] = notification[1]
+        d['project'] = notification[2]
+        d['deadline'] = notification[3]
+        d['impact'] = notification[4]
+        d['probability'] = notification[5]
+        d['status'] = notification[6]
+        lista.append(d)
+
+    return Response(json.dumps(lista),  mimetype='application/json')
+
+@views.route("/artifacts.html")
+def artifactsFiles():
+    #session contents & protection
+    try:
+        token = session['token']
+        project = session['project']
+        branch = session['branch']
+    except KeyError:
+        print("Session doesn't have all info")
+        return redirect('/index.html')
+
+
+
+    # protections & required vars for when implementing UC1
+    try:
+        userInfo = functions.updateInfo(session['token'])
+        projectsList = functions.getProjects(session['token'])
+    except KeyError:
+        return redirect('/login.html')
+
+    try:
+        project = session['project']
+    except KeyError:
+        return redirect('/index.html')
+
+    currentProject, branchesList, currentBranch, teamname = functions.getRecurrentInfo(session, userInfo)
+
+    # return page with required vars for when implementing UC1
+    # 'page' var is required for when changing project or branch - have a look at changeProjectOrBranch() function
+    return render_template("artifacts.html", host = HOST, page = 'artifacts', token = session['token'], teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)
+
+@views.route("/commits.html")
+def commits():
+    #session contents & protection
+    try:
+        token = session['token']
+        project = session['project']
+        branch = session['branch']
+    except KeyError:
+        print("Session doesn't have all info")
+        return redirect('/index.html')
+
+
+
+    # protections & required vars for when implementing UC1
+    try:
+        userInfo = functions.updateInfo(session['token'])
+        projectsList = functions.getProjects(session['token'])
+    except KeyError:
+        return redirect('/login.html')
+
+    try:
+        project = session['project']
+    except KeyError:
+        return redirect('/index.html')
+
+    currentProject, branchesList, currentBranch, teamname = functions.getRecurrentInfo(session, userInfo)
+
+    # return page with required vars for when implementing UC1
+    # 'page' var is required for when changing project or branch - have a look at changeProjectOrBranch() function
+    return render_template("commits.html", host = HOST, page = 'commits', token = session['token'], teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)
+
+@views.route("/task.html")
+def task():
+    #session contents & protection
+    try:
+        token = session['token']
+        project = session['project']
+        branch = session['branch']
+    except KeyError:
+        print("Session doesn't have all info")
+        return redirect('/index.html')
+
+
+
+    # protections & required vars for when implementing UC1
+    try:
+        userInfo = functions.updateInfo(session['token'])
+        projectsList = functions.getProjects(session['token'])
+    except KeyError:
+        return redirect('/login.html')
+
+    try:
+        project = session['project']
+    except KeyError:
+        return redirect('/index.html')
+
+    currentProject, branchesList, currentBranch, teamname = functions.getRecurrentInfo(session, userInfo)
+
+    # return page with required vars for when implementing UC1
+    # 'page' var is required for when changing project or branch - have a look at changeProjectOrBranch() function
+    return render_template("task.html", host = HOST, page = 'task', token = session['token'], teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)

@@ -16,7 +16,7 @@ function sendNotification(message, isAlert, alertTitle) {
         } else if (sendNotificationXML.readyState == 4 && sendNotificationXML.status == 401) {
             window.alert("[ERROR] - postNotification: " + sendNotificationXML.status + " - please re login!");
         } else if (sendNotificationXML.readyState == 4) {
-            window.alert("[ERROR] - postNotification: " + sendNotificationXML.status);
+            //window.alert("[ERROR] - postNotification: " + sendNotificationXML.status);
         }
     }
 

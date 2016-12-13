@@ -113,6 +113,7 @@ def get_db():
         db.execute("CREATE TABLE IF NOT EXISTS profile (username varchar(50) primary key, name varchar(100), skype varchar(75), linkedin varchar(150), twitter varchar(75), website varchar(150), bio varchar(251), email varchar(75), noSync integer);")
         db.execute("CREATE TABLE IF NOT EXISTS notification (id_notif integer primary key autoincrement, message varchar(250), project integer, targetUsername varchar(50), isAlert integer, alertTitle varchar(50));")
         db.execute("CREATE TABLE IF NOT EXISTS team (id_team integer primary key autoincrement, name varchar(50), project integer);")
+	db.execute("CREATE TABLE IF NOT EXISTS risks (id_risk integer primary key autoincrement, description varchar(50), project integer, deadline varchar(50), impact varchar (20), probability varchar (50), status integer);")
         db.commit()
         
     return db

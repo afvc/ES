@@ -1,0 +1,111 @@
+#main{
+	padding: 16px;
+}
+
+/*Tabela*/
+table {
+	/*position: fixed;*/
+	margin-top: 2.5%;
+	margin-left: 12.5%;
+	border-collapse: collapse;
+	width: 100%;
+	display: none;
+}
+
+td, th {
+	/*border: 1px solid #dddddd;*/
+	text-align: left;
+	padding: 8px;
+}
+
+/*tr:nth-child(even) {
+	background-color: #dddddd;
+}*/
+
+table img{
+	width: 30px;
+}
+
+#titulo
+{
+	/*margin-top: 10%;*/
+	margin-left: 10%;
+	font-size: 175%;
+	font-weight: bold;
+	/*display: none;*/
+}
+
+#projetos
+{
+	/*position: fixed;*/
+	margin-top: 2.5%;
+	margin-left: 12.5%;
+}
+
+#projetos p
+{
+	font-size: 150%;
+}
+
+#projetos p:hover
+{
+	color: rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+}
+
+.passou:hover
+{
+	background-color: rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+
+#back{
+	position: fixed;
+	margin-top: 3.2%;
+	margin-left: 10%;
+	width: 20px;
+	height: 25px;
+	display: none;
+}
+
+#icon_grafico, #icon_lista
+{
+	/*position: fixed;*/
+	margin-top: -1%;
+	margin-left: 47.5%;
+	width: 50px;
+	display: none;
+}
+
+#icon_grafico:hover, #icon_lista:hover
+{
+	background-color: rgba(0, 0, 0, 0);
+	cursor: pointer;
+}
+
+#listagem
+{
+	position: fixed;
+	margin-top: 7.5%;
+	margin-left: 10%;
+	overflow: auto;
+}
+
+#tabela_ficheiros{
+	font-size: 110%;
+}
+
+#tabela_commits{
+	margin-top: 3%;
+	margin-left: 7.5%;
+	display: none;
+}
+
+#tabela_commits td,#tabela_commits th {
+	border: 1px solid #dddddd;
+}
+
+#p1{
+	width: 100%;
+	height: 100%;
+}
