@@ -364,7 +364,7 @@ def artifactsNavigation():
 
     currentProject, branchesList, currentBranch, teamname = functions.getRecurrentInfo(session, userInfo)
 
-    pprint(currentProject)
+#    pprint(currentProject)
 
     return render_template("artifacts.html", token = session['token'], host = HOST, page = 'example', teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)
 
@@ -503,7 +503,7 @@ def httpGetRisk(username,project):
 
     return Response(json.dumps(lista),  mimetype='application/json')
 
-@views.route("/artifacts.html")
+@views.route("/artifacts2.html")
 def artifactsFiles():
     #session contents & protection
     try:
@@ -532,7 +532,7 @@ def artifactsFiles():
 
     # return page with required vars for when implementing UC1
     # 'page' var is required for when changing project or branch - have a look at changeProjectOrBranch() function
-    return render_template("artifacts.html", host = HOST, page = 'artifacts', token = session['token'], teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)
+    return render_template("artifacts2.html", host = HOST, page = 'artifacts', token = session['token'], teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)
 
 @views.route("/commits.html")
 def commits():

@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/ES_style.css') }}" type="text/css">
     <script src="{{url_for('static', filename='assets/js/date.js') }}"></script>
     <script src="{{url_for('static', filename='assets/js/sendNotification.js') }}"></script>
+    <script src="{{url_for('static', filename='assets/js/lifecycle.js') }}"></script>
 </head>
 
 <body onload="startContent();">
@@ -29,6 +30,7 @@
                 <p id="username" hidden>{{ currentUser['username'] }}</p>
                 <p id="projectID" hidden>{{ currentProject['id'] }}</p>
                 <p id="host" hidden>{{ host }}</p>
+                <p id="token" hidden>{{ token }}</p>
                 <p>{{ currentUser["name"] }}</p>
             </div>
 
@@ -50,7 +52,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- SECÇÃO_ESQUERDA -->
     <div class="row">
@@ -148,7 +149,6 @@
             <!-- DROPDOWN_ESQ -->
             <div class="row">
                 <div class="col-xs-3 dropdown--margin__top ">
-                    <p class="choose">Choose Project</p>
                     <div class="dropdown ">
                         {% if currentProject is none %}
                         <button id="project" class="dropbtn">CHOOSE PROJECT</button>
@@ -164,7 +164,6 @@
 
                 <!-- DROPDOWN_DIR -->
                 <div class="col-xs-3 dropdown--margin__top">
-                    <p class="choose">Choose Branch</p>
                     <div class="dropdown ">
                         {% if currentBranch is none %}
                         <button class="dropbtn">CHOOSE BRANCH</button>
@@ -184,37 +183,25 @@
                 </div>
             </div>
 
-            <!-- PERFIL_TITULO -->
-            <div class="row">
-                <div class="col-xs-12 center-xs ">
-                    <p class="subtitle">User Profile</p>
-                </div>
-            </div>
-
-            <div class="row middle-xs center-xs">
-                <div class="person col-xs-1 start-xs" id="person1">
-                    <img class="images" id="image1" src="{{ member.avatar_url }}">
-                </div>
-
-                <div class="text text-bold start-xs col-xs-10">
-                    <p>{{ member.name }}</p>
-                    <p class="text ">Bio: {{ memberInfo['bio'] }}</p>
-                    <p class="text ">E-mail: {{ memberInfo['email'] }} </p>
-                    <p class="text ">Skype: {{ memberInfo['skype'] }} </p>
-                    <p class="text ">LinkedIn: {{ memberInfo['linkedin'] }} </p>
-                    <p class="text ">Twitter: {{ memberInfo['twitter'] }} </p>
-                    <p class="text ">Website: {{ memberInfo['website'] }} </p>
-                </div>
+            <!--<div class="row">
+                <div class="col-xs-12 center-xs ">-->
 
 
-                <div class="col-xs-12 center-xs ">
-                    {% if currentUser['username'] == memberInfo['username'] %}
-                    <a href="{{ url_for('views.profileEdit') }}">
-                        <p class="subtitle">Edit Profile</p>
-                    </a>
-                    {% endif %}
-                </div>
-            </div>
+
+
+
+                    <!--   #############################################        YOUR CODE HERE        #############################################   -->
+                    <h2 id="navigateTitle">Navigate File Tree & Artifact Lifecycle</h2>
+                    <img src="{{ url_for('static', filename='assets/images/back0.png') }}" id="back">
+                    <div class="col-sm-8 text-left" id="main">
+                        
+                    </div>
+
+
+
+                <!--</div>
+            </div>-->
+
         </div>
 
         <!-- SECÇÃO_DIREITA -->

@@ -68,13 +68,13 @@
 
                 <button class="drop-click-btn margin-bottom-small btn-default openpro"><img src="{{ url_for('static', filename='assets/images/processes.png') }}" class="icon">Processes</button>
                 <!-- SECONDARY BUTTONS -->
-                <a href="#">
+                <a id="#" href="{{ url_for('views.indexRisks') }}">
                     <button class="drop-click-btn margin-bottom-small btn-default viewpro">Risks</button>
                 </a>
                 <a href="#">
                     <button class="drop-click-btn margin-bottom-small btn-default viewpro">Roles</button>
                 </a>
-                <a href="#">
+                <a id="#" href="{{ url_for('views.task') }}">
                     <button class="drop-click-btn margin-bottom-small btn-default viewpro">Tasks</button>
                 </a>
                 <a href="#">
@@ -99,10 +99,9 @@
                     <button class="drop-click-btn margin-bottom-small btn-default viewwork">Manage Sprints</button>
                 </a>
 
-
                 <button class="drop-click-btn btn-default margin-bottom-small openproj"><img src="{{ url_for('static', filename='assets/images/project.png') }}" class="icon">Project</button>
                 <!-- SECONDARY BUTTONS -->
-                <a href="#">
+                <a id="#" href="{{ url_for('views.commits') }}">
                     <button class="drop-click-btn margin-bottom-small btn-default viewproj">Commits</button>
                 </a>
                 <a href="#">
@@ -115,8 +114,11 @@
                 <button class="drop-click-btn btn-default margin-bottom-small openart"><img src="{{ url_for('static', filename='assets/images/artifacts.png') }}" class="icon">Artifacts</button>
                 <!-- SECONDARY BUTTONS -->
                 <a href="{{ url_for('views.artifactsNavigation') }}">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewart"> Navigate File Tree </button>
+                    <button class="drop-click-btn margin-bottom-small btn-default viewart">Navigate File Tree</button>
                 </a>
+		<a id="#" href="{{ url_for('views.artifactsFiles') }}">
+			<button class="drop-click-btn margin-bottom-small btn-default viewart"> Navigate File Tree & Artifact Lifecycle </button>
+		</a>
                 <a href="#">
                     <button class="drop-click-btn margin-bottom-small btn-default viewart">Search Repository</button>
                 </a>

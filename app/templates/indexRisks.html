@@ -61,30 +61,63 @@
 
                 <button class="drop-click-btn margin-bottom-small btn-default openpro"><img src="{{ url_for('static', filename='assets/images/processes.png') }}" class="icon">Processes</button>
                 <!-- SECONDARY BUTTONS -->
-                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="{{ url_for('views.indexRisks') }}">Risks</a></button>
-                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">Roles</a></button>
-                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="{{ url_for('views.task') }}">Tasks</a></button>
-                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">ScoreCard</a></button>
-                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">Process</a></button>
+                <a id="#" href="{{ url_for('views.indexRisks') }}">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewpro">Risks</button>
+                </a>
+                <a href="#">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewpro">Roles</button>
+                </a>
+                <a id="#" href="{{ url_for('views.task') }}">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewpro">Tasks</button>
+                </a>
+                <a href="#">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewpro">ScoreCard</button>
+                </a>
+                <a href="#">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewpro">Process</button>
+                </a>
 
                 <button class="drop-click-btn btn-default margin-bottom-small openwork"><img src="{{ url_for('static', filename='assets/images/work.png') }}" class="icon">Work</button>
                 <!-- SECONDARY BUTTONS -->
-                <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Manage Tasks</a></button>
-                <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Sprint Works</a></button>
-                <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Burn-Down Chart</a></button>
-                <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Manage Sprints</a></button>
+                <a href="#">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewwork">Manage Tasks</button>
+                </a>
+                <a href="#">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewwork">Sprint Works</button>
+                </a>
+                <a href="#">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewwork">Burn-Down Chart</button>
+                </a>
+                <a href="#">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewwork">Manage Sprints</button>
+                </a>
 
                 <button class="drop-click-btn btn-default margin-bottom-small openproj"><img src="{{ url_for('static', filename='assets/images/project.png') }}" class="icon">Project</button>
                 <!-- SECONDARY BUTTONS -->
-                <button class="drop-click-btn margin-bottom-small btn-default viewproj"><a id="#" href="{{ url_for('views.commits') }}">Commits</a></button>
-                <button class="drop-click-btn margin-bottom-small btn-default viewproj"><a id="#" href="#">Contributors</a></button>
-                <button class="drop-click-btn margin-bottom-small btn-default viewproj"> <a id="#" href="#">Features</a></button>
+                <a id="#" href="{{ url_for('views.commits') }}">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewproj">Commits</button>
+                </a>
+                <a href="#">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewproj">Contributors</button>
+                </a>
+                <a href="#">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewproj">Features</button>
+                </a>
 
                 <button class="drop-click-btn btn-default margin-bottom-small openart"><img src="{{ url_for('static', filename='assets/images/artifacts.png') }}" class="icon">Artifacts</button>
                 <!-- SECONDARY BUTTONS -->
-                <button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="{{ url_for('views.artifactsFiles') }}">Navigate File Tree & Artifact Lifecycle</a> </button>
-                <button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="#">Search Repository</a> </button>
-                <!--<button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="{{ url_for('views.artifactsFiles') }}">Artifact Lifecycle</a> </button>-->
+                <a href="{{ url_for('views.artifactsNavigation') }}">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewart">Navigate File Tree</button>
+                </a>
+		<a id="#" href="{{ url_for('views.artifactsFiles') }}">
+			<button class="drop-click-btn margin-bottom-small btn-default viewart"> Navigate File Tree & Artifact Lifecycle </button>
+		</a>
+                <a href="#">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewart">Search Repository</button>
+                </a>
+                <a href="#">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewart">Artifact Lifecycle</button>
+                </a>
 
                 <button class="drop-click-btn btn-default margin-bottom-small btn-default openppl"><img src="{{ url_for('static', filename='assets/images/people.png') }}" class="icon">People</button>
                 <!-- SECONDARY BUTTONS -->
