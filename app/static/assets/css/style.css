@@ -498,10 +498,12 @@ body {
     background: black;
     color: white;
     transition: all 0.2s ease-in-out;
-    text-align: center;
+    text-align: left;
+    padding-left: 55px;
     cursor: pointer;
     position: relative;
     display: inline-block;
+    vertical-align:top;
 }
 
  
