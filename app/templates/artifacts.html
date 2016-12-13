@@ -14,9 +14,18 @@
 
     <script src="{{url_for('static', filename='assets/js/date.js') }}"></script>
     <script src="{{url_for('static', filename='assets/js/sendNotification.js') }}"></script>
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+	<link href="{{url_for('static', filename='EdgeSoft/style.css') }}" rel='stylesheet'>
+	<link href="https://fonts.googleapis.com/css?family=Catamaran:300,400,700" rel="stylesheet">
+	<script src="{{url_for('static', filename='EdgeSoft/javascript/artifacts.js') }}"></script>
+	<script src="{{url_for('static', filename='EdgeSoft/javascript/loadContent.js') }}"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body onload="startContent();">
+<body onload="startContent();startContentEdgeSoft();createBranchesButton();getRepositoryTree()">
 
     <!-- NAV_TOPO -->
     <section class="bg__blue">
@@ -29,6 +38,7 @@
                 <p id="username" hidden>{{ currentUser['username'] }}</p>
                 <p id="projectID" hidden>{{ currentProject['id'] }}</p>
                 <p id="host" hidden>{{ host }}</p>
+                <p id="token" hidden>{{ token }}</p>
                 <p>{{ currentUser["name"] }}</p>
             </div>
 
@@ -149,6 +159,53 @@
                     <h2 id="userAlerts" class=" text-right text-red">User alerts</h2>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-xs-12 center-xs ">
+
+
+
+					<div class="container-fluid">
+						<div class="row content">
+							<div class="col-sm-8 centerContent">
+								<div class="dropdown col-md-4 col-md-push-7">
+									<button a href="#" class="btn btn-primary" type="button" id="bckBtn">Back</button>
+								</div>
+			                  
+			                  <!--BUTTONS-->
+								<div class="dropdown col-md-4 col-md-push-8">
+									  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Branches
+									  <span class="caret"></span></button>
+									  <ul id ="branches" class="dropdown-menu">
+									    <li><a id="master" href="#">master</a></li>
+			  						  </ul>
+			  					</div>
+
+		 								<div class="dropdown col-md-4 col-md-push-9">
+			  								<button class="btn btn-primary dropdown-toggle " style="margin-left:30px;" type="button" data-toggle="dropdown">Vista
+										  <span class="caret"></span></button>
+										  <ul class="dropdown-menu">
+										    <li><a id="Icones" href="#">Icons</a></li>
+										    <li><a id="Lista" href="#">Lista</a></li>
+				  						  </ul>
+								       	</div>
+
+								<div class="contentI">
+									<div id="divArtifacts">
+										<ul id="pathFiles">
+											<li id="teste">/</li>
+										</ul>
+										<ul id="listFiles"></ul>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+                </div>
+            </div>
         </div>
 
         <!-- SECÇÃO_DIREITA -->
@@ -173,5 +230,18 @@
             <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
         {% endif %}
     {% endif %}
+</body>
+</html>
+
+
+
+
+<head>
+		<title>ES Project - Home</title>
+	
+</head>
+
+<body onload="startContent();createBranchesButton();getRepositoryTree()">
+	
 </body>
 </html>

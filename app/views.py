@@ -344,3 +344,26 @@ def example():
     # return page with required vars for when implementing UC1
     # 'page' var is required for when changing project or branch - have a look at changeProjectOrBranch() function
     return render_template("example.html", host = HOST, page = 'example', teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)
+
+
+
+# ------------ UC4 NAVIGATION ------------
+
+@views.route("/artifacts.html")
+def artifactsNavigation():
+    try:
+        userInfo = functions.updateInfo(session['token'])
+        projectsList = functions.getProjects(session['token'])
+    except KeyError:
+        return redirect('/login.html')
+
+    try:
+        projectID = session['project']
+    except KeyError:
+        return redirect('/index.html')
+
+    currentProject, branchesList, currentBranch, teamname = functions.getRecurrentInfo(session, userInfo)
+
+    pprint(currentProject)
+
+    return render_template("artifacts.html", token = session['token'], host = HOST, page = 'example', teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)
