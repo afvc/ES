@@ -22,7 +22,7 @@ p{
 
 .rolebar .navbar-collapse{
 	background-color: #109877;
-	border-radius: 10px;
+	 
 	border: none;
 
 }
@@ -50,7 +50,7 @@ p{
     color: #109877;
     background-color: white;
     border-color: #109877;
-    border-radius: 50px;
+    
 
 }
 .btn-primary:hover{
@@ -188,7 +188,7 @@ p{
 #avatar {
 	width: 100px;
 	height: 100px;
-	border-radius: 50px;
+	 
 	margin-top: 30px;
 }
 
@@ -260,7 +260,7 @@ h4{
 	padding-top: 2px;
 	background-color: #109877;
 	background-opacity:50%;
-	border-radius: 50px;
+	 
 }
 
 .alerts {
@@ -286,8 +286,7 @@ h4{
 .navbar.navbar-inverse {
 	background-color: white;
 	border-color:  #109877;
-	border-radius: 50px;
-}
+	 
 
 .navbar.navbar-inverse .navbar-toggle > span {
 	background-color: #109877;

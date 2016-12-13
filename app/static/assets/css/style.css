@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+/* LI */
+.clean-li{
+
+list-style: none;
+    list-style-type: none;
+}
+
+
 /* Radio */
 
 input[type="radio"] {
@@ -392,12 +400,12 @@ body {
 }
 
 .btn-dark {
-    background: none;
+    background:#4ca7af;
+}
+.g-color {
+    background:#4caf9c!important;
 }
 
-.btn-dark:hover {
-    background: none;
-}
 
 .url_btn {
     margin: 0;
