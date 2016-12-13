@@ -160,6 +160,7 @@ function createFiles() {
 			, "position": "absolute"
 			, "left": "30px"
 			, "top": "6px"
+			, "margin": "0"
 		});
 		btn.appendChild(img);
 		btn.appendChild(img);
@@ -169,7 +170,7 @@ function createFiles() {
 			"width": "170px"
 			, "height": "30px"
 			, "background-color": "#109877"
-			, "border-radius": "50px"
+//			, "border-radius": "50px"
 			, "padding-top": "15px"
 			, "border-style": "none"
 			, "position": "relative"
