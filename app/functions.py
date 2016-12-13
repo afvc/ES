@@ -15,8 +15,6 @@ def communicate(url):
     return data
 
 
-# integrate with login
-"""
 def getPrivateToken(username, password):
     values = {'login': username, 'password': password}
 
@@ -25,8 +23,8 @@ def getPrivateToken(username, password):
     data = urllib.urlencode(values)
     req = urllib2.Request(url, data)
 
-    return communicate(req)['private_token']
-"""
+    return communicate(req)
+
 
 def getProjects(token):
     url = "https://git.dei.uc.pt/api/v3/projects?private_token=" + token
@@ -127,3 +125,15 @@ def query_db(query, args=(), one=False):
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
+
+def insertNotification(session, message, isAlert, alertTitle):    # message 250 chars MAX | alertTitle 25 chars MAX | isAlert 0 or 1 value
+    if ((len(message) > 250) or (len(alertTitle) > 25) or (isAlert != 0 and isAlert != 1)):
+        return False
+    
+    members = getMembersInformation(session['token'], session['project'])
+    
+    member = dict()
+    for member in members:
+        query_db('INSERT INTO notification (message, project, targetUsername, isAlert, alertTitle) VALUES (?, ?, ?, ?, ?);', [message, session['project'], member['username'], isAlert, alertTitle], one=True)
+
+    return True

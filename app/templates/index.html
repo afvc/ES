@@ -44,7 +44,9 @@
                 <p id="date" class=""> day,month,year,hh-mm</p>
             </div>
             <div class="col-xs-1 col-sm-3 end-xs margin-textNav-left  order-xs__4">
-                <p class=""> Logout</p>
+                <a href="{{ url_for('views.logout') }}">
+                    <p class=""> Logout</p>
+                </a>
             </div>
         </div>
     </section>
@@ -77,7 +79,9 @@
 
                 <button class="drop-click-btn btn-default margin-bottom-small openart"><img src="{{ url_for('static', filename='assets/images/artifacts.png') }}" class="icon">Artifacts</button>
                 <!-- SECONDARY BUTTONS -->
-                <button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="#">Navigate File Tree</a> </button>
+                <a href="{{ url_for('views.artifactsNavigation') }}">
+                    <button class="drop-click-btn margin-bottom-small btn-default viewart"> Navigate File Tree </button>
+                </a>
                 <button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="#">Search Repository</a> </button>
                 <button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="#">Artifact Lifecycle</a> </button>
 
@@ -164,8 +168,10 @@
     {% endif %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='assets/js/barras.js') }}"></script>
-    {% if (teamname["owner"]) %}
-        <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
+    {% if teamname["name"] is none %}
+        {% if (teamname["owner"]) %}
+            <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
+        {% endif %}
     {% endif %}
 </body>
 </html>

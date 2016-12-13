@@ -8,13 +8,12 @@ views = Blueprint('views', __name__)
 MAX_NOTIFICATION = 30
 HOST = 'http://localhost:5000'
 
-privateToken = 'MKy9d2Ed1g63maQXcpY_'
 # TAyfsEzcXYZNH-sdkyNC lr
 # MKy9d2Ed1g63maQXcpY_ lc
 
 
 
-#@views.route("/")
+@views.route("/")
 @views.route("/login.html")
 @views.route("/login.html/")
 def login():
@@ -22,18 +21,45 @@ def login():
         token = session['token']
         return redirect('/index.html')
     except KeyError:
-        temp = None
+        pass
 
-    return render_template()
+    return render_template("login.html")
 
 
-@views.route("/")
+@views.route("/login", methods=['POST'])
+@views.route("/login/", methods=['POST'])
+def loginPOST():
+    try:
+        reply = functions.getPrivateToken(request.form['username'], request.form['password'])
+        session['token'] = reply['private_token']
+    except:
+        return redirect('/login.html')
+
+    return redirect('/index.html')
+
+
+@views.route("/logout")
+@views.route("/logout/")
+def logout():
+    try:
+        session.pop('token')
+    except KeyError:
+        pass
+    try:
+        session.pop('project')
+    except KeyError:
+        pass
+    try:
+        session.pop('branch')
+    except KeyError:
+        pass
+
+    return redirect('login.html')
+
+#@views.route("/")
 @views.route("/index.html")
 @views.route("/index.html/")
 def index():
-    # temp while without login
-    session['token'] = privateToken
-
     try:
         userInfo = functions.updateInfo(session['token'])
         projectsList = functions.getProjects(session['token'])
@@ -104,7 +130,7 @@ def members():
         projectID = session['project']
     except KeyError:
         return redirect('/index.html')
-
+    
     currentProject, branchesList, currentBranch, teamname = functions.getRecurrentInfo(session, userInfo)
 
     # members
@@ -218,11 +244,12 @@ def editPOST(username):
     message = userInfo['name'] + ' has changed his/her profile information'
     member = dict()
     for member in members:
-        if (member['username'] != userInfo['username']):
-            functions.query_db('INSERT INTO notification (message, project, targetUsername, isAlert) VALUES (?, ?, ?, ?);', [message, session['project'], member['username'], 0], one=True)
+        functions.query_db('INSERT INTO notification (message, project, targetUsername, isAlert) VALUES (?, ?, ?, ?);', [message, session['project'], member['username'], 0], one=True)
 
     return redirect('/profile-inside.html/' + username)
 
+
+# ------------ HTTP ------------
 
 @views.route("/request/getNotification/<username>/<project>")
 @views.route("/request/getNotification/<username>/<project>/")
@@ -285,6 +312,8 @@ def httpPostSession():
     return Response("",  mimetype='application/text')
 
 
+# ------------ EXAMPLE ------------
+
 @views.route("/example.html")
 def example():
     #session contents & protection
@@ -315,3 +344,26 @@ def example():
     # return page with required vars for when implementing UC1
     # 'page' var is required for when changing project or branch - have a look at changeProjectOrBranch() function
     return render_template("example.html", host = HOST, page = 'example', teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)
+
+
+
+# ------------ UC4 NAVIGATION ------------
+
+@views.route("/artifacts.html")
+def artifactsNavigation():
+    try:
+        userInfo = functions.updateInfo(session['token'])
+        projectsList = functions.getProjects(session['token'])
+    except KeyError:
+        return redirect('/login.html')
+
+    try:
+        projectID = session['project']
+    except KeyError:
+        return redirect('/index.html')
+
+    currentProject, branchesList, currentBranch, teamname = functions.getRecurrentInfo(session, userInfo)
+
+    pprint(currentProject)
+
+    return render_template("artifacts.html", token = session['token'], host = HOST, page = 'example', teamname = teamname, projectsList = projectsList, branchesList = branchesList, currentUser = userInfo, currentProject = currentProject, currentBranch = currentBranch)
