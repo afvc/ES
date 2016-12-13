@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <!-- META TAGS -->
     <meta charset="UTF-8" />
@@ -15,6 +14,8 @@
 
     <script src="{{url_for('static', filename='assets/js/date.js') }}"></script>
     <script src="{{url_for('static', filename='assets/js/sendNotification.js') }}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/main.css') }}">
 </head>
 
 <body onload="startContent();">
@@ -30,14 +31,15 @@
                 <p id="username" hidden>{{ currentUser['username'] }}</p>
                 <p id="projectID" hidden>{{ currentProject['id'] }}</p>
                 <p id="host" hidden>{{ host }}</p>
+                <p id="token" hidden>{{ token }}</p>
                 <p>{{ currentUser["name"] }}</p>
             </div>
 
             <div class="col-xs-2 margin-textNav-left  order-xs__2">
                 {% if teamname["name"] is not none %}
-                <p id="teamname">{{ teamname.name }}</p>
+                    <p id="teamname">{{ teamname.name }}</p>
                 {% else %}
-                <p id="teamname">[Team Name]</p>
+                    <p id="teamname">[Team Name]</p>
                 {% endif %}
             </div>
 
@@ -59,60 +61,30 @@
 
                 <button class="drop-click-btn margin-bottom-small btn-default openpro"><img src="{{ url_for('static', filename='assets/images/processes.png') }}" class="icon">Processes</button>
                 <!-- SECONDARY BUTTONS -->
-                <a id="#" href="{{ url_for('views.indexRisks') }}">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewpro">Risks</button>
-                </a>
-                <a href="#">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewpro">Roles</button>
-                </a>
-                <a id="#" href="{{ url_for('views.task') }}">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewpro">Tasks</button>
-                </a>
-                <a href="#">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewpro">ScoreCard</button>
-                </a>
-                <a href="#">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewpro">Process</button>
-                </a>
+                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="{{ url_for('views.indexRisks') }}">Risks</a></button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">Roles</a></button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="{{ url_for('views.task') }}">Tasks</a></button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">ScoreCard</a></button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewpro"><a id="#" href="#">Process</a></button>
 
                 <button class="drop-click-btn btn-default margin-bottom-small openwork"><img src="{{ url_for('static', filename='assets/images/work.png') }}" class="icon">Work</button>
                 <!-- SECONDARY BUTTONS -->
-                <a href="#">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewwork">Manage Tasks</button>
-                </a>
-                <a href="#">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewwork">Sprint Works</button>
-                </a>
-                <a href="#">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewwork">Burn-Down Chart</button>
-                </a>
-                <a href="#">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewwork">Manage Sprints</button>
-                </a>
+                <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Manage Tasks</a></button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Sprint Works</a></button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Burn-Down Chart</a></button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewwork"><a id="#" href="#">Manage Sprints</a></button>
 
                 <button class="drop-click-btn btn-default margin-bottom-small openproj"><img src="{{ url_for('static', filename='assets/images/project.png') }}" class="icon">Project</button>
                 <!-- SECONDARY BUTTONS -->
-                <a id="#" href="{{ url_for('views.commits') }}">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewproj">Commits</button>
-                </a>
-                <a href="#">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewproj">Contributors</button>
-                </a>
-                <a href="#">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewproj">Features</button>
-                </a>
+                <button class="drop-click-btn margin-bottom-small btn-default viewproj"><a id="#" href="{{ url_for('views.commits') }}">Commits</a></button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewproj"><a id="#" href="#">Contributors</a></button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewproj"> <a id="#" href="#">Features</a></button>
 
                 <button class="drop-click-btn btn-default margin-bottom-small openart"><img src="{{ url_for('static', filename='assets/images/artifacts.png') }}" class="icon">Artifacts</button>
                 <!-- SECONDARY BUTTONS -->
-                <a href="{{ url_for('views.artifactsNavigation') }}">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewart">Navigate File Tree</button>
-                </a>
-                <a href="#">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewart">Search Repository</button>
-                </a>
-                <a href="#">
-                    <button class="drop-click-btn margin-bottom-small btn-default viewart">Artifact Lifecycle</button>
-                </a>
+                <button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="{{ url_for('views.artifactsFiles') }}">Navigate File Tree & Artifact Lifecycle</a> </button>
+                <button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="#">Search Repository</a> </button>
+                <!--<button class="drop-click-btn margin-bottom-small btn-default viewart"> <a id="#" href="{{ url_for('views.artifactsFiles') }}">Artifact Lifecycle</a> </button>-->
 
                 <button class="drop-click-btn btn-default margin-bottom-small btn-default openppl"><img src="{{ url_for('static', filename='assets/images/people.png') }}" class="icon">People</button>
                 <!-- SECONDARY BUTTONS -->
@@ -130,10 +102,7 @@
                     document.getElementById('members').onclick = reply_click;
                 </script>
 
-                <a href="#">
-                    <button class="drop-click-btn btn-default margin-bottom-small"><img src="{{ url_for('static', filename='assets/images/settings.png') }}" class="icon">Settings</button>
-                </a>
-
+                <button class="drop-click-btn btn-default margin-bottom-small"><img src="{{ url_for('static', filename='assets/images/settings.png') }}" class="icon">Settings</button>
             </section>
         </div>
 
@@ -148,7 +117,6 @@
             <!-- DROPDOWN_ESQ -->
             <div class="row">
                 <div class="col-xs-3 dropdown--margin__top ">
-                    <p class="choose">Choose Project</p>
                     <div class="dropdown ">
                         {% if currentProject is none %}
                         <button id="project" class="dropbtn">CHOOSE PROJECT</button>
@@ -164,7 +132,6 @@
 
                 <!-- DROPDOWN_DIR -->
                 <div class="col-xs-3 dropdown--margin__top">
-                    <p class="choose">Choose Branch</p>
                     <div class="dropdown ">
                         {% if currentBranch is none %}
                         <button class="dropbtn">CHOOSE BRANCH</button>
@@ -183,6 +150,99 @@
                     <h2 id="userAlerts" class=" text-right text-red">User alerts</h2>
                 </div>
             </div>
+
+            <!--<div class="row">-->
+                <!--<div class="col-xs-12 center-xs ">-->
+
+
+
+
+
+                    <!--<div class="form-style-8">-->
+                        
+                        <h2>Risks</h2>
+                        <div id="grid">
+                            <div class="all-element">
+                                <div>Impact</div>
+                            </div>
+
+                            <div class="blank-element">
+                                <div id="blank">Likelihood</div>
+                            </div>
+
+                            <div class="title-element">
+                                <div>Low</div>
+                            </div>
+
+                            <div class="title-element">
+                                <div>Medium</div>
+                            </div>
+
+                            <div class="title-element">
+                                <div>High</div>
+                            </div>
+
+                            <div class="title2-element">
+                                <div>High</div>
+                            </div>
+
+                            <div id="pos00" class="grid-element">
+                                <div class="content"></div>
+                            </div>
+
+                            <div id="pos01" class="grid-element">
+                                <div class="content"></div>
+                            </div>
+
+                            <div id="pos02" class="grid-element">
+                                <div class="content"></div>
+                            </div>
+
+                            <div class="title2-element">
+                                <div>Medium</div>
+                            </div>
+
+                            <div id="pos10" class="grid-element">
+                                <div class="content"></div>
+                            </div>
+
+                            <div id="pos11" class="grid-element">
+                                <div class="content"></div>
+                            </div>
+
+                            <div id="pos12" class="grid-element">
+                                <div class="content"></div>
+                            </div>
+
+                            <div class="title2-element">
+                                <div>Low</div>
+                            </div>
+
+                            <div id="pos20" class="grid-element">
+                                <div class="content"></div>
+                            </div>
+
+                            <div id="pos21" class="grid-element">
+                                <div class="content"></div>
+                            </div>
+
+                            <div id="pos22" class="grid-element">
+                                <div class="content"></div>
+                            </div>
+                        </div> 
+                        <div class="risks">
+                            <p id="box"></p>
+                        </div>
+                    <!--</div>-->
+
+
+
+
+
+
+                <!---</div>-->
+            <!--</div>-->
+
         </div>
 
         <!-- SECÇÃO_DIREITA -->
@@ -190,7 +250,7 @@
             <section class="section-size  scroll">
                 <div id="hiddenFeed">
                     {% if projectID is none %}
-                    <p>Choose a project</p>
+                        <p>Choose a project</p>
                     {% endif %}
                 </div>
             </section>
@@ -199,12 +259,14 @@
 
     {% if projectID is not none %}
     <script src="{{url_for('static', filename='assets/js/notification.js') }}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='assets/js/indexRisks.js') }}"></script>
     {% endif %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='assets/js/barras.js') }}"></script>
-    {% if teamname["name"] is none %} {% if (teamname["owner"]) %}
-    <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
-    {% endif %} {% endif %}
+    {% if teamname["name"] is none %}
+        {% if (teamname["owner"]) %}
+            <script src="{{url_for('static', filename='assets/js/sendTeamName.js') }}"></script>
+        {% endif %}
+    {% endif %}
 </body>
-
 </html>

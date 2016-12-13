@@ -1,0 +1,76 @@
+/*table {
+	position: fixed;
+	margin-top: 2.5%;
+	margin-left: 12.5%;
+	border-collapse: collapse;
+	width: 100%;
+	display: none;
+}*/
+
+/*td, th {
+	text-align: center;
+	padding: 8px;
+}
+
+#folder{
+	width: 30px;	
+}
+
+#file{
+	height: 25px;
+}*/
+
+#navigateTitle
+{
+	margin-top: 5%;
+	margin-left: 10%;
+	font-size: 175%;
+	font-weight: bold;
+}
+
+/*#projetos
+{
+	position: fixed;
+	margin-top: 2.5%;
+	margin-left: 12.5%;
+}
+
+#projetos p
+{
+	font-size: 150%;
+}
+
+#projetos p:hover
+{
+	color: rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+}
+
+.passed:hover
+{
+	background-color: rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}*/
+
+#back{
+	position: fixed;
+	margin-left: 5%;
+	width: 30px;
+	display: none;
+}
+
+#back:hover, #icon_grafico:hover, #icon_lista:hover
+{
+	background-color: rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+}
+
+#main
+{
+	position: fixed;
+	margin-left: 7.5%;
+}
+
+#navigate_files{
+	font-size: 110%;
+}

@@ -25,7 +25,7 @@ function sendTeamName(teamName) {
         } else if (sendNotificationXML.readyState == 4 && sendNotificationXML.status == 401) {
             window.alert("[ERROR] - sendTeamName: " + sendNotificationXML.status + " - please re login!");
         } else if (sendTeamNameXML.readyState == 4) {
-            window.alert("[ERROR] - sendTeamName: " + sendNotificationXML.status);
+            //window.alert("[ERROR] - sendTeamName: " + sendNotificationXML.status);
         }
     }
     var host = document.getElementById("host").innerHTML;

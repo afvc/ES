@@ -22,7 +22,7 @@ function getNotification() {
             fillNotifications();
         } else if (notificationXML.readyState == 4) {
             notificationJsonObject = JSON.parse(notificationXML.responseText);
-            window.alert(notificationXML.status + " - getNotification: " + notificationJsonObject.message);
+            //window.alert(notificationXML.status + " - getNotification: " + notificationJsonObject.message);
         }
     }
     var host = document.getElementById("host").innerHTML;
