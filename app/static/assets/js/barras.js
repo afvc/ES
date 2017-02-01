@@ -122,24 +122,3 @@ $(".openart").click(function () {
 
     $(".viewart").toggle();
 });
-
-
-//———————————————————— Members ————————————
-
-$(".viewppl").css("display", "none");
-
-$(".viewppl").css("background-color", "transparent");
-$(".viewppl").css('color', 'black');
-$(".viewppl").css("font-size", "10pt");
-$(".viewppl").css("font-weight", "semibold");
-
-
-$(".openppl").click(function () {
-    $(".viewpro").css("display", "none");
-    $(".viewwork").css("display", "none");
-    $(".viewproj").css("display", "none");
-    $(".viewart").css("display", "none");
-    
-    console.log("anda cao");
-    $(".viewppl").toggle();
-});
